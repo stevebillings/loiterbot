@@ -1,6 +1,6 @@
 # Loiter bot
 
-Software for a robot that seeks and approaches the obstacle it sees, and then wanders around nearby (not too far from it, but not too close either).
+Software for a ROS2-based robot that seeks and approaches the obstacle it sees, and then wanders around nearby (not too far from it, but not too close either).
 
 ## Objective
 
