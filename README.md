@@ -1,6 +1,6 @@
-# Loiter bot
+# LoiterBot
 
-Software for a ROS2-based robot that seeks and approaches the obstacle it sees, and then wanders around nearby (not too far from it, but not too close either).
+Software for a ROS2-based robot that seeks and approaches the first obstacle it sees, and then wanders around nearby (not too far from it, but not too close either).
 
 ## Objective
 
@@ -8,7 +8,7 @@ I used this project to experiment with design approaches for finite state machin
 
 ## Design
 
-I started with an FSM implemented with a switch statement, but ended up replacing that approach with a design based on the Gang of Four (GoF: the book "Design Patterns" by Gamma, Helm, Johnson, Vlissides) State Pattern. I found the GoF State Pattern lended itself more nicely to unit testing. It provided (/demanded) a clear contract for each state handler, and made it easy to do most debugging in the IDE before testing in the simulator.
+I started with an FSM implemented with a switch statement, but ended up replacing that approach with a design based on the Gang of Four (GoF: the book "Design Patterns" by Gamma, Helm, Johnson, Vlissides) State Pattern. I found the GoF State Pattern was a natural fit with thorough unit tests. It provided (actuall, demanded) a clear contract for each state handler, and isolated them from each other. It made it easy to debug each state handler in the IDE before testing them working together in the simulator.
 
 ## The robot
 
