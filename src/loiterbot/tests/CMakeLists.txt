@@ -41,3 +41,9 @@ ament_add_gtest(state_handler_too_near_test
         ../src/velocity/velocity.h ../src/velocity/velocity.cpp
         ../src/velocity/velocity_calculator.h ../src/velocity/velocity_calculator.cpp
         ../src/loiterbot/action.cpp ../src/loiterbot/action.h)
+
+ament_target_dependencies(laser_test ${dependencies})
+ament_target_dependencies(velocity_calculator_test ${dependencies})
+ament_target_dependencies(state_handler_search_test ${dependencies})
+ament_target_dependencies(state_handler_near_test ${dependencies})
+ament_target_dependencies(state_handler_too_near_test ${dependencies})
