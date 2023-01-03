@@ -1,10 +1,10 @@
 #ifndef OBSTACLE_HUGGER_STATE_HANDLER_H
 #define OBSTACLE_HUGGER_STATE_HANDLER_H
 
-#include "../../common/fsm_state.h"
+#include "../state.h"
 #include "../../laser/laser_characteristics.h"
 #include "../../laser/laser_analysis.h"
-#include "../../history/history.h"
+#include "../history.h"
 #include "../action.h"
 #include "../../velocity/velocity_calculator.h"
 

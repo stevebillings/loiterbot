@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
-#include "../../../src/loiterbot/state/state_handler_search.h"
+#include "../../../src/loiterbot/statehandler/state_handler_search.h"
 
-TEST(StateSearchTest, Name)
+TEST(StateHandlerSearchTest, Name)
 {
   StateHandlerSearch state_handler = StateHandlerSearch();
   EXPECT_STREQ("search", state_handler.name());
 }
 
-TEST(StateSearchTest, NotInSight)
+TEST(StateHandlerSearchTest, NotInSight)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 100.0l);
@@ -16,15 +16,17 @@ TEST(StateSearchTest, NotInSight)
   History history = History();
   history.set_obstacle_last_seen_time(0.0l, true);
   history.set_time_lost(0.1l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::SEARCH);
+
+  EXPECT_EQ(action.get_state(), State::SEARCH);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_NEAR(action.get_velocity().value().get_forward(), 0.0l, 0.01L);
   EXPECT_TRUE(action.get_velocity().value().get_yaw() < -0.1l);
 }
 
-TEST(StateSearchTest, InSightRight)
+TEST(StateHandlerSearchTest, InSightRight)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
@@ -33,8 +35,10 @@ TEST(StateSearchTest, InSightRight)
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
   history.set_time_lost(0.1l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::SEARCH);
+
+  EXPECT_EQ(action.get_state(), State::SEARCH);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_TRUE(action.get_velocity().value().get_forward() > 0.5l);
@@ -43,7 +47,7 @@ TEST(StateSearchTest, InSightRight)
   EXPECT_TRUE(action.get_velocity().value().get_yaw() > -0.1l);
 }
 
-TEST(StateSearchTest, Near)
+TEST(StateHandlerSearchTest, Near)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 1.5l);
@@ -52,14 +56,16 @@ TEST(StateSearchTest, Near)
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
   history.set_time_lost(0.1l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::OBSTACLE_NEAR);
+
+  EXPECT_EQ(action.get_state(), State::OBSTACLE_NEAR);
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_NEAR(action.get_velocity().value().get_forward(), 0.0l, 0.01L);
   EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.0l, 0.01L);
 }
 
-TEST(StateSearchTest, TooNear)
+TEST(StateHandlerSearchTest, TooNear)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 0.5l);
@@ -68,14 +74,16 @@ TEST(StateSearchTest, TooNear)
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
   history.set_time_lost(0.1l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::OBSTACLE_TOO_NEAR);
+
+  EXPECT_EQ(action.get_state(), State::OBSTACLE_TOO_NEAR);
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_NEAR(action.get_velocity().value().get_forward(), 0.0l, 0.01L);
   EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.0l, 0.01L);
 }
 
-TEST(StateSearchTest, LostSight)
+TEST(StateHandlerSearchTest, LostSight)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
@@ -84,8 +92,10 @@ TEST(StateSearchTest, LostSight)
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
   history.set_time_lost(5.0l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::SEARCH);
+
+  EXPECT_EQ(action.get_state(), State::SEARCH);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_NEAR(action.get_velocity().value().get_forward(), 0.0l, 0.01L);
@@ -93,7 +103,7 @@ TEST(StateSearchTest, LostSight)
   EXPECT_TRUE(action.get_velocity().value().get_yaw() > -1.0l);
 }
 
-TEST(StateSearchTest, RecentlyLostSight)
+TEST(StateHandlerSearchTest, RecentlyLostSight)
 {
   LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
@@ -102,7 +112,9 @@ TEST(StateSearchTest, RecentlyLostSight)
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
   history.set_time_lost(0.1l);
+
   Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
-  EXPECT_EQ(action.get_state(), FsmState::SEARCH);
+
+  EXPECT_EQ(action.get_state(), State::SEARCH);
   EXPECT_FALSE(action.get_velocity().has_value());
 }

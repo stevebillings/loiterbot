@@ -6,20 +6,20 @@
 #define OBSTACLE_HUGGER_ACTION_H
 
 #include <optional>
-#include "../common/fsm_state.h"
+#include "state.h"
 #include "../velocity/velocity.h"
 
 class Action
 {
 public:
-  Action(const Velocity& velocity, const FsmState state) : velocity_(velocity), state_(state){};
-  Action(const FsmState state) : velocity_(std::nullopt), state_(state){};
+  Action(const Velocity& velocity, const State state) : velocity_(velocity), state_(state){};
+  Action(const State state) : velocity_(std::nullopt), state_(state){};
   std::optional<Velocity> get_velocity() const;
-  FsmState get_state() const;
+  State get_state() const;
 
 private:
   std::optional<Velocity> velocity_;
-  FsmState state_;
+  State state_;
 };
 
 #endif  // OBSTACLE_HUGGER_ACTION_H

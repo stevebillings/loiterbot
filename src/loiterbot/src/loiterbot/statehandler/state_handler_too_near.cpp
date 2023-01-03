@@ -6,9 +6,9 @@ Action StateHandlerTooNear::act(const History& history, const double current_tim
 {
   if ((current_time - history.get_time_entered_state()) > 2.0)
   {
-    return Action(Velocity::create_stopped(), FsmState::SEARCH);
+    return Action(Velocity::create_stopped(), State::SEARCH);
   }
-  return Action(FsmState::OBSTACLE_TOO_NEAR);
+  return Action(State::OBSTACLE_TOO_NEAR);
 }
 
 const char* StateHandlerTooNear::name() const

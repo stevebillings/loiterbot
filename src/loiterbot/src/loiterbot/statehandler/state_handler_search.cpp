@@ -23,25 +23,25 @@ const char* StateHandlerSearch::name() const
 
 Action StateHandlerSearch::handleRecentlyLost() const
 {
-  return Action(FsmState::SEARCH);
+  return Action(State::SEARCH);
 }
 
 Action StateHandlerSearch::handleInSight(const LaserCharacteristics& laser_characteristics,
                                          const LaserAnalysis& laser_analysis) const
 {
-  FsmState new_state = FsmState::SEARCH;
+  State new_state = State::SEARCH;
   Velocity new_velocity = velocity_calculator_.toApproach(laser_characteristics, laser_analysis);
   if (laser_analysis.isNear())
-    new_state = FsmState::OBSTACLE_NEAR;
+    new_state = State::OBSTACLE_NEAR;
   else if (laser_analysis.isTooNear())
-    new_state = FsmState::OBSTACLE_TOO_NEAR;
+    new_state = State::OBSTACLE_TOO_NEAR;
   return Action(new_velocity, new_state);
 }
 
 Action StateHandlerSearch::handleLostSight(const History& history) const
 {
   Velocity new_velocity = Velocity::create_stopped();
-  FsmState new_state = FsmState::SEARCH;
+  State new_state = State::SEARCH;
   if (history.was_seen_to_right())
   {
     new_velocity = Velocity::create_spin_right();
@@ -56,7 +56,7 @@ Action StateHandlerSearch::handleLostSight(const History& history) const
 Action StateHandlerSearch::handleNeverSeen() const
 {
   Velocity new_velocity = Velocity::create_stopped();
-  FsmState new_state = FsmState::SEARCH;
+  State new_state = State::SEARCH;
   new_velocity = Velocity::create_spin_right();
   return Action(new_velocity, new_state);
 }

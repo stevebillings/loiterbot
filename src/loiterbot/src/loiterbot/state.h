@@ -1,7 +1,7 @@
 #ifndef OBSTACLE_HUGGER_FSM_STATE_H
 #define OBSTACLE_HUGGER_FSM_STATE_H
 
-enum class FsmState
+enum class State
 {
   SEARCH,
   OBSTACLE_NEAR,

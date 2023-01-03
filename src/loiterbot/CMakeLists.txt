@@ -17,20 +17,20 @@ find_package(std_msgs REQUIRED)
 
 add_executable(loiterbot
         src/loiterbot/loiterbot.cpp
-        src/common/fsm_state.h
+        src/loiterbot/state.h
         src/velocity/velocity.cpp src/velocity/velocity.h
         src/velocity/velocity_calculator.cpp src/velocity/velocity_calculator.h
         src/laser/laser_analyzer.cpp src/laser/laser_analyzer.h
         src/laser/laser_characteristics.cpp src/laser/laser_characteristics.h
         src/laser/laser_analysis.cpp src/laser/laser_analysis.h
         src/obstacle/nearest_sighting.cpp src/obstacle/nearest_sighting.h
-        src/loiterbot/state/state_handler.h
-        src/loiterbot/state_handlers.cpp src/loiterbot/state_handlers.h
-        src/history/history.cpp src/history/history.h
-        src/loiterbot/state/state_handler_search.cpp src/loiterbot/state/state_handler_search.h
-        src/loiterbot/state/state_handler_near.cpp src/loiterbot/state/state_handler_near.h
-        src/loiterbot/state/state_handler_too_near.cpp src/loiterbot/state/state_handler_too_near.h
-        src/loiterbot/state/state_handler_error.cpp src/loiterbot/state/state_handler_error.h
+        src/loiterbot/statehandler/state_handler.h
+        src/loiterbot/statehandler/state_handlers.cpp src/loiterbot/statehandler/state_handlers.h
+        src/loiterbot/history.cpp src/loiterbot/history.h
+        src/loiterbot/statehandler/state_handler_search.cpp src/loiterbot/statehandler/state_handler_search.h
+        src/loiterbot/statehandler/state_handler_near.cpp src/loiterbot/statehandler/state_handler_near.h
+        src/loiterbot/statehandler/state_handler_too_near.cpp src/loiterbot/statehandler/state_handler_too_near.h
+        src/loiterbot/statehandler/state_handler_error.cpp src/loiterbot/statehandler/state_handler_error.h
         src/loiterbot/action.cpp src/loiterbot/action.h)
 
 set(dependencies

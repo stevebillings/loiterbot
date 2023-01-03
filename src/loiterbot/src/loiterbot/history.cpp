@@ -1,6 +1,6 @@
 #include "history.h"
 
-void History::set_time_entered_state(FsmState new_state, double current_time)
+void History::set_time_entered_state(State new_state, double current_time)
 {
   if (!cur_state_.has_value() || (new_state != cur_state_.value()))
   {

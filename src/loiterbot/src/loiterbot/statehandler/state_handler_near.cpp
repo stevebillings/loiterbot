@@ -20,18 +20,18 @@ const char* StateHandlerNear::name() const
 
 const Action StateHandlerNear::handleTooNear() const
 {
-  return Action(Velocity::create_reverse(), FsmState::OBSTACLE_TOO_NEAR);
+  return Action(Velocity::create_reverse(), State::OBSTACLE_TOO_NEAR);
 }
 
 const Action StateHandlerNear::handleInSight(const LaserAnalysis& laser_analysis) const
 {
-  return Action(velocity_calculator_.toParallel(laser_analysis), FsmState::OBSTACLE_NEAR);
+  return Action(velocity_calculator_.toParallel(laser_analysis), State::OBSTACLE_NEAR);
 }
 
 const Action StateHandlerNear::handleLostSight(const History& history, const LaserAnalysis& laser_analysis) const
 {
   if (history.get_time_lost() > 1.0)
-    return Action(Velocity::create_stopped(), FsmState::SEARCH);
+    return Action(Velocity::create_stopped(), State::SEARCH);
   else
-    return Action(FsmState::OBSTACLE_NEAR);
+    return Action(State::OBSTACLE_NEAR);
 }

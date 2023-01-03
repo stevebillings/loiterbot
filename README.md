@@ -8,7 +8,12 @@ I used this project to experiment with design approaches for finite state machin
 
 ## Design
 
-I started with an FSM implemented with a switch statement, but ended up replacing that approach with a design based on the Gang of Four (GoF: the book "Design Patterns" by Gamma, Helm, Johnson, Vlissides) State Pattern. I found the GoF State Pattern was a natural fit with thorough unit tests. It provided (actuall, demanded) a clear contract for each state handler, and isolated them from each other. It made it easy to debug each state handler in the IDE before testing them working together in the simulator.
+I started down the path of implementing the FSM with a switch statement, but ended up ditching that approach in favor of a design based on the Gang of Four (GoF: the book "Design Patterns" by Gamma, Helm, Johnson, Vlissides) State Pattern. In my mind the GoF State Pattern provided a few significant advantages over the switch statement approach:
+
+* It allows (actually, demands) that the code to handle each state is separated into its own class.
+* It provides (actually, demands) a clear contract for each state handler class.
+
+Having the FSM split into a set of unit testable classes made it easy to develop and debug each state handler in isolation (with all the benefits of the IDE debugger) before running everything together in the simulator.
 
 ## The robot
 
