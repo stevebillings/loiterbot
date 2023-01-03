@@ -15,8 +15,8 @@
 #ifndef OBSTACLE_HUGGER_VELOCITY_CALCULATOR_H
 #define OBSTACLE_HUGGER_VELOCITY_CALCULATOR_H
 
-#include "../laser/laser_analysis.h"
-#include "../laser/laser_characteristics.h"
+#include "loiterbot/laser/laser_analysis.h"
+#include "loiterbot/laser/laser_characteristics.h"
 #include "velocity.h"
 
 class VelocityCalculator

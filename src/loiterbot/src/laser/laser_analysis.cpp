@@ -16,7 +16,7 @@
 // Created by stevebillings on 11/21/22.
 //
 
-#include "laser_analysis.h"
+#include "loiterbot/laser/laser_analysis.h"
 
 const NearestSighting LaserAnalysis::getNearestSighting() const { return nearestSighting_; }
 

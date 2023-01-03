@@ -17,7 +17,7 @@
 
 #include <string>
 #include <vector>
-#include "../obstacle/nearest_sighting.h"
+#include "loiterbot/obstacle/nearest_sighting.h"
 
 class LaserAnalysis
 {

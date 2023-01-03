@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "laser_analyzer.h"
+#include "loiterbot/laser/laser_analyzer.h"
 
 LaserCharacteristics LaserAnalyzer::determineCharacteristics(
   const std::vector<float> & laser_ranges) const

@@ -15,15 +15,17 @@ find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
+include_directories(include)
+
 add_executable(loiterbot
         src/loiterbot/loiterbot.cpp
         src/loiterbot/state.h
         src/velocity/velocity.cpp src/velocity/velocity.h
         src/velocity/velocity_calculator.cpp src/velocity/velocity_calculator.h
-        src/laser/laser_analyzer.cpp src/laser/laser_analyzer.h
-        src/laser/laser_characteristics.cpp src/laser/laser_characteristics.h
-        src/laser/laser_analysis.cpp src/laser/laser_analysis.h
-        src/obstacle/nearest_sighting.cpp src/obstacle/nearest_sighting.h
+        src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.h
+        src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.h
+        src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.h
+        src/obstacle/nearest_sighting.cpp include/loiterbot/obstacle/nearest_sighting.h
         src/loiterbot/statehandler/state_handler.h
         src/loiterbot/statehandler/state_handlers.cpp src/loiterbot/statehandler/state_handlers.h
         src/loiterbot/history.cpp src/loiterbot/history.h
