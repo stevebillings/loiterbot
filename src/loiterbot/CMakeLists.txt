@@ -20,8 +20,8 @@ include_directories(include)
 add_executable(loiterbot
         src/loiterbot/loiterbot.cpp
         src/loiterbot/state.h
-        src/velocity/velocity.cpp src/velocity/velocity.h
-        src/velocity/velocity_calculator.cpp src/velocity/velocity_calculator.h
+        src/velocity/velocity.cpp include/loiterbot/velocity/velocity.h
+        src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.h
         src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.h
         src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.h
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.h

@@ -17,7 +17,7 @@
 
 #include "loiterbot/laser/laser_analysis.h"
 #include "loiterbot/laser/laser_characteristics.h"
-#include "../../velocity/velocity_calculator.h"
+#include "loiterbot/velocity/velocity_calculator.h"
 #include "../action.h"
 #include "../history.h"
 #include "../state.h"

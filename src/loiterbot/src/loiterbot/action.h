@@ -21,7 +21,7 @@
 
 #include <optional>
 
-#include "../velocity/velocity.h"
+#include "loiterbot/velocity/velocity.h"
 #include "state.h"
 
 class Action
