@@ -16,14 +16,14 @@
 
 static constexpr double TIME_LOST_TOLERANCE_SECONDS = 0.75;
 
-Action StateHandlerSearch::act(const History& history, const double current_time,
-                               const LaserCharacteristics& laser_characteristics,
-                               const LaserAnalysis& laser_analysis) const
+Action StateHandlerSearch::act(
+  const History & history, const double current_time,
+  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   if (laser_analysis.isInSight())
     return handleInSight(laser_characteristics, laser_analysis);
-  else if (history.has_obstacle_ever_been_seen()
-           && history.get_time_lost() > TIME_LOST_TOLERANCE_SECONDS)
+  else if (
+    history.has_obstacle_ever_been_seen() && history.get_time_lost() > TIME_LOST_TOLERANCE_SECONDS)
     return handleLostSight(history);
   else if (!history.has_obstacle_ever_been_seen())
     return handleNeverSeen();
@@ -31,18 +31,12 @@ Action StateHandlerSearch::act(const History& history, const double current_time
     return handleRecentlyLost();
 }
 
-const char* StateHandlerSearch::name() const
-{
-  return "search";
-}
+const char * StateHandlerSearch::name() const { return "search"; }
 
-Action StateHandlerSearch::handleRecentlyLost() const
-{
-  return Action(State::SEARCH);
-}
+Action StateHandlerSearch::handleRecentlyLost() const { return Action(State::SEARCH); }
 
-Action StateHandlerSearch::handleInSight(const LaserCharacteristics& laser_characteristics,
-                                         const LaserAnalysis& laser_analysis) const
+Action StateHandlerSearch::handleInSight(
+  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   State new_state = State::SEARCH;
   Velocity new_velocity = velocity_calculator_.toApproach(laser_characteristics, laser_analysis);
@@ -53,7 +47,7 @@ Action StateHandlerSearch::handleInSight(const LaserCharacteristics& laser_chara
   return Action(new_velocity, new_state);
 }
 
-Action StateHandlerSearch::handleLostSight(const History& history) const
+Action StateHandlerSearch::handleLostSight(const History & history) const
 {
   Velocity new_velocity = Velocity::create_stopped();
   State new_state = State::SEARCH;

@@ -16,6 +16,7 @@
 #define OBSTACLE_HUGGER_HISTORY_H
 
 #include <optional>
+
 #include "state.h"
 
 class History

@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"
-#include <gtest/gtest.h>
 #include "../../src/velocity/velocity_calculator.h"
+
+#include <gtest/gtest.h>
+
+#include "rclcpp/rclcpp.hpp"
 
 TEST(VelocityCalculatorTest, AheadRight)
 {
