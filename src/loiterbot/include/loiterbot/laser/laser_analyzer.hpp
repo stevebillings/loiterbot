@@ -12,26 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//
-// Created by stevebillings on 12/4/22.
-//
+#ifndef OBSTACLE_HUGGER_LASER_ANALYZER_HPP
+#define OBSTACLE_HUGGER_LASER_ANALYZER_HPP
 
-#ifndef OBSTACLE_HUGGER_NEAREST_SIGHTING_H
-#define OBSTACLE_HUGGER_NEAREST_SIGHTING_H
+#include "laser_analysis.hpp"
+#include "laser_characteristics.hpp"
 
-class NearestSighting
+class LaserAnalyzer
 {
 public:
-  NearestSighting(const unsigned long range_index, double range)
-  : range_index_(range_index), range_(range){};
-  NearestSighting(const NearestSighting & src)
-  : range_index_(src.getRangeIndex()), range_(src.getRange()){};
-  unsigned long getRangeIndex() const;
-  double getRange() const;
+  LaserCharacteristics determineCharacteristics(const std::vector<float> & laser_ranges) const;
+  LaserAnalysis analyze(
+    const LaserCharacteristics & laserCharacteristics,
+    const std::vector<float> & laser_ranges) const;
 
 private:
-  const unsigned long range_index_;
-  const double range_;
+  constexpr static double DIST_WITHIN_SIGHT = 9.5;
+  constexpr static double DIST_NEAR = 4.0;
+  constexpr static double DIST_TOO_NEAR = 1.5;
 };
 
-#endif  // OBSTACLE_HUGGER_NEAREST_SIGHTING_H
+#endif  // OBSTACLE_HUGGER_LASER_ANALYZER_HPP

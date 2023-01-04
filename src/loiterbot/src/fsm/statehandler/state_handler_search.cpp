@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handler_search.h"
+#include "loiterbot/fsm/statehandler/state_handler_search.hpp"
 
 static constexpr double TIME_LOST_TOLERANCE_SECONDS = 0.75;
 

@@ -12,29 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_H
-#define OBSTACLE_HUGGER_STATE_HANDLER_H
+#ifndef OBSTACLE_HUGGER_STATE_HANDLER_TOO_NEAR_HPP
+#define OBSTACLE_HUGGER_STATE_HANDLER_TOO_NEAR_HPP
 
-#include "loiterbot/action.h"
-#include "loiterbot/history.h"
-#include "loiterbot/fsm/state.h"
-#include "loiterbot/laser/laser_analysis.h"
-#include "loiterbot/laser/laser_characteristics.h"
-#include "loiterbot/velocity/velocity_calculator.h"
+#include "state_handler.hpp"
 
-// the virtual class for State; each concrete state object implement the act() method for a specific state
-class StateHandler
+class StateHandlerTooNear : public StateHandler
 {
 public:
-  virtual const char * name() const = 0;
-  virtual Action act(
+  Action act(
     const History & history, const double current_time,
     const LaserCharacteristics & laser_characteristics,
-    const LaserAnalysis & laser_analysis) const = 0;
-  virtual ~StateHandler(){};
-
-protected:
-  VelocityCalculator velocity_calculator_ = VelocityCalculator();
+    const LaserAnalysis & laser_analysis) const override;
+  const char * name() const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_H
+#endif  // OBSTACLE_HUGGER_STATE_HANDLER_TOO_NEAR_HPP

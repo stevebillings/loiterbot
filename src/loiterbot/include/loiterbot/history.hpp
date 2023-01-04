@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_HISTORY_H
-#define OBSTACLE_HUGGER_HISTORY_H
+#ifndef OBSTACLE_HUGGER_HISTORY_HPP
+#define OBSTACLE_HUGGER_HISTORY_HPP
 
 #include <optional>
 
-#include "fsm/state.h"
+#include "fsm/state.hpp"
 
 class History
 {
@@ -42,4 +42,4 @@ private:
   bool seen_to_right_ = false;
 };
 
-#endif  // OBSTACLE_HUGGER_HISTORY_H
+#endif  // OBSTACLE_HUGGER_HISTORY_HPP

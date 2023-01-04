@@ -19,21 +19,21 @@ include_directories(include)
 
 add_executable(loiterbot
         src/loiterbot.cpp
-        include/loiterbot/fsm/state.h
-        src/velocity/velocity.cpp include/loiterbot/velocity/velocity.h
-        src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.h
-        src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.h
-        src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.h
-        src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.h
-        src/obstacle/nearest_sighting.cpp include/loiterbot/obstacle/nearest_sighting.h
-        include/loiterbot/fsm/statehandler/state_handler.h
-        src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.h
-        src/history.cpp include/loiterbot/history.h
-        src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.h
-        src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.h
-        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.h
-        src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.h
-        src/action.cpp include/loiterbot/action.h)
+        include/loiterbot/fsm/state.hpp
+        src/velocity/velocity.cpp include/loiterbot/velocity/velocity.hpp
+        src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.hpp
+        src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.hpp
+        src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.hpp
+        src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.hpp
+        src/obstacle/nearest_sighting.cpp include/loiterbot/obstacle/nearest_sighting.hpp
+        include/loiterbot/fsm/statehandler/state_handler.hpp
+        src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.hpp
+        src/history.cpp include/loiterbot/history.hpp
+        src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.hpp
+        src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.hpp
+        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
+        src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.hpp
+        src/action.cpp include/loiterbot/action.hpp)
 
 set(dependencies
   rclcpp

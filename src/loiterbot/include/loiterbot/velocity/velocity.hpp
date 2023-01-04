@@ -12,24 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_LASER_ANALYZER_H
-#define OBSTACLE_HUGGER_LASER_ANALYZER_H
+#ifndef OBSTACLE_HUGGER_VELOCITY_HPP
+#define OBSTACLE_HUGGER_VELOCITY_HPP
 
-#include "laser_analysis.h"
-#include "laser_characteristics.h"
-
-class LaserAnalyzer
+class Velocity
 {
 public:
-  LaserCharacteristics determineCharacteristics(const std::vector<float> & laser_ranges) const;
-  LaserAnalysis analyze(
-    const LaserCharacteristics & laserCharacteristics,
-    const std::vector<float> & laser_ranges) const;
+  Velocity(double forward, double yaw);
+  static Velocity create_stopped();
+  static Velocity create_spin_right();
+  static Velocity create_spin_left();
+  static Velocity create_reverse();
+  double get_forward() const;
+  double get_yaw() const;
 
 private:
-  constexpr static double DIST_WITHIN_SIGHT = 9.5;
-  constexpr static double DIST_NEAR = 4.0;
-  constexpr static double DIST_TOO_NEAR = 1.5;
+  double forward_;
+  double yaw_;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_ANALYZER_H
+#endif  // OBSTACLE_HUGGER_VELOCITY_HPP

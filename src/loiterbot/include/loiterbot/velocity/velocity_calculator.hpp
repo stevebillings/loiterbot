@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_VELOCITY_CALCULATOR_H
-#define OBSTACLE_HUGGER_VELOCITY_CALCULATOR_H
+#ifndef OBSTACLE_HUGGER_VELOCITY_CALCULATOR_HPP
+#define OBSTACLE_HUGGER_VELOCITY_CALCULATOR_HPP
 
-#include "loiterbot/laser/laser_analysis.h"
-#include "loiterbot/laser/laser_characteristics.h"
-#include "velocity.h"
+#include "loiterbot/laser/laser_analysis.hpp"
+#include "loiterbot/laser/laser_characteristics.hpp"
+#include "velocity.hpp"
 
 class VelocityCalculator
 {
@@ -32,4 +32,4 @@ private:
   double DELTA_TO_YAW_MULTIPLIER = 0.01;
 };
 
-#endif  // OBSTACLE_HUGGER_VELOCITY_CALCULATOR_H
+#endif  // OBSTACLE_HUGGER_VELOCITY_CALCULATOR_HPP

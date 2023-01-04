@@ -16,7 +16,7 @@
 // Created by stevebillings on 11/21/22.
 //
 
-#include "loiterbot/velocity/velocity.h"
+#include "loiterbot/velocity/velocity.hpp"
 
 Velocity::Velocity(double forward, double yaw)
 {

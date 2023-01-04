@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_NEAR_H
-#define OBSTACLE_HUGGER_STATE_HANDLER_NEAR_H
+#ifndef OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP
+#define OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP
 
-#include "state_handler.h"
+#include "state_handler.hpp"
 
 class StateHandlerNear : public StateHandler
 {
@@ -32,4 +32,4 @@ private:
   const Action handleLostSight(const History & history, const LaserAnalysis & laser_analysis) const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_NEAR_H
+#endif  // OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP

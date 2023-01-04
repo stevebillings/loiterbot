@@ -12,23 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_VELOCITY_H
-#define OBSTACLE_HUGGER_VELOCITY_H
+//
+// Created by stevebillings on 12/17/22.
+//
 
-class Velocity
+#ifndef OBSTACLE_HUGGER_ACTION_HPP
+#define OBSTACLE_HUGGER_ACTION_HPP
+
+#include <optional>
+
+#include "fsm/state.hpp"
+#include "loiterbot/velocity/velocity.hpp"
+
+class Action
 {
 public:
-  Velocity(double forward, double yaw);
-  static Velocity create_stopped();
-  static Velocity create_spin_right();
-  static Velocity create_spin_left();
-  static Velocity create_reverse();
-  double get_forward() const;
-  double get_yaw() const;
+  Action(const Velocity & velocity, const State state) : velocity_(velocity), state_(state){}
+  Action(const State state) : velocity_(std::nullopt), state_(state){}
+  std::optional<Velocity> get_velocity() const;
+  State get_state() const;
 
 private:
-  double forward_;
-  double yaw_;
+  std::optional<Velocity> velocity_;
+  State state_;
 };
 
-#endif  // OBSTACLE_HUGGER_VELOCITY_H
+#endif  // OBSTACLE_HUGGER_ACTION_HPP

@@ -12,26 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_H
-#define OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_H
+#ifndef OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP
+#define OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP
 
-#include "state_handler.h"
+#include "state_handler.hpp"
 
-class StateHandlerSearch : public StateHandler
+class StateHandlerError : public StateHandler
 {
-public:
   Action act(
     const History & history, const double current_time,
     const LaserCharacteristics & laser_characteristics,
     const LaserAnalysis & laser_analysis) const override;
   const char * name() const;
-
-private:
-  Action handleInSight(
-    const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const;
-  Action handleLostSight(const History & history) const;
-  Action handleNeverSeen() const;
-  Action handleRecentlyLost() const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_H
+#endif  // OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP

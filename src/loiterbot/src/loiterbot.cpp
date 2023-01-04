@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include "geometry_msgs/msg/twist.hpp"
-#include "loiterbot/fsm/statehandler/state_handlers.h"
-#include "loiterbot/laser/laser_analyzer.h"
+#include "loiterbot/fsm/statehandler/state_handlers.hpp"
+#include "loiterbot/laser/laser_analyzer.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 

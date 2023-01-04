@@ -16,7 +16,7 @@
 // Created by stevebillings on 12/4/22.
 //
 
-#include "loiterbot/laser/laser_characteristics.h"
+#include "loiterbot/laser/laser_characteristics.hpp"
 
 unsigned long LaserCharacteristics::getLeftmostIndex() const { return leftmost_index_; }
 

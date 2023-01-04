@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_LASER_ANALYSIS_H
-#define OBSTACLE_HUGGER_LASER_ANALYSIS_H
+#ifndef OBSTACLE_HUGGER_LASER_ANALYSIS_HPP
+#define OBSTACLE_HUGGER_LASER_ANALYSIS_HPP
 
 #include <string>
 #include <vector>
-#include "loiterbot/obstacle/nearest_sighting.h"
+
+#include "loiterbot/obstacle/nearest_sighting.hpp"
 
 class LaserAnalysis
 {
@@ -55,4 +56,4 @@ private:
   const unsigned long delta_from_perpendicular_;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_ANALYSIS_H
+#endif  // OBSTACLE_HUGGER_LASER_ANALYSIS_HPP

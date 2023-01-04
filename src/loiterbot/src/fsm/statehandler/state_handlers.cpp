@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handlers.h"
+#include "loiterbot/fsm/statehandler/state_handlers.hpp"
 
 StateHandler * StateHandlers::get_state_handler(State state) const
 {

@@ -12,12 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//
-// Created by stevebillings on 12/4/22.
-//
-
-#ifndef OBSTACLE_HUGGER_LASER_CHARACTERISTICS_H
-#define OBSTACLE_HUGGER_LASER_CHARACTERISTICS_H
+#ifndef OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP
+#define OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP
 
 class LaserCharacteristics
 {
@@ -34,4 +30,4 @@ private:
   unsigned long straight_index_;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_CHARACTERISTICS_H
+#endif  // OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP

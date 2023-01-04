@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handler_too_near.h"
+#include "loiterbot/fsm/statehandler/state_handler_too_near.hpp"
 
 #include <gtest/gtest.h>
 

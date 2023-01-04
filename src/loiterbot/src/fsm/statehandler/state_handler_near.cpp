@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handler_near.h"
+#include "loiterbot/fsm/statehandler/state_handler_near.hpp"
 
 Action StateHandlerNear::act(
   const History & history, const double current_time,

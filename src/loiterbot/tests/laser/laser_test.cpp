@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-#include "loiterbot/laser/laser_analyzer.h"
+#include "loiterbot/laser/laser_analyzer.hpp"
 #include "rclcpp/rclcpp.hpp"
 
 TEST(LaserTest, CharacteristicsTest)

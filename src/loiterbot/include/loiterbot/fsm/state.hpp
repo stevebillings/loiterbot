@@ -12,18 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_ERROR_H
-#define OBSTACLE_HUGGER_STATE_HANDLER_ERROR_H
+#ifndef OBSTACLE_HUGGER_FSM_STATE_HPP
+#define OBSTACLE_HUGGER_FSM_STATE_HPP
 
-#include "state_handler.h"
+enum class State { SEARCH, OBSTACLE_NEAR, OBSTACLE_TOO_NEAR, ERROR };
 
-class StateHandlerError : public StateHandler
-{
-  Action act(
-    const History & history, const double current_time,
-    const LaserCharacteristics & laser_characteristics,
-    const LaserAnalysis & laser_analysis) const override;
-  const char * name() const;
-};
-
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_ERROR_H
+#endif  // OBSTACLE_HUGGER_FSM_STATE_HPP

@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLERS_H
-#define OBSTACLE_HUGGER_STATE_HANDLERS_H
+#ifndef OBSTACLE_HUGGER_STATE_HANDLERS_HPP
+#define OBSTACLE_HUGGER_STATE_HANDLERS_HPP
 
-#include "state_handler.h"
-#include "state_handler_error.h"
-#include "state_handler_near.h"
-#include "state_handler_search.h"
-#include "state_handler_too_near.h"
+#include "state_handler.hpp"
+#include "state_handler_error.hpp"
+#include "state_handler_near.hpp"
+#include "state_handler_search.hpp"
+#include "state_handler_too_near.hpp"
 
 // this class constructs and holds all state objects, and has a method that returns the state object for a given
 // fsm_state enum value (state objects must be stateless)
@@ -35,4 +35,4 @@ private:
   StateHandler * state_handler_error_ = new StateHandlerError();
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLERS_H
+#endif  // OBSTACLE_HUGGER_STATE_HANDLERS_HPP

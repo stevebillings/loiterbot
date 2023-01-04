@@ -12,9 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_FSM_STATE_H
-#define OBSTACLE_HUGGER_FSM_STATE_H
+#ifndef OBSTACLE_HUGGER_NEAREST_SIGHTING_HPP
+#define OBSTACLE_HUGGER_NEAREST_SIGHTING_HPP
 
-enum class State { SEARCH, OBSTACLE_NEAR, OBSTACLE_TOO_NEAR, ERROR };
+class NearestSighting
+{
+public:
+  NearestSighting(const unsigned long range_index, double range)
+  : range_index_(range_index), range_(range){};
+  NearestSighting(const NearestSighting & src)
+  : range_index_(src.getRangeIndex()), range_(src.getRange()){};
+  unsigned long getRangeIndex() const;
+  double getRange() const;
 
-#endif  // OBSTACLE_HUGGER_FSM_STATE_H
+private:
+  const unsigned long range_index_;
+  const double range_;
+};
+
+#endif  // OBSTACLE_HUGGER_NEAREST_SIGHTING_HPP
