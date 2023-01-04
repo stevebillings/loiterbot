@@ -39,7 +39,7 @@ Action StateHandlerSearch::handleInSight(
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   State new_state = State::SEARCH;
-  Velocity new_velocity = velocity_calculator_.toApproach(laser_characteristics, laser_analysis);
+  Velocity new_velocity = getVelocityCalculator().toApproach(laser_characteristics, laser_analysis);
   if (laser_analysis.isNear())
     new_state = State::OBSTACLE_NEAR;
   else if (laser_analysis.isTooNear())

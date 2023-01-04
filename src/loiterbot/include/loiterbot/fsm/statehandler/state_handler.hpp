@@ -31,9 +31,11 @@ public:
     const History & history, const double current_time,
     const LaserCharacteristics & laser_characteristics,
     const LaserAnalysis & laser_analysis) const = 0;
-  virtual ~StateHandler(){};
+  virtual ~StateHandler() = default;
 
 protected:
+  const VelocityCalculator & getVelocityCalculator() const { return velocity_calculator_; }
+private:
   VelocityCalculator velocity_calculator_ = VelocityCalculator();
 };
 

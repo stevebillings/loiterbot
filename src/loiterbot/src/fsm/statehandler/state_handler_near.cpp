@@ -35,7 +35,7 @@ const Action StateHandlerNear::handleTooNear() const
 
 const Action StateHandlerNear::handleInSight(const LaserAnalysis & laser_analysis) const
 {
-  return Action(velocity_calculator_.toParallel(laser_analysis), State::OBSTACLE_NEAR);
+  return Action(getVelocityCalculator().toParallel(laser_analysis), State::OBSTACLE_NEAR);
 }
 
 const Action StateHandlerNear::handleLostSight(
