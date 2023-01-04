@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "state_handlers.h"
+#include "loiterbot/fsm/statehandler/state_handler_too_near.h"
 
-StateHandler * StateHandlers::get_state_handler(State state) const
+Action StateHandlerTooNear::act(
+  const History & history, const double current_time,
+  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-  switch (state) {
-    case State::SEARCH:
-      return state_handler_search_;
-    case State::OBSTACLE_NEAR:
-      return state_handler_near_;
-    case State::OBSTACLE_TOO_NEAR:
-      return state_handler_too_near_;
-    default:
-      return state_handler_error_;
+  if ((current_time - history.get_time_entered_state()) > 2.0) {
+    return Action(Velocity::create_stopped(), State::SEARCH);
   }
+  return Action(State::OBSTACLE_TOO_NEAR);
 }
+
+const char * StateHandlerTooNear::name() const { return "obstacle too near"; }

@@ -12,29 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//
-// Created by stevebillings on 12/17/22.
-//
+#include "loiterbot/fsm/statehandler/state_handler_error.h"
 
-#ifndef OBSTACLE_HUGGER_ACTION_H
-#define OBSTACLE_HUGGER_ACTION_H
-
-#include <optional>
-
-#include "loiterbot/velocity/velocity.h"
-#include "state.h"
-
-class Action
+Action StateHandlerError::act(
+  const History & history, const double current_time,
+  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-public:
-  Action(const Velocity & velocity, const State state) : velocity_(velocity), state_(state){};
-  Action(const State state) : velocity_(std::nullopt), state_(state){};
-  std::optional<Velocity> get_velocity() const;
-  State get_state() const;
+  return Action(Velocity::create_stopped(), State::ERROR);
+}
 
-private:
-  std::optional<Velocity> velocity_;
-  State state_;
-};
-
-#endif  // OBSTACLE_HUGGER_ACTION_H
+const char * StateHandlerError::name() const { return "error"; }

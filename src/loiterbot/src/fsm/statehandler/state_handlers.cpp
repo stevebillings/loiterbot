@@ -12,13 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "state_handler_error.h"
+#include "loiterbot/fsm/statehandler/state_handlers.h"
 
-Action StateHandlerError::act(
-  const History & history, const double current_time,
-  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
+StateHandler * StateHandlers::get_state_handler(State state) const
 {
-  return Action(Velocity::create_stopped(), State::ERROR);
+  switch (state) {
+    case State::SEARCH:
+      return state_handler_search_;
+    case State::OBSTACLE_NEAR:
+      return state_handler_near_;
+    case State::OBSTACLE_TOO_NEAR:
+      return state_handler_too_near_;
+    default:
+      return state_handler_error_;
+  }
 }
-
-const char * StateHandlerError::name() const { return "error"; }

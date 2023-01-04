@@ -18,22 +18,22 @@ find_package(std_msgs REQUIRED)
 include_directories(include)
 
 add_executable(loiterbot
-        src/loiterbot/loiterbot.cpp
-        src/loiterbot/state.h
+        src/loiterbot.cpp
+        include/loiterbot/fsm/state.h
         src/velocity/velocity.cpp include/loiterbot/velocity/velocity.h
         src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.h
         src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.h
         src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.h
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.h
         src/obstacle/nearest_sighting.cpp include/loiterbot/obstacle/nearest_sighting.h
-        src/loiterbot/statehandler/state_handler.h
-        src/loiterbot/statehandler/state_handlers.cpp src/loiterbot/statehandler/state_handlers.h
-        src/loiterbot/history.cpp src/loiterbot/history.h
-        src/loiterbot/statehandler/state_handler_search.cpp src/loiterbot/statehandler/state_handler_search.h
-        src/loiterbot/statehandler/state_handler_near.cpp src/loiterbot/statehandler/state_handler_near.h
-        src/loiterbot/statehandler/state_handler_too_near.cpp src/loiterbot/statehandler/state_handler_too_near.h
-        src/loiterbot/statehandler/state_handler_error.cpp src/loiterbot/statehandler/state_handler_error.h
-        src/loiterbot/action.cpp src/loiterbot/action.h)
+        include/loiterbot/fsm/statehandler/state_handler.h
+        src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.h
+        src/history.cpp include/loiterbot/history.h
+        src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.h
+        src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.h
+        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.h
+        src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.h
+        src/action.cpp include/loiterbot/action.h)
 
 set(dependencies
   rclcpp

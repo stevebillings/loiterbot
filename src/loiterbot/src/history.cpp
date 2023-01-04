@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "history.h"
+#include "loiterbot/history.h"
 
 void History::set_time_entered_state(State new_state, double current_time)
 {
