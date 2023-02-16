@@ -46,6 +46,10 @@ private:
     }
 
     RCLCPP_INFO(logger_, "State: %s", cur_state_handler_->name());
+    RCLCPP_INFO(logger_, "angle min: %f, angle max: %f, angle incr: %f",
+                last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_max, last_laser_scan_msg_->angle_increment);
+    RCLCPP_INFO(logger_, "range vector size: %ld",
+                last_laser_scan_msg_->ranges.size());
     double current_time = now().seconds();
     init_laser_characteristics();
     LaserAnalysis laser_analysis =
