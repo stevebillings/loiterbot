@@ -16,8 +16,8 @@
 // Created by stevebillings on 12/17/22.
 //
 
-#ifndef OBSTACLE_HUGGER_ACTION_HPP
-#define OBSTACLE_HUGGER_ACTION_HPP
+#ifndef LOITERBOT_ACTION_HPP
+#define LOITERBOT_ACTION_HPP
 
 #include <optional>
 
@@ -37,4 +37,4 @@ private:
   State state_;
 };
 
-#endif  // OBSTACLE_HUGGER_ACTION_HPP
+#endif  // LOITERBOT_ACTION_HPP

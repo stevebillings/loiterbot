@@ -22,6 +22,8 @@ add_executable(loiterbot
         include/loiterbot/fsm/state.hpp
         src/velocity/velocity.cpp include/loiterbot/velocity/velocity.hpp
         src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.hpp
+        src/velocity/vff/vff.cpp include/loiterbot/velocity/vff/vff.hpp
+        src/velocity/vff/vector.cpp include/loiterbot/velocity/vff/vector.hpp
         src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.hpp
         src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.hpp
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.hpp

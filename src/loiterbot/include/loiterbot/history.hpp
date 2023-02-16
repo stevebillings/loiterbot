@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_HISTORY_HPP
-#define OBSTACLE_HUGGER_HISTORY_HPP
+#ifndef LOITERBOT_HISTORY_HPP
+#define LOITERBOT_HISTORY_HPP
 
 #include <optional>
 
@@ -42,4 +42,4 @@ private:
   bool seen_to_right_ = false;
 };
 
-#endif  // OBSTACLE_HUGGER_HISTORY_HPP
+#endif  // LOITERBOT_HISTORY_HPP

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_VELOCITY_HPP
-#define OBSTACLE_HUGGER_VELOCITY_HPP
+#ifndef LOITERBOT_VELOCITY_HPP
+#define LOITERBOT_VELOCITY_HPP
 
 class Velocity
 {
@@ -31,4 +31,4 @@ private:
   double yaw_;
 };
 
-#endif  // OBSTACLE_HUGGER_VELOCITY_HPP
+#endif  // LOITERBOT_VELOCITY_HPP
