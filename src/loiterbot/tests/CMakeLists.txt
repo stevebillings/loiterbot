@@ -12,7 +12,7 @@ ament_add_gtest(velocity_calculator_test
         ../include/loiterbot/velocity/velocity.hpp ../src/velocity/velocity.cpp
         ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp)
 ament_add_gtest(state_handler_search_test
-        loiterbot/statehandler/state_handler_search_test.cpp
+        statehandler/state_handler_search_test.cpp
         ../src/fsm/statehandler/state_handler_search.cpp ../include/loiterbot/fsm/statehandler/state_handler_search.hpp
         ../src/history.cpp ../include/loiterbot/history.hpp
         ../include/loiterbot/laser/laser_characteristics.hpp ../src/laser/laser_characteristics.cpp
@@ -22,7 +22,7 @@ ament_add_gtest(state_handler_search_test
         ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp
         ../src/action.cpp ../include/loiterbot/action.hpp)
 ament_add_gtest(state_handler_near_test
-        loiterbot/statehandler/state_handler_near_test.cpp
+        statehandler/state_handler_near_test.cpp
         ../src/fsm/statehandler/state_handler_near.cpp ../include/loiterbot/fsm/statehandler/state_handler_near.hpp
         ../src/history.cpp ../include/loiterbot/history.hpp
         ../include/loiterbot/laser/laser_characteristics.hpp ../src/laser/laser_characteristics.cpp
@@ -32,7 +32,7 @@ ament_add_gtest(state_handler_near_test
         ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp
         ../src/action.cpp ../include/loiterbot/action.hpp)
 ament_add_gtest(state_handler_too_near_test
-        loiterbot/statehandler/state_handler_too_near_test.cpp
+        statehandler/state_handler_too_near_test.cpp
         ../src/fsm/statehandler/state_handler_too_near.cpp ../include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
         ../src/history.cpp ../include/loiterbot/history.hpp
         ../include/loiterbot/laser/laser_characteristics.hpp ../src/laser/laser_characteristics.cpp

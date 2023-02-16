@@ -1,4 +1,4 @@
-#include "vff_testing/vff.hpp"
+#include "loiterbot/velocity/vff/vff.hpp"
 
 [[nodiscard]] std::vector<float> Vff::getVffResult(double laser_angle_min, double laser_angle_increment, std::vector<float>  const & laser_ranges) const {
   const float MINIMUM_IGNORABLE_DISTANCE = 1.0;

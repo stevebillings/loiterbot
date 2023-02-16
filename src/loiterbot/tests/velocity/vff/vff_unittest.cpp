@@ -1,4 +1,4 @@
-#include "vff_testing/vff.hpp"
+#include "loiterbot/velocity/vff/vff.hpp"
 #include <gtest/gtest.h>
 
 const double LASER_ANGLE_MINIMUM = -1.396263;
