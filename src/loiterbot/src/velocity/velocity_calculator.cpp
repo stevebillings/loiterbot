@@ -14,8 +14,6 @@
 
 #include "loiterbot/velocity/velocity_calculator.hpp"
 
-VelocityCalculator::VelocityCalculator() {}
-
 Velocity VelocityCalculator::toApproach(
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {

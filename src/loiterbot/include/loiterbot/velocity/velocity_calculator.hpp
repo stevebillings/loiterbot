@@ -22,7 +22,7 @@
 class VelocityCalculator
 {
 public:
-  VelocityCalculator();
+  VelocityCalculator() {};
   Velocity toApproach(
     const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const;
   Velocity toParallel(const LaserAnalysis & laser_analysis) const;
