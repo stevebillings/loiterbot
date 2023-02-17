@@ -42,14 +42,14 @@ ament_add_gtest(state_handler_too_near_test
         ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp
         ../src/action.cpp ../include/loiterbot/action.hpp)
 
-ament_add_gtest(vff_unittest
+ament_add_gtest(vff_vector_calculator_unittest
         velocity/vff/vff_unittest.cpp
         ../include/loiterbot/velocity/vff/vff_vector_calculator.hpp
         ../src/velocity/vff/vff_vector_calculator.cpp
         ../include/loiterbot/velocity/vff/vector_by_standard_position.hpp
         ../src/velocity/vff/vector_by_standard_position.cpp)
 
-ament_add_gtest(vector_unittest
+ament_add_gtest(vector_converter_unittest
         velocity/vff/vector_converter_unittest.cpp
         ../include/loiterbot/velocity/vff/vector_converter.hpp
         ../src/velocity/vff/vector_converter.cpp
@@ -63,5 +63,5 @@ ament_target_dependencies(velocity_calculator_test ${dependencies})
 ament_target_dependencies(state_handler_search_test ${dependencies})
 ament_target_dependencies(state_handler_near_test ${dependencies})
 ament_target_dependencies(state_handler_too_near_test ${dependencies})
-ament_target_dependencies(vff_unittest ${dependencies})
-ament_target_dependencies(vector_unittest ${dependencies})
+ament_target_dependencies(vff_vector_calculator_unittest ${dependencies})
+ament_target_dependencies(vector_converter_unittest ${dependencies})
