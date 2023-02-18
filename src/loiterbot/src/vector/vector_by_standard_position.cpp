@@ -1,4 +1,4 @@
-#include "loiterbot/velocity/vff/vector_by_standard_position.hpp"
+#include "loiterbot/vector/vector_by_standard_position.hpp"
 
 double VectorByStandardPosition::getEndpointX() const
 {

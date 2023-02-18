@@ -1,4 +1,4 @@
-#include "loiterbot/velocity/vff/vector_converter.hpp"
+#include "loiterbot/vector/vector_converter.hpp"
 
 VectorByMagnitudeAngle VectorConverter::standardPositionToMagnitudeAngle(const VectorByStandardPosition& vectorByStandardPosition) const {
   double magnitude = sqrt(vectorByStandardPosition.getEndpointX()*vectorByStandardPosition.getEndpointX()

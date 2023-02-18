@@ -1,4 +1,4 @@
-#include "loiterbot/velocity/vff/vector_by_magnitude_angle.hpp"
+#include "loiterbot/vector/vector_by_magnitude_angle.hpp"
 
 double VectorByMagnitudeAngle::getMagnitude() const {
   return magnitude_;

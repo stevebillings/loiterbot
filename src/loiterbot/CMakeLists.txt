@@ -22,10 +22,10 @@ add_executable(loiterbot
         include/loiterbot/fsm/state.hpp
         src/velocity/velocity.cpp include/loiterbot/velocity/velocity.hpp
         src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.hpp
-        src/velocity/vff/vff_vector_calculator.cpp include/loiterbot/velocity/vff/vff_vector_calculator.hpp
-        src/velocity/vff/vector_by_standard_position.cpp include/loiterbot/velocity/vff/vector_by_standard_position.hpp
-        src/velocity/vff/vector_by_magnitude_angle.cpp include/loiterbot/velocity/vff/vector_by_magnitude_angle.hpp
-        src/velocity/vff/vector_converter.cpp include/loiterbot/velocity/vff/vector_converter.hpp
+        src/velocity/vff/vector_force_field_calculator.cpp include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
+        src/vector/vector_by_standard_position.cpp include/loiterbot/vector/vector_by_standard_position.hpp
+        src/vector/vector_by_magnitude_angle.cpp include/loiterbot/vector/vector_by_magnitude_angle.hpp
+        src/vector/vector_converter.cpp include/loiterbot/vector/vector_converter.hpp
         src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.hpp
         src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.hpp
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.hpp

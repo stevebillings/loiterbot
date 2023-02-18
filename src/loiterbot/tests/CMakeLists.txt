@@ -43,20 +43,20 @@ ament_add_gtest(state_handler_too_near_test
         ../src/action.cpp ../include/loiterbot/action.hpp)
 
 ament_add_gtest(vff_vector_calculator_unittest
-        velocity/vff/vff_unittest.cpp
-        ../include/loiterbot/velocity/vff/vff_vector_calculator.hpp
-        ../src/velocity/vff/vff_vector_calculator.cpp
-        ../include/loiterbot/velocity/vff/vector_by_standard_position.hpp
-        ../src/velocity/vff/vector_by_standard_position.cpp)
+        velocity/vff/vff_calculator_test.cpp
+        ../include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
+        ../src/velocity/vff/vector_force_field_calculator.cpp
+        ../include/loiterbot/vector/vector_by_standard_position.hpp
+        ../src/vector/vector_by_standard_position.cpp)
 
 ament_add_gtest(vector_converter_unittest
-        velocity/vff/vector_converter_unittest.cpp
-        ../include/loiterbot/velocity/vff/vector_converter.hpp
-        ../src/velocity/vff/vector_converter.cpp
-        ../include/loiterbot/velocity/vff/vector_by_magnitude_angle.hpp
-        ../src/velocity/vff/vector_by_magnitude_angle.cpp
-        ../include/loiterbot/velocity/vff/vector_by_standard_position.hpp
-        ../src/velocity/vff/vector_by_standard_position.cpp)
+        velocity/vff/vector_converter_test.cpp
+        ../include/loiterbot/vector/vector_converter.hpp
+        ../src/vector/vector_converter.cpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp
+        ../src/vector/vector_by_magnitude_angle.cpp
+        ../include/loiterbot/vector/vector_by_standard_position.hpp
+        ../src/vector/vector_by_standard_position.cpp)
 
 ament_target_dependencies(laser_test ${dependencies})
 ament_target_dependencies(velocity_calculator_test ${dependencies})

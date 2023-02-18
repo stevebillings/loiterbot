@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
+#include "loiterbot/vector/vector_converter.hpp"
 
-#include "loiterbot/velocity/vff/vector_converter.hpp"
+#include <gtest/gtest.h>
 
 TEST(VECTOR_UNITTEST, AHEAD) {
   auto vc = VectorConverter();
