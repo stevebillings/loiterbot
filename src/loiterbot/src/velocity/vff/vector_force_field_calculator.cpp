@@ -1,6 +1,6 @@
-#include "loiterbot/velocity/vff/vff_vector_calculator.hpp"
+#include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 
-[[nodiscard]] VectorByStandardPosition VffVectorCalculator::getVffResult(double laser_angle_min, double laser_angle_increment, std::vector<float>  const & laser_ranges) const {
+[[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(double laser_angle_min, double laser_angle_increment, std::vector<float>  const & laser_ranges) const {
   const float MINIMUM_IGNORABLE_DISTANCE = 1.0;
 
   VectorByStandardPosition goal_vector(MINIMUM_IGNORABLE_DISTANCE, 0.0); // Goal: go forward
