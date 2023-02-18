@@ -6,7 +6,7 @@ const double LASER_ANGLE_MINIMUM = -1.396263;
 const double LASER_ANGLE_INCREMENT = 0.004370;
 
 
-TEST(VFF_UNITTEST, FAR) {
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR) {
   std::vector<float> laser_ranges(640);
   for (int i=0; i<640; i++) {
     laser_ranges[i] = 10.0;
@@ -19,7 +19,7 @@ TEST(VFF_UNITTEST, FAR) {
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.001);
 }
 
-TEST(VFF_UNITTEST, AHEAD_CLOSE) {
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE) {
   std::vector<float> laser_ranges(640);
   for (int i=0; i<640; i++) {
     laser_ranges[i] = 10.0;
@@ -33,7 +33,7 @@ TEST(VFF_UNITTEST, AHEAD_CLOSE) {
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.1);
 }
 
-TEST(VFF_UNITTEST, RIGHT_CLOSE) {
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE) {
   std::vector<float> laser_ranges(640);
   for (int i=0; i<640; i++) {
     laser_ranges[i] = 10.0;

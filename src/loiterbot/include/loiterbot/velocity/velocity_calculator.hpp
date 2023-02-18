@@ -17,7 +17,9 @@
 
 #include "loiterbot/laser/laser_analysis.hpp"
 #include "loiterbot/laser/laser_characteristics.hpp"
-#include "velocity.hpp"
+#include "loiterbot/velocity/velocity.hpp"
+#include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
+#include "loiterbot/vector/vector_converter.hpp"
 
 class VelocityCalculator
 {
@@ -30,6 +32,9 @@ public:
 private:
   double PARALLEL_X_VELOCITY = 1.5;
   double DELTA_TO_YAW_MULTIPLIER = 0.01;
+  // TODO inject these dependencies
+  VectorForceFieldCalculator vectorForceFieldCalculator_;
+  VectorConverter vectorConverter_;
 };
 
 #endif  // LOITERBOT_VELOCITY_CALCULATOR_HPP
