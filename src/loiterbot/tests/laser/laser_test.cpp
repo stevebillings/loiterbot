@@ -34,6 +34,8 @@ TEST(LaserTest, CharacteristicsTest)
   EXPECT_EQ(laser_characteristics.getStraightIndex(), 2ul);
 }
 
+// TODO separate characteristics and analysis tests into separate test files
+
 TEST(LaserTest, AnalysisTest)
 {
   LaserAnalyzer laserAnalyzer;
@@ -77,6 +79,8 @@ TEST(LaserTest, AnalysisSideTest)
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
   EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 1ul);
+  // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
+  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
 }
 
 TEST(LaserTest, AnalysisTooNearTest)
@@ -92,6 +96,8 @@ TEST(LaserTest, AnalysisTooNearTest)
   LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isTooNear());
+  // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
+  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
 }
 
 int main(int argc, char ** argv)
