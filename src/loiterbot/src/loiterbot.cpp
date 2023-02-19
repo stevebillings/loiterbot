@@ -78,8 +78,11 @@ private:
   void init_laser_characteristics()
   {
     if (laser_characteristics_ == nullptr) {
+      // TODO need to pass in laser_angle_min + laser_angle_increment
+      //
+      ///////
       LaserCharacteristics laser_characteristics =
-        laser_analyzer_.determineCharacteristics(last_laser_scan_msg_->ranges);
+        laser_analyzer_.determineCharacteristics(last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_increment, last_laser_scan_msg_->ranges);
       // Toss characteristics object onto heap so it sticks around for the life of the node
       laser_characteristics_ = new LaserCharacteristics(laser_characteristics);
     }

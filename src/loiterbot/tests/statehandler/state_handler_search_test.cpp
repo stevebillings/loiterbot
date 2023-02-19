@@ -16,8 +16,6 @@
 
 #include <gtest/gtest.h>
 
-#include "rclcpp/rclcpp.hpp"
-
 TEST(StateHandlerSearchTest, Name)
 {
   StateHandlerSearch state_handler = StateHandlerSearch();
@@ -26,9 +24,11 @@ TEST(StateHandlerSearchTest, Name)
 
 TEST(StateHandlerSearchTest, NotInSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 100.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(0.0l, true);
@@ -45,9 +45,11 @@ TEST(StateHandlerSearchTest, NotInSight)
 
 TEST(StateHandlerSearchTest, InSightRight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -66,9 +68,11 @@ TEST(StateHandlerSearchTest, InSightRight)
 
 TEST(StateHandlerSearchTest, Near)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 1.5l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, true, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, true, false, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -84,9 +88,11 @@ TEST(StateHandlerSearchTest, Near)
 
 TEST(StateHandlerSearchTest, TooNear)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 0.5l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, true, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, true, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -102,9 +108,11 @@ TEST(StateHandlerSearchTest, TooNear)
 
 TEST(StateHandlerSearchTest, LostSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -122,9 +130,11 @@ TEST(StateHandlerSearchTest, LostSight)
 
 TEST(StateHandlerSearchTest, RecentlyLostSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, true, 1ul);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -138,7 +148,6 @@ TEST(StateHandlerSearchTest, RecentlyLostSight)
 
 int main(int argc, char ** argv)
 {
-  rclcpp::init(argc, argv);
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

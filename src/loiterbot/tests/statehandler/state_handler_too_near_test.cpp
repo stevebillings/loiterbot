@@ -16,8 +16,6 @@
 
 #include <gtest/gtest.h>
 
-#include "rclcpp/rclcpp.hpp"
-
 TEST(StateHandlerTooNearTest, Name)
 {
   StateHandlerTooNear state_handler = StateHandlerTooNear();
@@ -26,9 +24,11 @@ TEST(StateHandlerTooNearTest, Name)
 
 TEST(StateHandlerTooNearTest, RecentlyTooNear)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, true, 1ul);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
@@ -44,9 +44,11 @@ TEST(StateHandlerTooNearTest, RecentlyTooNear)
 
 TEST(StateHandlerTooNearTest, TooNearForAWhile)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(4ul, 2ul);
+  // TODO use reasonable values for angle min and angle incr
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, true, 1ul);
+  // TODO use reasonable value for angle
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, true, 1ul);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
@@ -64,7 +66,6 @@ TEST(StateHandlerTooNearTest, TooNearForAWhile)
 
 int main(int argc, char ** argv)
 {
-  rclcpp::init(argc, argv);
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

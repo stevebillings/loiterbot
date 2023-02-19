@@ -28,3 +28,9 @@ TEST(VECTOR_UNITTEST, RIGHT_45) {
   ASSERT_NEAR(vma.getAngleRadians(), -1 * M_PI / 4.0, 0.01);
   ASSERT_NEAR(vma.getMagnitude(), sqrt(2.0), 0.001);
 }
+
+int main(int argc, char ** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

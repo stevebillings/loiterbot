@@ -15,11 +15,12 @@
 #include "loiterbot/laser/laser_analyzer.hpp"
 
 LaserCharacteristics LaserAnalyzer::determineCharacteristics(
+  const double laser_angle_min, const double laser_angle_increment,
   const std::vector<float> & laser_ranges) const
 {
   unsigned long straight_index = laser_ranges.size() / 2;
   unsigned long leftmost_index = laser_ranges.size() - 1;
-  return LaserCharacteristics(leftmost_index, straight_index);
+  return LaserCharacteristics(laser_angle_min, laser_angle_min, leftmost_index, straight_index);
 }
 
 LaserAnalysis LaserAnalyzer::analyze(
@@ -39,6 +40,8 @@ LaserAnalysis LaserAnalyzer::analyze(
   bool near = min_range < DIST_NEAR;
   bool too_near = min_range < DIST_TOO_NEAR;
 
+  double obstacle_angle = laserCharacteristics.getAngleMin() + laserCharacteristics.getAngleIncrement() * min_range_index;
+
   bool to_right = min_range_index < laserCharacteristics.getStraightIndex();
   unsigned long delta_from_perpendicular = 0L;
   if (to_right) {
@@ -49,5 +52,5 @@ LaserAnalysis LaserAnalyzer::analyze(
   // TODO how does this memory get freed?
   NearestSighting nearestSighting = NearestSighting(min_range_index, min_range);
   return LaserAnalysis(
-    nearestSighting, in_sight, near, too_near, to_right, delta_from_perpendicular);
+    nearestSighting, in_sight, near, too_near, obstacle_angle, to_right, delta_from_perpendicular);
 }

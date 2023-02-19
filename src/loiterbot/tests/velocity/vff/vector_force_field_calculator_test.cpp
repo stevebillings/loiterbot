@@ -46,3 +46,9 @@ TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE) {
   ASSERT_NEAR(result.getEndpointX(), 0.3, 0.1);
   ASSERT_NEAR(result.getEndpointY(), 0.6, 0.1);
 }
+
+int main(int argc, char ** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -18,14 +18,19 @@
 class LaserCharacteristics
 {
 public:
-  LaserCharacteristics(const unsigned long leftmost_index, const unsigned long straight_index)
-  : leftmost_index_(leftmost_index), straight_index_(straight_index){};
+  // TODO this needs laser_angle_min + laser_angle_increment
+  LaserCharacteristics(const double angle_min, const double angle_increment, const unsigned long leftmost_index, const unsigned long straight_index)
+  : angle_min_(angle_min), angle_increment_(angle_increment), leftmost_index_(leftmost_index), straight_index_(straight_index){};
   LaserCharacteristics(const LaserCharacteristics & other)
-  : leftmost_index_(other.leftmost_index_), straight_index_(other.straight_index_){};
+  : angle_min_(other.angle_min_), angle_increment_(other.angle_increment_), leftmost_index_(other.leftmost_index_), straight_index_(other.straight_index_){};
+  double getAngleMin() const;
+  double getAngleIncrement() const;
   unsigned long getLeftmostIndex() const;
   unsigned long getStraightIndex() const;
 
 private:
+  double angle_min_;
+  double angle_increment_;
   unsigned long leftmost_index_;
   unsigned long straight_index_;
 };

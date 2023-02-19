@@ -18,6 +18,16 @@
 
 #include "loiterbot/laser/laser_characteristics.hpp"
 
+double LaserCharacteristics::getAngleMin() const
+{
+  return angle_min_;
+}
+
+double LaserCharacteristics::getAngleIncrement() const
+{
+  return angle_increment_;
+}
+
 unsigned long LaserCharacteristics::getLeftmostIndex() const { return leftmost_index_; }
 
 unsigned long LaserCharacteristics::getStraightIndex() const { return straight_index_; }
