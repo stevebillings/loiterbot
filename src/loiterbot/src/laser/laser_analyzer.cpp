@@ -52,5 +52,5 @@ LaserAnalysis LaserAnalyzer::analyze(
   // TODO how does this memory get freed?
   NearestSighting nearestSighting = NearestSighting(min_range_index, min_range);
   return LaserAnalysis(
-    nearestSighting, in_sight, near, too_near, obstacle_angle, to_right, delta_from_perpendicular);
+    nearestSighting, in_sight, near, too_near, obstacle_angle, min_range, to_right, delta_from_perpendicular);
 }

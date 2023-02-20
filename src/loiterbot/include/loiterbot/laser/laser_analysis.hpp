@@ -26,12 +26,14 @@ public:
   // TODO: obst angle belongs in NearestSighting!!
   LaserAnalysis(
     const NearestSighting & nearestSighting, const bool in_sight, const bool near,
-    const bool too_near, const double obstacle_angle_radians, const bool to_right, const unsigned long delta_from_perpendicular)
+    const bool too_near, const double obstacle_angle_radians, const double obstacle_distance,
+    const bool to_right, const unsigned long delta_from_perpendicular)
   : nearestSighting_(nearestSighting),
     in_sight_(in_sight),
     near_(near),
     too_near_(too_near),
     obstacle_angle_radians_(obstacle_angle_radians),
+    obstacle_distance_(obstacle_distance),
     to_right_(to_right),
     delta_from_perpendicular_(delta_from_perpendicular){};
   LaserAnalysis(const LaserAnalysis & src)
@@ -40,6 +42,7 @@ public:
     near_(src.isNear()),
     too_near_(src.isTooNear()),
     obstacle_angle_radians_(src.getObstacleAngleRadians()),
+    obstacle_distance_(src.getObstacleDistance()),
     to_right_(src.isToRight()),
     delta_from_perpendicular_(src.getDeltaFromPerpendicular()){};
   NearestSighting getNearestSighting() const;
@@ -47,16 +50,20 @@ public:
   bool isNear() const;
   bool isTooNear() const;
   double getObstacleAngleRadians() const;
+  double getObstacleDistance() const;
   bool isToRight() const;
   unsigned long getDeltaFromPerpendicular() const;
   std::string toString() const;
 
 private:
+  // TODO this should soon be removed:
   const NearestSighting nearestSighting_;
+
   const bool in_sight_;
   const bool near_;
   const bool too_near_;
   const double obstacle_angle_radians_;
+  const double obstacle_distance_;
   const bool to_right_;
   // TODO: Can use of to_right_ and delta_from_perpendicular_ be changed to use the (new) angle?
   const unsigned long delta_from_perpendicular_;

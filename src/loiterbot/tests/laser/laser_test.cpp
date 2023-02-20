@@ -51,12 +51,12 @@ TEST(LaserTest, AnalysisTest)
   EXPECT_TRUE(laser_analysis.isInSight());
   NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
   EXPECT_EQ(nearest_sighting.getRangeIndex(), 2ul);
-  EXPECT_EQ(nearest_sighting.getRange(), 1.5);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 2ul);
   // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
   EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
+  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.5, 0.001);
 }
 
 TEST(LaserTest, AnalysisSideTest)
@@ -74,13 +74,13 @@ TEST(LaserTest, AnalysisSideTest)
   EXPECT_TRUE(laser_analysis.isInSight());
   NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
   EXPECT_EQ(nearest_sighting.getRangeIndex(), 1ul);
-  EXPECT_NEAR(nearest_sighting.getRange(), 1.6, 0.001);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
   EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 1ul);
   // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
   EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
+  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.6, 0.001);
 }
 
 TEST(LaserTest, AnalysisTooNearTest)
@@ -98,6 +98,7 @@ TEST(LaserTest, AnalysisTooNearTest)
   EXPECT_TRUE(laser_analysis.isTooNear());
   // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
   EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
+  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.4, 0.001);
 }
 
 int main(int argc, char ** argv)

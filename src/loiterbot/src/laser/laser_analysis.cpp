@@ -30,6 +30,10 @@ double LaserAnalysis::getObstacleAngleRadians() const {
   return obstacle_angle_radians_;
 }
 
+double LaserAnalysis::getObstacleDistance() const {
+  return obstacle_distance_;
+}
+
 bool LaserAnalysis::isToRight() const { return to_right_; }
 
 unsigned long LaserAnalysis::getDeltaFromPerpendicular() const { return delta_from_perpendicular_; }
