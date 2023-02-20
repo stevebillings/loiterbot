@@ -57,7 +57,7 @@ private:
     update_history(laser_analysis);
 
 //    RCLCPP_INFO(logger_, "Index: %ld", laser_analysis.getNearestSighting().getRangeIndex());
-    RCLCPP_INFO(logger_, "Angle: %lf", laser_analysis.getObstacleAngleRadians());
+    RCLCPP_INFO(logger_, "Angle: %lf; Distance: %lf", laser_analysis.getObstacleAngleRadians(), laser_analysis.getObstacleDistance());
 
     Action action =
       cur_state_handler_->act(history_, current_time, *laser_characteristics_, laser_analysis);

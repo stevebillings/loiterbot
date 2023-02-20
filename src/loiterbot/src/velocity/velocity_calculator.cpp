@@ -20,7 +20,7 @@ Velocity VelocityCalculator::toApproach(
   if (laser_analysis.isNear() || laser_analysis.isTooNear()) {
     return Velocity(0.0, 0.0);
   }
-  double x = laser_analysis.getObstacleDistance() / 4.0;
+  double x = laser_analysis.getObstacleDistance() / 3.0;
   double yaw = laser_analysis.getObstacleAngleRadians();
   return Velocity(x, yaw);
 }
