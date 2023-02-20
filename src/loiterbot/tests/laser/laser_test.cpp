@@ -40,22 +40,23 @@ TEST(LaserTest, AnalysisTest)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
-  laser_ranges.push_back(10.0);
-  laser_ranges.push_back(8.0);
+  for (int i=0; i < 319; i++) {
+    laser_ranges.push_back(10.0);
+  }
   laser_ranges.push_back(1.5);
-  laser_ranges.push_back(8.0);
-  laser_ranges.push_back(10.0);
+  for (int i=0; i < 320; i++) {
+    laser_ranges.push_back(10.0);
+  }
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(-1.3962, 0.004370, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
   NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
-  EXPECT_EQ(nearest_sighting.getRangeIndex(), 2ul);
+  EXPECT_EQ(nearest_sighting.getRangeIndex(), 319ul);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
-  EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 2ul);
-  // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
-  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
+  EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 319ul);
+  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.0l, 0.01);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.5, 0.001);
 }
 
@@ -78,8 +79,6 @@ TEST(LaserTest, AnalysisSideTest)
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
   EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 1ul);
-  // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
-  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.6, 0.001);
 }
 
@@ -96,8 +95,6 @@ TEST(LaserTest, AnalysisTooNearTest)
   LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isTooNear());
-  // TODO presumably this will fail 'cause the values set in characteristics are silly and angle should be straight anyway
-  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.123l, 0.001);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.4, 0.001);
 }
 

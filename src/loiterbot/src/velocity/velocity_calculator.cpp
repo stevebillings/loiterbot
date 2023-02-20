@@ -22,6 +22,7 @@ Velocity VelocityCalculator::toApproach(
   }
   double x = laser_analysis.getObstacleDistance() / 4.0;
   double yaw;
+  // TODO use angle here instead of index
   if (laser_analysis.isToRight()) {
     long index_offset = laser_characteristics.getStraightIndex() -
                         laser_analysis.getNearestSighting().getRangeIndex();

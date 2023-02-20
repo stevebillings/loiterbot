@@ -20,7 +20,7 @@ LaserCharacteristics LaserAnalyzer::determineCharacteristics(
 {
   unsigned long straight_index = laser_ranges.size() / 2;
   unsigned long leftmost_index = laser_ranges.size() - 1;
-  return LaserCharacteristics(laser_angle_min, laser_angle_min, leftmost_index, straight_index);
+  return LaserCharacteristics(laser_angle_min, laser_angle_increment, leftmost_index, straight_index);
 }
 
 LaserAnalysis LaserAnalyzer::analyze(
@@ -40,7 +40,8 @@ LaserAnalysis LaserAnalyzer::analyze(
   bool near = min_range < DIST_NEAR;
   bool too_near = min_range < DIST_TOO_NEAR;
 
-  double obstacle_angle = laserCharacteristics.getAngleMin() + laserCharacteristics.getAngleIncrement() * min_range_index;
+  long index_rel_to_straight = min_range_index - (laserCharacteristics.getLeftmostIndex()/2 - 1);
+  double obstacle_angle = laserCharacteristics.getAngleIncrement() * index_rel_to_straight;
 
   bool to_right = min_range_index < laserCharacteristics.getStraightIndex();
   unsigned long delta_from_perpendicular = 0L;
