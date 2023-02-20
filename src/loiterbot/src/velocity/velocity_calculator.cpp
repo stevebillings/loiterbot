@@ -21,17 +21,7 @@ Velocity VelocityCalculator::toApproach(
     return Velocity(0.0, 0.0);
   }
   double x = laser_analysis.getObstacleDistance() / 4.0;
-  double yaw;
-  // TODO use angle here instead of index
-  if (laser_analysis.isToRight()) {
-    long index_offset = laser_characteristics.getStraightIndex() -
-                        laser_analysis.getNearestSighting().getRangeIndex();
-    yaw = (double)index_offset * DELTA_TO_YAW_MULTIPLIER * -1.0;
-  } else {
-    long index_offset = laser_analysis.getNearestSighting().getRangeIndex() -
-                        laser_characteristics.getStraightIndex();
-    yaw = (double)index_offset * DELTA_TO_YAW_MULTIPLIER;
-  }
+  double yaw = laser_analysis.getObstacleAngleRadians();
   return Velocity(x, yaw);
 }
 Velocity VelocityCalculator::toParallel(const LaserAnalysis & laser_analysis) const
