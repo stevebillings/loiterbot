@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_too_near.hpp"
 
 #include <gtest/gtest.h>
@@ -28,7 +29,7 @@ TEST(StateHandlerTooNearTest, RecentlyTooNear)
   LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
   // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l, true, 1ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
@@ -48,7 +49,7 @@ TEST(StateHandlerTooNearTest, TooNearForAWhile)
   LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
   NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
   // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l, true, 1ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);

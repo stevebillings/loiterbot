@@ -38,11 +38,8 @@ Velocity VelocityCalculator::toParallel(const LaserAnalysis & laser_analysis) co
 {
   double yaw;
   if (laser_analysis.isInSight()) {
-    if (laser_analysis.isToRight()) {
-      yaw = laser_analysis.getDeltaFromPerpendicular() * DELTA_TO_YAW_MULTIPLIER;
-    } else {
-      yaw = (laser_analysis.getDeltaFromPerpendicular()) * DELTA_TO_YAW_MULTIPLIER * -1;
-    }
+    // TODO this const seems kinda arbitrary
+    yaw = laser_analysis.getObstacleAngleRadians() + 0.4*M_PI;
   }
   return Velocity(PARALLEL_X_VELOCITY, yaw);
 }

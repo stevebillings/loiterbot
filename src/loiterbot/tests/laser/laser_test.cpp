@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+#include "../test_constants.hpp"
 #include "loiterbot/laser/laser_analyzer.hpp"
 #include "rclcpp/rclcpp.hpp"
 
@@ -27,9 +28,9 @@ TEST(LaserTest, CharacteristicsTest)
   laser_ranges.push_back(8.0);
   laser_ranges.push_back(10.0);
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
-  EXPECT_NEAR(laser_characteristics.getAngleMin(), 0.1, 0.001);
-  EXPECT_NEAR(laser_characteristics.getAngleIncrement(), 0.2, 0.001);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  EXPECT_NEAR(laser_characteristics.getAngleMin(), LASER_ANGLE_MINIMUM, 0.001);
+  EXPECT_NEAR(laser_characteristics.getAngleIncrement(), LASER_ANGLE_INCREMENT, 0.001);
   EXPECT_EQ(laser_characteristics.getLeftmostIndex(), 4ul);
   EXPECT_EQ(laser_characteristics.getStraightIndex(), 2ul);
 }
@@ -48,14 +49,13 @@ TEST(LaserTest, AnalysisTest)
     laser_ranges.push_back(10.0);
   }
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(-1.3962, 0.004370, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
   NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
   EXPECT_EQ(nearest_sighting.getRangeIndex(), 319ul);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
-  EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 319ul);
   EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.0l, 0.01);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.5, 0.001);
 }
@@ -64,21 +64,21 @@ TEST(LaserTest, AnalysisSideTest)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
-  laser_ranges.push_back(3.0);
-  laser_ranges.push_back(1.6);
-  laser_ranges.push_back(6.0);
-  laser_ranges.push_back(8.0);
   laser_ranges.push_back(10.0);
+  laser_ranges.push_back(10.0);
+  laser_ranges.push_back(1.6);
+  for (int i=0; i < (640-3); i++) {
+    laser_ranges.push_back(10.0);
+  }
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
   NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
-  EXPECT_EQ(nearest_sighting.getRangeIndex(), 1ul);
+  EXPECT_EQ(nearest_sighting.getRangeIndex(), 2ul);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
-  EXPECT_EQ(laser_analysis.getDeltaFromPerpendicular(), 1ul);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.6, 0.001);
 }
 
@@ -92,7 +92,7 @@ TEST(LaserTest, AnalysisTooNearTest)
   laser_ranges.push_back(8.0);
   laser_ranges.push_back(10.0);
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(0.1, 0.2, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isTooNear());
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.4, 0.001);

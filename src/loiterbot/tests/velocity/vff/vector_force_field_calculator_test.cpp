@@ -1,9 +1,7 @@
 #include <gtest/gtest.h>
+#include "../../test_constants.hpp"
 
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
-
-const double LASER_ANGLE_MINIMUM = -1.396263;
-const double LASER_ANGLE_INCREMENT = 0.004370;
 
 
 TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR) {

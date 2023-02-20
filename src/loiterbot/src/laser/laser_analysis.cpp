@@ -34,9 +34,9 @@ double LaserAnalysis::getObstacleDistance() const {
   return obstacle_distance_;
 }
 
-bool LaserAnalysis::isToRight() const { return to_right_; }
-
-unsigned long LaserAnalysis::getDeltaFromPerpendicular() const { return delta_from_perpendicular_; }
+bool LaserAnalysis::isToRight() const {
+  return getObstacleAngleRadians() < 0.0l;
+}
 
 std::string LaserAnalysis::toString() const
 {
@@ -62,11 +62,8 @@ std::string LaserAnalysis::toString() const
   description.append("; obstacle angle: ");
   description.append(std::to_string(obstacle_angle_radians_));
 
-  description.append("; to right?: ");
-  description.append(std::to_string(to_right_));
-
-  description.append("; delta from perpendicular: ");
-  description.append(std::to_string(delta_from_perpendicular_));
+  description.append("; obstacle distance: ");
+  description.append(std::to_string(obstacle_distance_));
 
   return description;
 }
