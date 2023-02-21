@@ -59,7 +59,7 @@ TEST(StateHandlerNearTest, Near)
 
   EXPECT_EQ(action.get_state(), State::OBSTACLE_NEAR);
   EXPECT_TRUE(action.get_velocity().has_value());
-  EXPECT_NEAR(action.get_velocity().value().get_yaw(), M_PI/2.0, 0.001L);
+  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.4*M_PI, 0.001L);
   EXPECT_TRUE(action.get_velocity().value().get_forward() >= 1.0l);
 }
 

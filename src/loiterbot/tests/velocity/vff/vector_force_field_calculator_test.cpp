@@ -1,48 +1,32 @@
 #include <gtest/gtest.h>
-#include "../../test_constants.hpp"
 
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 
 
 TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR) {
-  std::vector<float> laser_ranges(640);
-  for (int i=0; i<640; i++) {
-    laser_ranges[i] = 10.0;
-  }
 
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  VectorByStandardPosition result = vff.getVffResult(0.0l, 10.0l);
 
   ASSERT_NEAR(result.getEndpointX(), 1.0, 0.01);
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.001);
 }
 
 TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE) {
-  std::vector<float> laser_ranges(640);
-  for (int i=0; i<640; i++) {
-    laser_ranges[i] = 10.0;
-  }
-  laser_ranges[319] = 0.5;
 
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  VectorByStandardPosition result = vff.getVffResult(0.0l, 0.5l);
 
   ASSERT_NEAR(result.getEndpointX(), 0.5, 0.1);
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.1);
 }
 
 TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE) {
-  std::vector<float> laser_ranges(640);
-  for (int i=0; i<640; i++) {
-    laser_ranges[i] = 10.0;
-  }
-  laser_ranges[159] = 0.1;
-
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  VectorByStandardPosition result = vff.getVffResult(M_PI/4.0, 0.1l);
 
   ASSERT_NEAR(result.getEndpointX(), 0.3, 0.1);
-  ASSERT_NEAR(result.getEndpointY(), 0.6, 0.1);
+  ASSERT_NEAR(result.getEndpointY(), -0.6, 0.1);
 }
 
 int main(int argc, char ** argv)

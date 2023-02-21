@@ -10,7 +10,7 @@
 class VectorForceFieldCalculator
 {
 public:
-  [[nodiscard]] VectorByStandardPosition getVffResult(double laser_angle_min, double laser_angle_increment, std::vector<float>  const & laser_ranges) const;
+  [[nodiscard]] VectorByStandardPosition getVffResult(double obstacle_angle_radians, double obstacle_distance) const;
 };
 
 #endif  // LOITERBOT_VECTOR_FORCE_FIELD_CALCULATOR_HPP
