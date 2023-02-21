@@ -20,27 +20,21 @@
 TEST(VelocityCalculatorTest, AheadRight)
 {
   VelocityCalculator velocity_calculator;
-  // TODO set reasonable values for angle_min and angle_increment
   LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 3.0l);
-  // TODO set reasonable value for obstacle_angle_radians
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 3.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI/8.0l, 3.0l);
   Velocity velocity = velocity_calculator.toApproach(laser_characteristics, laser_analysis);
-  EXPECT_NEAR(velocity.get_forward(), 0.75l, .05l);
-  EXPECT_NEAR(velocity.get_yaw(), -0.01l, .001l);
+  EXPECT_NEAR(velocity.get_forward(), 1.0l, .05l);
+  EXPECT_NEAR(velocity.get_yaw(), -1 * M_PI/8.0l, .001l);
 }
 
 TEST(VelocityCalculatorTest, FarAheadLeft)
 {
   VelocityCalculator velocity_calculator;
-  // TODO set reasonable values for angle_min and angle_increment
   LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(3ul, 9.0l);
-  // TODO set reasonable value for obstacle_angle_radians
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 9.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, M_PI/16.0l, 9.0l);
   Velocity velocity = velocity_calculator.toApproach(laser_characteristics, laser_analysis);
-  EXPECT_NEAR(velocity.get_forward(), 2.25l, .05l);
-  EXPECT_NEAR(velocity.get_yaw(), 0.01l, .001l);
+  EXPECT_NEAR(velocity.get_forward(), 3.0l, .05l);
+  EXPECT_NEAR(velocity.get_yaw(), M_PI/16.0l, .001l);
 }
 
 int main(int argc, char ** argv)

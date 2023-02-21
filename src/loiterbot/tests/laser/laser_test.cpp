@@ -52,8 +52,6 @@ TEST(LaserTest, AnalysisTest)
   LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
-  NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
-  EXPECT_EQ(nearest_sighting.getRangeIndex(), 319ul);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.0l, 0.01);
@@ -74,8 +72,6 @@ TEST(LaserTest, AnalysisSideTest)
   LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
-  NearestSighting nearest_sighting = laser_analysis.getNearestSighting();
-  EXPECT_EQ(nearest_sighting.getRangeIndex(), 2ul);
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());

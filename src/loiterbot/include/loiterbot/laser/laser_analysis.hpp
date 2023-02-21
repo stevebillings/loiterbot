@@ -18,29 +18,23 @@
 #include <string>
 #include <vector>
 
-#include "loiterbot/obstacle/nearest_sighting.hpp"
-
 class LaserAnalysis
 {
 public:
-  // TODO: obst angle belongs in NearestSighting!!
   LaserAnalysis(
-    const NearestSighting & nearestSighting, const bool in_sight, const bool near,
+    const bool in_sight, const bool near,
     const bool too_near, const double obstacle_angle_radians, const double obstacle_distance)
-  : nearestSighting_(nearestSighting),
-    in_sight_(in_sight),
+  : in_sight_(in_sight),
     near_(near),
     too_near_(too_near),
     obstacle_angle_radians_(obstacle_angle_radians),
     obstacle_distance_(obstacle_distance){};
   LaserAnalysis(const LaserAnalysis & src)
-  : nearestSighting_(src.getNearestSighting()),
-    in_sight_(src.isInSight()),
+  : in_sight_(src.isInSight()),
     near_(src.isNear()),
     too_near_(src.isTooNear()),
     obstacle_angle_radians_(src.getObstacleAngleRadians()),
     obstacle_distance_(src.getObstacleDistance()){};
-  NearestSighting getNearestSighting() const;
   bool isInSight() const;
   bool isNear() const;
   bool isTooNear() const;
@@ -50,9 +44,6 @@ public:
   std::string toString() const;
 
 private:
-  // TODO this should soon be removed:
-  const NearestSighting nearestSighting_;
-
   const bool in_sight_;
   const bool near_;
   const bool too_near_;

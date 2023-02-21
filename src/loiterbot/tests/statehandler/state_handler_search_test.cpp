@@ -25,11 +25,8 @@ TEST(StateHandlerSearchTest, Name)
 
 TEST(StateHandlerSearchTest, NotInSight)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 100.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, 100.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 100.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(0.0l, true);
@@ -46,11 +43,8 @@ TEST(StateHandlerSearchTest, NotInSight)
 
 TEST(StateHandlerSearchTest, InSightRight)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1*M_PI/4.0, 4.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -63,17 +57,13 @@ TEST(StateHandlerSearchTest, InSightRight)
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_TRUE(action.get_velocity().value().get_forward() > 0.5l);
   EXPECT_TRUE(action.get_velocity().value().get_forward() < 5.0l);
-  EXPECT_TRUE(action.get_velocity().value().get_yaw() < 0.0l);
-  EXPECT_TRUE(action.get_velocity().value().get_yaw() > -0.1l);
+  EXPECT_NEAR(action.get_velocity().value().get_yaw(), -1*M_PI/4.0, 0.01l);
 }
 
 TEST(StateHandlerSearchTest, Near)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 1.5l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, true, false, 0.0l, 1.5l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, true, false, 0.0l, 1.5l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -89,11 +79,8 @@ TEST(StateHandlerSearchTest, Near)
 
 TEST(StateHandlerSearchTest, TooNear)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 0.5l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, true, 0.0l, 0.5l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, true, 0.0l, 0.5l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -109,11 +96,8 @@ TEST(StateHandlerSearchTest, TooNear)
 
 TEST(StateHandlerSearchTest, LostSight)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, 20.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 20.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -131,11 +115,8 @@ TEST(StateHandlerSearchTest, LostSight)
 
 TEST(StateHandlerSearchTest, RecentlyLostSight)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 20.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, false, false, false, 0.0l, 20.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 20.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);

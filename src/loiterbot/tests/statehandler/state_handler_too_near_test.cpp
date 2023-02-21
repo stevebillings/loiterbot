@@ -25,11 +25,8 @@ TEST(StateHandlerTooNearTest, Name)
 
 TEST(StateHandlerTooNearTest, RecentlyTooNear)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
@@ -45,11 +42,8 @@ TEST(StateHandlerTooNearTest, RecentlyTooNear)
 
 TEST(StateHandlerTooNearTest, TooNearForAWhile)
 {
-  // TODO use reasonable values for angle min and angle incr
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(0.0l, 0.1l, 4ul, 2ul);
-  NearestSighting nearest_sighting = NearestSighting(1ul, 4.0l);
-  // TODO use reasonable value for angle
-  LaserAnalysis laser_analysis = LaserAnalysis(nearest_sighting, true, false, false, 0.0l, 4.0l);
+  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);

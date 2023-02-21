@@ -18,8 +18,6 @@
 
 #include "loiterbot/laser/laser_analysis.hpp"
 
-NearestSighting LaserAnalysis::getNearestSighting() const { return nearestSighting_; }
-
 bool LaserAnalysis::isInSight() const { return in_sight_; }
 
 bool LaserAnalysis::isNear() const { return near_; }
@@ -40,15 +38,7 @@ bool LaserAnalysis::isToRight() const {
 
 std::string LaserAnalysis::toString() const
 {
-  nearestSighting_.getRangeIndex();
-  nearestSighting_.getRange();
   std::string description = "";
-
-  description.append("nearest range index: ");
-  description.append(std::to_string(nearestSighting_.getRangeIndex()));
-
-  description.append("; nearest range: ");
-  description.append(std::to_string(nearestSighting_.getRange()));
 
   description.append("; in sight?: ");
   description.append(std::to_string(in_sight_));

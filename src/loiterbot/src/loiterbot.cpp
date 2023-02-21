@@ -56,7 +56,6 @@ private:
       laser_analyzer_.analyze(*laser_characteristics_, last_laser_scan_msg_->ranges);
     update_history(laser_analysis);
 
-//    RCLCPP_INFO(logger_, "Index: %ld", laser_analysis.getNearestSighting().getRangeIndex());
     RCLCPP_INFO(logger_, "Angle: %lf; Distance: %lf", laser_analysis.getObstacleAngleRadians(), laser_analysis.getObstacleDistance());
 
     Action action =

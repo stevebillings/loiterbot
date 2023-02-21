@@ -29,7 +29,6 @@ add_executable(loiterbot
         src/laser/laser_analyzer.cpp include/loiterbot/laser/laser_analyzer.hpp
         src/laser/laser_characteristics.cpp include/loiterbot/laser/laser_characteristics.hpp
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.hpp
-        src/obstacle/nearest_sighting.cpp include/loiterbot/obstacle/nearest_sighting.hpp
         include/loiterbot/fsm/statehandler/state_handler.hpp
         src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.hpp
         src/history.cpp include/loiterbot/history.hpp

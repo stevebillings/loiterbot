@@ -42,9 +42,5 @@ LaserAnalysis LaserAnalyzer::analyze(
 
   long index_rel_to_straight = min_range_index - (laserCharacteristics.getLeftmostIndex()/2 - 1);
   double obstacle_angle = laserCharacteristics.getAngleIncrement() * index_rel_to_straight;
-
-  // TODO how does this memory get freed?
-  NearestSighting nearestSighting = NearestSighting(min_range_index, min_range);
-  return LaserAnalysis(
-    nearestSighting, in_sight, near, too_near, obstacle_angle, min_range);
+  return LaserAnalysis(in_sight, near, too_near, obstacle_angle, min_range);
 }
