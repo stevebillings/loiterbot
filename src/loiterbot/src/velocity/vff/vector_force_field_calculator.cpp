@@ -2,7 +2,7 @@
 
 [[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(const double obstacle_angle_radians, const double obstacle_distance) const {
   const float MINIMUM_IGNORABLE_DISTANCE = 1.0;
-
+  // TODO goal should not be hard coded:
   VectorByStandardPosition goal_vector(MINIMUM_IGNORABLE_DISTANCE, 0.0); // Goal: go forward
   double repulsive_vector_endpoint_x = 0.0L;
   double repulsive_vector_endpoint_y = 0.0L;
