@@ -1,0 +1,1 @@
+Improve escaping corners by adding some yaw to reverse (opp dir of obstacle, of course)
