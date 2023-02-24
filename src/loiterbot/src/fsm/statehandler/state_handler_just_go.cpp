@@ -28,7 +28,7 @@ Action StateHandlerJustGo::act(
   if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI/2.0l)) {
     return Action(Velocity::create_reverse(), State::OBSTACLE_TOO_NEAR);
   }
-  const double SLOWDOWN_FACTOR = 4.0l;
+  const double SLOWDOWN_FACTOR = 2.0l;
   auto new_velocity = Velocity(
     new_motion_vector_by_magnitude_angle.getMagnitude()/SLOWDOWN_FACTOR,
     new_motion_vector_by_magnitude_angle.getAngleRadians());
