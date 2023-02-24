@@ -17,6 +17,7 @@
 
 #include "state_handler.hpp"
 #include "state_handler_error.hpp"
+#include "state_handler_just_go.hpp"
 #include "state_handler_near.hpp"
 #include "state_handler_search.hpp"
 #include "state_handler_too_near.hpp"
@@ -29,6 +30,7 @@ public:
   StateHandler * get_state_handler(State state) const;
 
 private:
+  StateHandler * state_handler_just_go_ = new StateHandlerJustGo();
   StateHandler * state_handler_search_ = new StateHandlerSearch();
   StateHandler * state_handler_near_ = new StateHandlerNear();
   StateHandler * state_handler_too_near_ = new StateHandlerTooNear();

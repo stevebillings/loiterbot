@@ -24,8 +24,8 @@ bool LaserAnalysis::isNear() const { return near_; }
 
 bool LaserAnalysis::isTooNear() const { return too_near_; }
 
-double LaserAnalysis::getObstacleAngleRadians() const {
-  return obstacle_angle_radians_;
+double LaserAnalysis::getObstacleAngleRelToStraightRadians() const {
+  return obstacle_angle_rel_to_straight_radians_;
 }
 
 double LaserAnalysis::getObstacleDistance() const {
@@ -33,7 +33,7 @@ double LaserAnalysis::getObstacleDistance() const {
 }
 
 bool LaserAnalysis::isToRight() const {
-  return getObstacleAngleRadians() < 0.0l;
+  return getObstacleAngleRelToStraightRadians() < 0.0l;
 }
 
 std::string LaserAnalysis::toString() const
@@ -50,7 +50,7 @@ std::string LaserAnalysis::toString() const
   description.append(std::to_string(too_near_));
 
   description.append("; obstacle angle: ");
-  description.append(std::to_string(obstacle_angle_radians_));
+  description.append(std::to_string(obstacle_angle_rel_to_straight_radians_));
 
   description.append("; obstacle distance: ");
   description.append(std::to_string(obstacle_distance_));

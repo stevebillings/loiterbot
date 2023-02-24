@@ -20,9 +20,14 @@ include_directories(include)
 add_executable(loiterbot
         src/loiterbot.cpp
         include/loiterbot/fsm/state.hpp
+        src/fsm/statehandler/state_handler_just_go.cpp include/loiterbot/fsm/statehandler/state_handler_just_go.hpp
+        src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.hpp
+        src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.hpp
+        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
+        src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.hpp
+        src/velocity/vff/vector_force_field_calculator.cpp include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
         src/velocity/velocity.cpp include/loiterbot/velocity/velocity.hpp
         src/velocity/velocity_calculator.cpp include/loiterbot/velocity/velocity_calculator.hpp
-        src/velocity/vff/vector_force_field_calculator.cpp include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
         src/vector/vector_by_standard_position.cpp include/loiterbot/vector/vector_by_standard_position.hpp
         src/vector/vector_by_magnitude_angle.cpp include/loiterbot/vector/vector_by_magnitude_angle.hpp
         src/vector/vector_converter.cpp include/loiterbot/vector/vector_converter.hpp
@@ -32,10 +37,6 @@ add_executable(loiterbot
         include/loiterbot/fsm/statehandler/state_handler.hpp
         src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.hpp
         src/history.cpp include/loiterbot/history.hpp
-        src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.hpp
-        src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.hpp
-        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
-        src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.hpp
         src/action.cpp include/loiterbot/action.hpp)
 
 set(dependencies

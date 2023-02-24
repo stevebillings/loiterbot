@@ -17,6 +17,8 @@
 StateHandler * StateHandlers::get_state_handler(State state) const
 {
   switch (state) {
+    case State::JUST_GO:
+      return state_handler_just_go_;
     case State::SEARCH:
       return state_handler_search_;
     case State::OBSTACLE_NEAR:

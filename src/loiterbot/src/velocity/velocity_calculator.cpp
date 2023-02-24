@@ -20,7 +20,7 @@ Velocity VelocityCalculator::toApproach(const LaserAnalysis & laser_analysis) co
     return Velocity(0.0, 0.0);
   }
   double x = laser_analysis.getObstacleDistance() / 3.0;
-  double yaw = laser_analysis.getObstacleAngleRadians();
+  double yaw = laser_analysis.getObstacleAngleRelToStraightRadians();
   return Velocity(x, yaw);
 }
 Velocity VelocityCalculator::toParallel(const LaserAnalysis & laser_analysis) const
@@ -28,7 +28,7 @@ Velocity VelocityCalculator::toParallel(const LaserAnalysis & laser_analysis) co
   double yaw;
   if (laser_analysis.isInSight()) {
     // TODO this const seems kinda arbitrary
-    yaw = laser_analysis.getObstacleAngleRadians() + 0.4*M_PI;
+    yaw = laser_analysis.getObstacleAngleRelToStraightRadians() + 0.4*M_PI;
   }
   return Velocity(PARALLEL_X_VELOCITY, yaw);
 }

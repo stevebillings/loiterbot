@@ -45,7 +45,7 @@ private:
       return;
     }
 
-//    RCLCPP_INFO(logger_, "State: %s", cur_state_handler_->name());
+    RCLCPP_INFO(logger_, "State: %s", cur_state_handler_->name());
 //    RCLCPP_INFO(logger_, "angle min: %f, angle max: %f, angle incr: %f",
 //                last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_max, last_laser_scan_msg_->angle_increment);
 //    RCLCPP_INFO(logger_, "range vector size: %ld",
@@ -56,15 +56,18 @@ private:
       laser_analyzer_.analyze(*laser_characteristics_, last_laser_scan_msg_->ranges);
     update_history(laser_analysis);
 
-    RCLCPP_INFO(logger_, "Angle: %lf; Distance: %lf", laser_analysis.getObstacleAngleRadians(), laser_analysis.getObstacleDistance());
-
+    //RCLCPP_INFO(logger_, "Angle: %lf; Distance: %lf", laser_analysis.getObstacleAngleRelToStraightRadians(), laser_analysis.getObstacleDistance());
+    RCLCPP_INFO(logger_, "Laser analysis: %s", laser_analysis.toString().c_str());
     Action action =
       cur_state_handler_->act(history_, current_time, *laser_characteristics_, laser_analysis);
 
     history_.set_time_entered_state(action.get_state(), current_time);
     cur_state_handler_ = state_handlers_.get_state_handler(action.get_state());
     std::optional<Velocity> new_velocity = action.get_velocity();
-    if (new_velocity.has_value()) set_velocity(new_velocity.value());
+    if (new_velocity.has_value()) {
+      RCLCPP_INFO(logger_, "New velocity: forward: %lf, yaw: %lf", new_velocity.value().get_forward(), new_velocity.value().get_yaw());
+      set_velocity(new_velocity.value());
+    }
   }
 
   void update_history(const LaserAnalysis & laser_analysis)
@@ -89,15 +92,25 @@ private:
 
   void set_velocity(const Velocity & velocity)
   {
-    if ((abs(velocity.get_forward()) > 5.0) || (abs(velocity.get_yaw()) > 5.0)) {
+    double x = velocity.get_forward();
+    if (x > 5.0) {
+      RCLCPP_INFO(logger_, "Limiting x velocity to 5.0");
+      x = 5.0;
+    } else if (x < -5.0) {
+      RCLCPP_INFO(logger_, "Limiting x velocity to -5.0");
+      x = -5.0;
+    }
+    double yaw = velocity.get_yaw();
+    if (abs(yaw) > M_PI) {
       RCLCPP_ERROR(
-        logger_, "Invalid velocity: x: %lf, yaw: %lf", velocity.get_forward(), velocity.get_yaw());
+        logger_, "Invalid velocity yaw value: %lf", velocity.get_yaw());
       cur_state_handler_ = state_handlers_.get_state_handler(State::ERROR);
       return;
     }
+    RCLCPP_INFO(logger_, "*** Publishing velocity: x: %lf, yaw: %lf", x, yaw);
     geometry_msgs::msg::Twist drive_message;
-    drive_message.linear.x = velocity.get_forward();
-    drive_message.angular.z = velocity.get_yaw();
+    drive_message.linear.x = x;
+    drive_message.angular.z = yaw;
     drive_publisher_->publish(drive_message);
   }
 
@@ -115,7 +128,8 @@ private:
   sensor_msgs::msg::LaserScan::SharedPtr last_laser_scan_msg_;
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr drive_publisher_;
   StateHandlers state_handlers_ = StateHandlers();
-  StateHandler * cur_state_handler_ = state_handlers_.get_state_handler(State::SEARCH);
+  // for loiterbot: was: State::SEARCH
+  StateHandler * cur_state_handler_ = state_handlers_.get_state_handler(State::JUST_GO);
   LaserCharacteristics * laser_characteristics_ = nullptr;
   LaserAnalyzer laser_analyzer_;
   History history_;

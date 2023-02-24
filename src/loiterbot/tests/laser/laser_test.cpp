@@ -37,7 +37,7 @@ TEST(LaserTest, CharacteristicsTest)
 
 // TODO separate characteristics and analysis tests into separate test files
 
-TEST(LaserTest, AnalysisTest)
+TEST(LaserTest, AnalysisStraight)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
@@ -54,11 +54,11 @@ TEST(LaserTest, AnalysisTest)
   EXPECT_TRUE(laser_analysis.isInSight());
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
-  EXPECT_NEAR(laser_analysis.getObstacleAngleRadians(), 0.0l, 0.01);
+  EXPECT_NEAR(laser_analysis.getObstacleAngleRelToStraightRadians(), 0.0l, 0.01);
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.5, 0.001);
 }
 
-TEST(LaserTest, AnalysisSideTest)
+TEST(LaserTest, AnalysisRight)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
@@ -76,9 +76,10 @@ TEST(LaserTest, AnalysisSideTest)
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.6, 0.001);
+  EXPECT_TRUE(laser_analysis.getObstacleAngleRelToStraightRadians() < -1.0l);
 }
 
-TEST(LaserTest, AnalysisTooNearTest)
+TEST(LaserTest, AnalysisTooNear)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
