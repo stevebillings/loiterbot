@@ -1,1 +1,1 @@
-Improve escaping corners by adding some yaw to reverse (opp dir of obstacle, of course)
+Detect when stuck/looping and try spinning.
