@@ -19,7 +19,7 @@ Action StateHandlerTooNear::act(
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   if ((current_time - history.get_time_entered_state()) > 4.0) {
-    return Action(Velocity::create_stopped(), State::JUST_GO);
+    return Action(Velocity::create_spin_left(), State::CHANGE_DIRECTION);
   }
   return Action(State::OBSTACLE_TOO_NEAR);
 }

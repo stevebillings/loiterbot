@@ -21,6 +21,7 @@ add_executable(loiterbot
         src/loiterbot.cpp
         include/loiterbot/fsm/state.hpp
         src/fsm/statehandler/state_handler_just_go.cpp include/loiterbot/fsm/statehandler/state_handler_just_go.hpp
+        src/fsm/statehandler/state_handler_change_direction.cpp include/loiterbot/fsm/statehandler/state_handler_change_direction.hpp
         src/fsm/statehandler/state_handler_search.cpp include/loiterbot/fsm/statehandler/state_handler_search.hpp
         src/fsm/statehandler/state_handler_near.cpp include/loiterbot/fsm/statehandler/state_handler_near.hpp
         src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
@@ -37,7 +38,8 @@ add_executable(loiterbot
         include/loiterbot/fsm/statehandler/state_handler.hpp
         src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.hpp
         src/history.cpp include/loiterbot/history.hpp
-        src/action.cpp include/loiterbot/action.hpp)
+        src/action.cpp include/loiterbot/action.hpp
+)
 
 set(dependencies
   rclcpp

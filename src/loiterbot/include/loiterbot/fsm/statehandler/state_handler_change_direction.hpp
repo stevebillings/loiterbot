@@ -12,9 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_FSM_STATE_HPP
-#define OBSTACLE_HUGGER_FSM_STATE_HPP
+#ifndef OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP
+#define OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP
 
-enum class State { JUST_GO, OBSTACLE_TOO_NEAR, CHANGE_DIRECTION, SEARCH, OBSTACLE_NEAR, ERROR };
+#include "state_handler.hpp"
 
-#endif  // OBSTACLE_HUGGER_FSM_STATE_HPP
+class StateHandlerChangeDirection : public StateHandler
+{
+public:
+  [[nodiscard]] Action act(
+    const History & history, double current_time,
+    const LaserCharacteristics & laser_characteristics,
+    const LaserAnalysis & laser_analysis) const override;
+  const char * name() const override;
+};
+
+#endif  // OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP

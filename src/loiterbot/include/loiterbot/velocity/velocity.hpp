@@ -29,6 +29,7 @@ public:
   double get_yaw() const;
 
 private:
+  static constexpr double SPIN_VELOCITY_ = 3.0L;
   double forward_;
   double yaw_;
 };
