@@ -55,5 +55,8 @@ std::string LaserAnalysis::toString() const
   description.append("; obstacle distance: ");
   description.append(std::to_string(obstacle_distance_));
 
+  description.append("; to right?: ");
+  description.append(std::to_string(isToRight()));
+
   return description;
 }

@@ -32,6 +32,10 @@ Velocity Velocity::create_spin_left() { return Velocity(0.0, 0.5); }
 
 Velocity Velocity::create_reverse() { return Velocity(-1.0, 0.0); }
 
+Velocity Velocity::create_reverse_left() { return Velocity(-1.0, -0.2); }
+
+Velocity Velocity::create_reverse_right() { return Velocity(-1.0, 0.2); };
+
 double Velocity::get_forward() const { return forward_; }
 
 double Velocity::get_yaw() const { return yaw_; }

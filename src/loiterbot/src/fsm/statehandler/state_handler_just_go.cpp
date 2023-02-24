@@ -19,14 +19,24 @@ Action StateHandlerJustGo::act(
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   if (laser_analysis.isTooNear()) {
-    return Action(Velocity::create_reverse(), State::OBSTACLE_TOO_NEAR);
+    // TODO this code is duplicated below
+    if (laser_analysis.isToRight()) {
+      return Action(Velocity::create_reverse_right(), State::OBSTACLE_TOO_NEAR);
+    } else {
+      return Action(Velocity::create_reverse_left(), State::OBSTACLE_TOO_NEAR);
+    }
   }
   auto new_motion_vector_by_standard_position = vff_calculator.getVffResult(
     laser_analysis.getObstacleAngleRelToStraightRadians(), laser_analysis.getObstacleDistance());
   auto new_motion_vector_by_magnitude_angle = vector_converter.standardPositionToMagnitudeAngle(new_motion_vector_by_standard_position);
   // TODO: If angle outside reasonable forward driving range, change state: backup, or spin
   if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI/2.0l)) {
-    return Action(Velocity::create_reverse(), State::OBSTACLE_TOO_NEAR);
+    // TODO this code is duplicated above
+    if (laser_analysis.isToRight()) {
+      return Action(Velocity::create_reverse_right(), State::OBSTACLE_TOO_NEAR);
+    } else {
+      return Action(Velocity::create_reverse_left(), State::OBSTACLE_TOO_NEAR);
+    }
   }
   const double SLOWDOWN_FACTOR = 4.0l;
   auto new_velocity = Velocity(
