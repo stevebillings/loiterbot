@@ -10,7 +10,8 @@
 class VectorForceFieldCalculator
 {
 public:
-  [[nodiscard]] VectorByStandardPosition getVffResult(const double obstacle_angle_radians, const double obstacle_distance) const;
+  [[nodiscard]] VectorByStandardPosition getVffResult(
+    const double obstacle_angle_radians, const double obstacle_distance) const;
 };
 
 #endif  // LOITERBOT_VECTOR_FORCE_FIELD_CALCULATOR_HPP

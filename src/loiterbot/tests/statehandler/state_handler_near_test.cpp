@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 //
 
-#include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_near.hpp"
+
 #include <gtest/gtest.h>
+
+#include "../test_constants.hpp"
 
 TEST(StateHandlerNearTest, Name)
 {
@@ -24,7 +26,8 @@ TEST(StateHandlerNearTest, Name)
 
 TEST(StateHandlerNearTest, InSightFarRight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
   StateHandlerNear state_handler = StateHandlerNear();
   History history = History();
@@ -42,7 +45,8 @@ TEST(StateHandlerNearTest, InSightFarRight)
 
 TEST(StateHandlerNearTest, Near)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, true, false, 0.0l, 1.5l);
   StateHandlerNear state_handler = StateHandlerNear();
   History history = History();
@@ -53,13 +57,14 @@ TEST(StateHandlerNearTest, Near)
 
   EXPECT_EQ(action.get_state(), State::OBSTACLE_NEAR);
   EXPECT_TRUE(action.get_velocity().has_value());
-  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.4*M_PI, 0.001L);
+  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.4 * M_PI, 0.001L);
   EXPECT_TRUE(action.get_velocity().value().get_forward() >= 1.0l);
 }
 
 TEST(StateHandlerNearTest, TooNear)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, true, 0.0l, 0.5l);
   StateHandlerNear state_handler = StateHandlerNear();
   History history = History();
@@ -76,7 +81,8 @@ TEST(StateHandlerNearTest, TooNear)
 
 TEST(StateHandlerNearTest, JustLostSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 100.0l);
   StateHandlerNear state_handler = StateHandlerNear();
   History history = History();
@@ -91,7 +97,8 @@ TEST(StateHandlerNearTest, JustLostSight)
 
 TEST(StateHandlerNearTest, LostSightLongAgo)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 20.0l);
   StateHandlerNear state_handler = StateHandlerNear();
   History history = History();

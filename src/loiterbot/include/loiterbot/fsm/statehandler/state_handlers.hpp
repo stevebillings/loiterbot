@@ -16,9 +16,9 @@
 #define OBSTACLE_HUGGER_STATE_HANDLERS_HPP
 
 #include "state_handler.hpp"
+#include "state_handler_change_direction.hpp"
 #include "state_handler_error.hpp"
 #include "state_handler_just_go.hpp"
-#include "state_handler_change_direction.hpp"
 #include "state_handler_near.hpp"
 #include "state_handler_search.hpp"
 #include "state_handler_too_near.hpp"

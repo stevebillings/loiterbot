@@ -1,9 +1,11 @@
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 
-[[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(const double obstacle_angle_radians, const double obstacle_distance) const {
+[[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(
+  const double obstacle_angle_radians, const double obstacle_distance) const
+{
   const float MINIMUM_IGNORABLE_DISTANCE = 4.0;
   // TODO min dist and goal should not be hard coded:
-  VectorByStandardPosition goal_vector(MINIMUM_IGNORABLE_DISTANCE, 0.0); // Goal: go forward
+  VectorByStandardPosition goal_vector(MINIMUM_IGNORABLE_DISTANCE, 0.0);  // Goal: go forward
   double repulsive_vector_endpoint_x = 0.0L;
   double repulsive_vector_endpoint_y = 0.0L;
 

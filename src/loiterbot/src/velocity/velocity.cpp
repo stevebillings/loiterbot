@@ -26,7 +26,7 @@ Velocity::Velocity(double forward, double yaw)
 
 Velocity Velocity::create_stopped() { return Velocity(0.0, 0.0); }
 
-Velocity Velocity::create_spin_right() { return Velocity(0.0, -1*SPIN_VELOCITY_); }
+Velocity Velocity::create_spin_right() { return Velocity(0.0, -1 * SPIN_VELOCITY_); }
 
 Velocity Velocity::create_spin_left() { return Velocity(0.0, SPIN_VELOCITY_); }
 

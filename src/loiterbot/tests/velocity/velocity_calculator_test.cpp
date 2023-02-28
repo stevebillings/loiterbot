@@ -15,24 +15,25 @@
 #include "loiterbot/velocity/velocity_calculator.hpp"
 
 #include <gtest/gtest.h>
+
 #include "../test_constants.hpp"
 
 TEST(VelocityCalculatorTest, AheadRight)
 {
   VelocityCalculator velocity_calculator;
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI/8.0l, 3.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI / 8.0l, 3.0l);
   Velocity velocity = velocity_calculator.toApproach(laser_analysis);
   EXPECT_NEAR(velocity.get_forward(), 1.0l, .05l);
-  EXPECT_NEAR(velocity.get_yaw(), -1 * M_PI/8.0l, .001l);
+  EXPECT_NEAR(velocity.get_yaw(), -1 * M_PI / 8.0l, .001l);
 }
 
 TEST(VelocityCalculatorTest, FarAheadLeft)
 {
   VelocityCalculator velocity_calculator;
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, M_PI/16.0l, 9.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, M_PI / 16.0l, 9.0l);
   Velocity velocity = velocity_calculator.toApproach(laser_analysis);
   EXPECT_NEAR(velocity.get_forward(), 3.0l, .05l);
-  EXPECT_NEAR(velocity.get_yaw(), M_PI/16.0l, .001l);
+  EXPECT_NEAR(velocity.get_yaw(), M_PI / 16.0l, .001l);
 }
 
 int main(int argc, char ** argv)

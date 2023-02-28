@@ -28,7 +28,7 @@ Velocity VelocityCalculator::toParallel(const LaserAnalysis & laser_analysis) co
   double yaw;
   if (laser_analysis.isInSight()) {
     // TODO this const seems kinda arbitrary
-    yaw = laser_analysis.getObstacleAngleRelToStraightRadians() + 0.4*M_PI;
+    yaw = laser_analysis.getObstacleAngleRelToStraightRadians() + 0.4 * M_PI;
   }
   return Velocity(PARALLEL_X_VELOCITY, yaw);
 }

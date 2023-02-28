@@ -1,10 +1,9 @@
-#include <gtest/gtest.h>
-
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 
+#include <gtest/gtest.h>
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR) {
-
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR)
+{
   auto vff = VectorForceFieldCalculator();
   VectorByStandardPosition result = vff.getVffResult(0.0l, 10.0l);
 
@@ -12,8 +11,8 @@ TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR) {
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.001);
 }
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE) {
-
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE)
+{
   auto vff = VectorForceFieldCalculator();
   VectorByStandardPosition result = vff.getVffResult(0.0l, 0.5l);
 
@@ -21,9 +20,10 @@ TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE) {
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.1);
 }
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE) {
+TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE)
+{
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(M_PI/4.0, 0.1l);
+  VectorByStandardPosition result = vff.getVffResult(M_PI / 4.0, 0.1l);
 
   ASSERT_NEAR(result.getEndpointX(), 0.3, 0.1);
   ASSERT_NEAR(result.getEndpointY(), -0.6, 0.1);

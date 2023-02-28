@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_too_near.hpp"
 
 #include <gtest/gtest.h>
+
+#include "../test_constants.hpp"
 
 TEST(StateHandlerTooNearTest, Name)
 {
@@ -25,7 +26,8 @@ TEST(StateHandlerTooNearTest, Name)
 
 TEST(StateHandlerTooNearTest, RecentlyTooNear)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();
@@ -42,7 +44,8 @@ TEST(StateHandlerTooNearTest, RecentlyTooNear)
 
 TEST(StateHandlerTooNearTest, TooNearForAWhile)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
   StateHandlerTooNear state_handler = StateHandlerTooNear();
   History history = History();

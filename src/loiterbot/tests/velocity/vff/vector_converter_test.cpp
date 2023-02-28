@@ -2,7 +2,8 @@
 
 #include <gtest/gtest.h>
 
-TEST(VECTOR_UNITTEST, AHEAD) {
+TEST(VECTOR_UNITTEST, AHEAD)
+{
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(1.0, 0.0);
   auto vma = vc.standardPositionToMagnitudeAngle(vsp);
@@ -11,7 +12,8 @@ TEST(VECTOR_UNITTEST, AHEAD) {
   ASSERT_NEAR(vma.getMagnitude(), 1.0, 0.001);
 }
 
-TEST(VECTOR_UNITTEST, LEFT) {
+TEST(VECTOR_UNITTEST, LEFT)
+{
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(0.0, 1.0);
   auto vma = vc.standardPositionToMagnitudeAngle(vsp);
@@ -20,7 +22,8 @@ TEST(VECTOR_UNITTEST, LEFT) {
   ASSERT_NEAR(vma.getMagnitude(), 1.0, 0.001);
 }
 
-TEST(VECTOR_UNITTEST, RIGHT_45) {
+TEST(VECTOR_UNITTEST, RIGHT_45)
+{
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(1.0, -1.0);
   auto vma = vc.standardPositionToMagnitudeAngle(vsp);

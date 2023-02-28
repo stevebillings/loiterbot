@@ -23,14 +23,15 @@ Action StateHandlerJustGo::act(
   }
   auto new_motion_vector_by_standard_position = vff_calculator.getVffResult(
     laser_analysis.getObstacleAngleRelToStraightRadians(), laser_analysis.getObstacleDistance());
-  auto new_motion_vector_by_magnitude_angle = vector_converter.standardPositionToMagnitudeAngle(new_motion_vector_by_standard_position);
+  auto new_motion_vector_by_magnitude_angle =
+    vector_converter.standardPositionToMagnitudeAngle(new_motion_vector_by_standard_position);
   // TODO do we need both early returns?
-  if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI/2.0l)) {
+  if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI / 2.0l)) {
     return Action(Velocity::create_reverse(), State::OBSTACLE_TOO_NEAR);
   }
   const double SLOWDOWN_FACTOR = 2.0l;
   auto new_velocity = Velocity(
-    new_motion_vector_by_magnitude_angle.getMagnitude()/SLOWDOWN_FACTOR,
+    new_motion_vector_by_magnitude_angle.getMagnitude() / SLOWDOWN_FACTOR,
     new_motion_vector_by_magnitude_angle.getAngleRadians());
   return Action(new_velocity, State::JUST_GO);
 }

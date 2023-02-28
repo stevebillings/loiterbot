@@ -17,14 +17,14 @@
 
 #include "loiterbot/laser/laser_analysis.hpp"
 #include "loiterbot/laser/laser_characteristics.hpp"
+#include "loiterbot/vector/vector_converter.hpp"
 #include "loiterbot/velocity/velocity.hpp"
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
-#include "loiterbot/vector/vector_converter.hpp"
 
 class VelocityCalculator
 {
 public:
-  VelocityCalculator() {};
+  VelocityCalculator(){};
   Velocity toApproach(const LaserAnalysis & laser_analysis) const;
   Velocity toParallel(const LaserAnalysis & laser_analysis) const;
 

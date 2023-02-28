@@ -1,2 +1,3 @@
+Remove old states and Merge? or is there a reason to save old states? rename?
 Review and refactor
 tests?

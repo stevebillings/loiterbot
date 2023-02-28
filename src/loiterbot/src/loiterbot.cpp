@@ -46,10 +46,10 @@ private:
     }
 
     RCLCPP_INFO(logger_, "State: %s", cur_state_handler_->name());
-//    RCLCPP_INFO(logger_, "angle min: %f, angle max: %f, angle incr: %f",
-//                last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_max, last_laser_scan_msg_->angle_increment);
-//    RCLCPP_INFO(logger_, "range vector size: %ld",
-//                last_laser_scan_msg_->ranges.size());
+    //    RCLCPP_INFO(logger_, "angle min: %f, angle max: %f, angle incr: %f",
+    //                last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_max, last_laser_scan_msg_->angle_increment);
+    //    RCLCPP_INFO(logger_, "range vector size: %ld",
+    //                last_laser_scan_msg_->ranges.size());
     double current_time = now().seconds();
     init_laser_characteristics();
     LaserAnalysis laser_analysis =
@@ -65,7 +65,9 @@ private:
     cur_state_handler_ = state_handlers_.get_state_handler(action.get_state());
     std::optional<Velocity> new_velocity = action.get_velocity();
     if (new_velocity.has_value()) {
-      RCLCPP_INFO(logger_, "New velocity: forward: %lf, yaw: %lf", new_velocity.value().get_forward(), new_velocity.value().get_yaw());
+      RCLCPP_INFO(
+        logger_, "New velocity: forward: %lf, yaw: %lf", new_velocity.value().get_forward(),
+        new_velocity.value().get_yaw());
       set_velocity(new_velocity.value());
     }
   }
@@ -83,8 +85,9 @@ private:
   void init_laser_characteristics()
   {
     if (laser_characteristics_ == nullptr) {
-      LaserCharacteristics laser_characteristics =
-        laser_analyzer_.determineCharacteristics(last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_increment, last_laser_scan_msg_->ranges);
+      LaserCharacteristics laser_characteristics = laser_analyzer_.determineCharacteristics(
+        last_laser_scan_msg_->angle_min, last_laser_scan_msg_->angle_increment,
+        last_laser_scan_msg_->ranges);
       // Toss characteristics object onto heap so it sticks around for the life of the node
       laser_characteristics_ = new LaserCharacteristics(laser_characteristics);
     }
@@ -102,8 +105,7 @@ private:
     }
     double yaw = velocity.get_yaw();
     if (abs(yaw) > M_PI) {
-      RCLCPP_ERROR(
-        logger_, "Invalid velocity yaw value: %lf", velocity.get_yaw());
+      RCLCPP_ERROR(logger_, "Invalid velocity yaw value: %lf", velocity.get_yaw());
       cur_state_handler_ = state_handlers_.get_state_handler(State::ERROR);
       return;
     }

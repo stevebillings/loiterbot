@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_search.hpp"
 
 #include <gtest/gtest.h>
+
+#include "../test_constants.hpp"
 
 TEST(StateHandlerSearchTest, Name)
 {
@@ -25,7 +26,8 @@ TEST(StateHandlerSearchTest, Name)
 
 TEST(StateHandlerSearchTest, NotInSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 100.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
@@ -43,8 +45,9 @@ TEST(StateHandlerSearchTest, NotInSight)
 
 TEST(StateHandlerSearchTest, InSightRight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1*M_PI/4.0, 4.0l);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI / 4.0, 4.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);
@@ -57,12 +60,13 @@ TEST(StateHandlerSearchTest, InSightRight)
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_TRUE(action.get_velocity().value().get_forward() > 0.5l);
   EXPECT_TRUE(action.get_velocity().value().get_forward() < 5.0l);
-  EXPECT_NEAR(action.get_velocity().value().get_yaw(), -1*M_PI/4.0, 0.01l);
+  EXPECT_NEAR(action.get_velocity().value().get_yaw(), -1 * M_PI / 4.0, 0.01l);
 }
 
 TEST(StateHandlerSearchTest, Near)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, true, false, 0.0l, 1.5l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
@@ -79,7 +83,8 @@ TEST(StateHandlerSearchTest, Near)
 
 TEST(StateHandlerSearchTest, TooNear)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, true, 0.0l, 0.5l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
@@ -96,7 +101,8 @@ TEST(StateHandlerSearchTest, TooNear)
 
 TEST(StateHandlerSearchTest, LostSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 20.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();
@@ -115,7 +121,8 @@ TEST(StateHandlerSearchTest, LostSight)
 
 TEST(StateHandlerSearchTest, RecentlyLostSight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(false, false, false, 0.0l, 20.0l);
   StateHandlerSearch state_handler = StateHandlerSearch();
   History history = History();

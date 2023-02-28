@@ -15,11 +15,10 @@
 #ifndef OBSTACLE_HUGGER_STATE_HANDLER_JUST_GO_HPP
 #define OBSTACLE_HUGGER_STATE_HANDLER_JUST_GO_HPP
 
-#include "state_handler.hpp"
-#include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
-#include "loiterbot/vector/vector_converter.hpp"
 #include "loiterbot/vector/vector_by_standard_position.hpp"
 #include "loiterbot/vector/vector_converter.hpp"
+#include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
+#include "state_handler.hpp"
 
 class StateHandlerJustGo : public StateHandler
 {

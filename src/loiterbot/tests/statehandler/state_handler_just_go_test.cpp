@@ -1,11 +1,13 @@
-#include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_just_go.hpp"
 
 #include <gtest/gtest.h>
 
+#include "../test_constants.hpp"
+
 TEST(StateHandlerJustGoTest, StraightAhead)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0, 2.0l);
   StateHandlerJustGo state_handler = StateHandlerJustGo();
   History history = History();
@@ -23,8 +25,9 @@ TEST(StateHandlerJustGoTest, StraightAhead)
 
 TEST(StateHandlerJustGoTest, AheadRight)
 {
-  LaserCharacteristics laser_characteristics = LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1*M_PI/4.0, 2.0l);
+  LaserCharacteristics laser_characteristics =
+    LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI / 4.0, 2.0l);
   StateHandlerJustGo state_handler = StateHandlerJustGo();
   History history = History();
   history.set_obstacle_last_seen_time(1000.0l, true);

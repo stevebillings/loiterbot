@@ -35,6 +35,7 @@ public:
 
 protected:
   const VelocityCalculator & getVelocityCalculator() const { return velocity_calculator_; }
+
 private:
   // TODO: inject this dependency (require subclass to provide the dep via a virtual getter; inject dep into each subclass)
   // TODO: check for this same error elsewhere

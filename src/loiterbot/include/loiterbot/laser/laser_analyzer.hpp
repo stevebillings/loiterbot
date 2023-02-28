@@ -21,7 +21,9 @@
 class LaserAnalyzer
 {
 public:
-  LaserCharacteristics determineCharacteristics(const double laser_angle_min, const double laser_angle_increment, const std::vector<float> & laser_ranges) const;
+  LaserCharacteristics determineCharacteristics(
+    const double laser_angle_min, const double laser_angle_increment,
+    const std::vector<float> & laser_ranges) const;
   LaserAnalysis analyze(
     const LaserCharacteristics & laserCharacteristics,
     const std::vector<float> & laser_ranges) const;

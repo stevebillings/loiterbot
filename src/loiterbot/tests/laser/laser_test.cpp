@@ -28,7 +28,8 @@ TEST(LaserTest, CharacteristicsTest)
   laser_ranges.push_back(8.0);
   laser_ranges.push_back(10.0);
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(
+    LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   EXPECT_NEAR(laser_characteristics.getAngleMin(), LASER_ANGLE_MINIMUM, 0.001);
   EXPECT_NEAR(laser_characteristics.getAngleIncrement(), LASER_ANGLE_INCREMENT, 0.001);
   EXPECT_EQ(laser_characteristics.getLeftmostIndex(), 4ul);
@@ -41,15 +42,16 @@ TEST(LaserTest, AnalysisStraight)
 {
   LaserAnalyzer laserAnalyzer;
   std::vector<float> laser_ranges;
-  for (int i=0; i < 319; i++) {
+  for (int i = 0; i < 319; i++) {
     laser_ranges.push_back(10.0);
   }
   laser_ranges.push_back(1.5);
-  for (int i=0; i < 320; i++) {
+  for (int i = 0; i < 320; i++) {
     laser_ranges.push_back(10.0);
   }
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(
+    LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
   EXPECT_TRUE(laser_analysis.isNear());
@@ -65,11 +67,12 @@ TEST(LaserTest, AnalysisRight)
   laser_ranges.push_back(10.0);
   laser_ranges.push_back(10.0);
   laser_ranges.push_back(1.6);
-  for (int i=0; i < (640-3); i++) {
+  for (int i = 0; i < (640 - 3); i++) {
     laser_ranges.push_back(10.0);
   }
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(
+    LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isInSight());
   EXPECT_TRUE(laser_analysis.isNear());
@@ -89,7 +92,8 @@ TEST(LaserTest, AnalysisTooNear)
   laser_ranges.push_back(8.0);
   laser_ranges.push_back(10.0);
 
-  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
+  LaserCharacteristics laser_characteristics = laserAnalyzer.determineCharacteristics(
+    LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isTooNear());
   EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.4, 0.001);

@@ -22,8 +22,8 @@ class LaserAnalysis
 {
 public:
   LaserAnalysis(
-    const bool in_sight, const bool near,
-    const bool too_near, const double obstacle_angle_radians_rel_to_straight, const double obstacle_distance)
+    const bool in_sight, const bool near, const bool too_near,
+    const double obstacle_angle_radians_rel_to_straight, const double obstacle_distance)
   : in_sight_(in_sight),
     near_(near),
     too_near_(too_near),
