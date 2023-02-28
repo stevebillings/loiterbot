@@ -24,7 +24,8 @@ using namespace std::chrono_literals;
 class GofObstacleHuggingNode : public rclcpp::Node
 {
 public:
-  GofObstacleHuggingNode() : Node("loiterbot_node")
+  GofObstacleHuggingNode()
+  : Node("loiterbot_node")
   {
     laser_scan_subscriber_ = create_subscription<sensor_msgs::msg::LaserScan>(
       "laser_scan", 10, std::bind(&GofObstacleHuggingNode::laserScanCallback, this, _1));

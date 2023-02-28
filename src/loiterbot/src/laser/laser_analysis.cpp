@@ -18,20 +18,20 @@
 
 #include "loiterbot/laser/laser_analysis.hpp"
 
-bool LaserAnalysis::isInSight() const { return in_sight_; }
+bool LaserAnalysis::isInSight() const {return in_sight_;}
 
-bool LaserAnalysis::isNear() const { return near_; }
+bool LaserAnalysis::isNear() const {return near_;}
 
-bool LaserAnalysis::isTooNear() const { return too_near_; }
+bool LaserAnalysis::isTooNear() const {return too_near_;}
 
 double LaserAnalysis::getObstacleAngleRelToStraightRadians() const
 {
   return obstacle_angle_rel_to_straight_radians_;
 }
 
-double LaserAnalysis::getObstacleDistance() const { return obstacle_distance_; }
+double LaserAnalysis::getObstacleDistance() const {return obstacle_distance_;}
 
-bool LaserAnalysis::isToRight() const { return getObstacleAngleRelToStraightRadians() < 0.0l; }
+bool LaserAnalysis::isToRight() const {return getObstacleAngleRelToStraightRadians() < 0.0l;}
 
 std::string LaserAnalysis::toString() const
 {

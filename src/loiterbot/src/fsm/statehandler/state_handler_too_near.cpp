@@ -24,4 +24,4 @@ Action StateHandlerTooNear::act(
   return Action(State::OBSTACLE_TOO_NEAR);
 }
 
-const char * StateHandlerTooNear::name() const { return "obstacle too near"; }
+const char * StateHandlerTooNear::name() const {return "obstacle too near";}

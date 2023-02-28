@@ -28,13 +28,13 @@ public:
     near_(near),
     too_near_(too_near),
     obstacle_angle_rel_to_straight_radians_(obstacle_angle_radians_rel_to_straight),
-    obstacle_distance_(obstacle_distance){};
+    obstacle_distance_(obstacle_distance) {}
   LaserAnalysis(const LaserAnalysis & src)
   : in_sight_(src.isInSight()),
     near_(src.isNear()),
     too_near_(src.isTooNear()),
     obstacle_angle_rel_to_straight_radians_(src.getObstacleAngleRelToStraightRadians()),
-    obstacle_distance_(src.getObstacleDistance()){};
+    obstacle_distance_(src.getObstacleDistance()) {}
   bool isInSight() const;
   bool isNear() const;
   bool isTooNear() const;

@@ -14,4 +14,4 @@ Action StateHandlerChangeDirection::act(
   return Action(State::CHANGE_DIRECTION);
 }
 
-const char * StateHandlerChangeDirection::name() const { return "change direction"; }
+const char * StateHandlerChangeDirection::name() const {return "change direction";}

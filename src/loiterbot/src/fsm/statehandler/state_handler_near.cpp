@@ -18,15 +18,16 @@ Action StateHandlerNear::act(
   const History & history, const double current_time,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-  if (laser_analysis.isTooNear())
+  if (laser_analysis.isTooNear()) {
     return handleTooNear();
-  else if (laser_analysis.isInSight())
+  } else if (laser_analysis.isInSight()) {
     return handleInSight(laser_analysis);
-  else
+  } else {
     return handleLostSight(history, laser_analysis);
+  }
 }
 
-const char * StateHandlerNear::name() const { return "obstacle near"; }
+const char * StateHandlerNear::name() const {return "obstacle near";}
 
 const Action StateHandlerNear::handleTooNear() const
 {
@@ -41,8 +42,9 @@ const Action StateHandlerNear::handleInSight(const LaserAnalysis & laser_analysi
 const Action StateHandlerNear::handleLostSight(
   const History & history, const LaserAnalysis & laser_analysis) const
 {
-  if (history.get_time_lost() > 1.0)
+  if (history.get_time_lost() > 1.0) {
     return Action(Velocity::create_stopped(), State::SEARCH);
-  else
+  } else {
     return Action(State::OBSTACLE_NEAR);
+  }
 }

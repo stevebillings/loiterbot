@@ -20,30 +20,33 @@ Action StateHandlerSearch::act(
   const History & history, const double current_time,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-  if (laser_analysis.isInSight())
+  if (laser_analysis.isInSight()) {
     return handleInSight(laser_characteristics, laser_analysis);
-  else if (
+  } else if (
     history.has_obstacle_ever_been_seen() && history.get_time_lost() > TIME_LOST_TOLERANCE_SECONDS)
+  {
     return handleLostSight(history);
-  else if (!history.has_obstacle_ever_been_seen())
+  } else if (!history.has_obstacle_ever_been_seen()) {
     return handleNeverSeen();
-  else
+  } else {
     return handleRecentlyLost();
+  }
 }
 
-const char * StateHandlerSearch::name() const { return "search"; }
+const char * StateHandlerSearch::name() const {return "search";}
 
-Action StateHandlerSearch::handleRecentlyLost() const { return Action(State::SEARCH); }
+Action StateHandlerSearch::handleRecentlyLost() const {return Action(State::SEARCH);}
 
 Action StateHandlerSearch::handleInSight(
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   State new_state = State::SEARCH;
   Velocity new_velocity = getVelocityCalculator().toApproach(laser_analysis);
-  if (laser_analysis.isNear())
+  if (laser_analysis.isNear()) {
     new_state = State::OBSTACLE_NEAR;
-  else if (laser_analysis.isTooNear())
+  } else if (laser_analysis.isTooNear()) {
     new_state = State::OBSTACLE_TOO_NEAR;
+  }
   return Action(new_velocity, new_state);
 }
 

@@ -36,4 +36,4 @@ Action StateHandlerJustGo::act(
   return Action(new_velocity, State::JUST_GO);
 }
 
-const char * StateHandlerJustGo::name() const { return "just-go"; }
+const char * StateHandlerJustGo::name() const {return "just-go";}
