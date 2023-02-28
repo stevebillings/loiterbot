@@ -23,7 +23,8 @@ Action StateHandlerSearch::act(
   if (laser_analysis.isInSight()) {
     return handleInSight(laser_characteristics, laser_analysis);
   } else if (
-    history.has_obstacle_ever_been_seen() && history.get_time_lost() > TIME_LOST_TOLERANCE_SECONDS)
+    history.has_obstacle_ever_been_seen() &&
+    history.get_time_lost() > TIME_LOST_TOLERANCE_SECONDS)
   {
     return handleLostSight(history);
   } else if (!history.has_obstacle_ever_been_seen()) {

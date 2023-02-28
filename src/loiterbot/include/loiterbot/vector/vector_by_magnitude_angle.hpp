@@ -5,7 +5,9 @@ class VectorByMagnitudeAngle
 {
 public:
   VectorByMagnitudeAngle(double magnitude, double angle_radians)
-  : magnitude_(magnitude), angle_radians_(angle_radians) {}
+  : magnitude_(magnitude), angle_radians_(angle_radians)
+  {
+  }
   double getMagnitude() const;
   double getAngleRadians() const;
 
