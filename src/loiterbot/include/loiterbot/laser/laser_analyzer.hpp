@@ -15,6 +15,8 @@
 #ifndef LOITERBOT__LASER__LASER_ANALYZER_HPP_
 #define LOITERBOT__LASER__LASER_ANALYZER_HPP_
 
+#include <vector>
+
 #include "laser_analysis.hpp"
 #include "laser_characteristics.hpp"
 
