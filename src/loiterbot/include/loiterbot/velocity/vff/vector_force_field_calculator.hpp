@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_VECTOR_FORCE_FIELD_CALCULATOR_HPP
-#define LOITERBOT_VECTOR_FORCE_FIELD_CALCULATOR_HPP
+#ifndef LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_
+#define LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_
 
 #include <algorithm>
 #include <cmath>
@@ -28,4 +28,4 @@ public:
     const double obstacle_angle_radians, const double obstacle_distance) const;
 };
 
-#endif  // LOITERBOT_VECTOR_FORCE_FIELD_CALCULATOR_HPP
+#endif  // LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_

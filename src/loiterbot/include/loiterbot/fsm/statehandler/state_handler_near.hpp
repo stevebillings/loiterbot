@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_NEAR_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_NEAR_HPP_
 
 #include "state_handler.hpp"
 
@@ -32,4 +32,4 @@ private:
   const Action handleLostSight(const History & history, const LaserAnalysis & laser_analysis) const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_NEAR_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_NEAR_HPP_

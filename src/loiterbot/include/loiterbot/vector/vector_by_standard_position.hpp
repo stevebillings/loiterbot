@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_VECTOR_BY_STANDARD_POSITION_HPP
-#define LOITERBOT_VECTOR_BY_STANDARD_POSITION_HPP
+#ifndef LOITERBOT__VECTOR__VECTOR_BY_STANDARD_POSITION_HPP_
+#define LOITERBOT__VECTOR__VECTOR_BY_STANDARD_POSITION_HPP_
 
 class VectorByStandardPosition
 {
@@ -30,4 +30,4 @@ private:
   double endpoint_y_;
 };
 
-#endif  // LOITERBOT_VECTOR_BY_STANDARD_POSITION_HPP
+#endif  // LOITERBOT__VECTOR__VECTOR_BY_STANDARD_POSITION_HPP_

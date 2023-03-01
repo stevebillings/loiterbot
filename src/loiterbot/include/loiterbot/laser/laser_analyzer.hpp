@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_LASER_ANALYZER_HPP
-#define OBSTACLE_HUGGER_LASER_ANALYZER_HPP
+#ifndef LOITERBOT__LASER__LASER_ANALYZER_HPP_
+#define LOITERBOT__LASER__LASER_ANALYZER_HPP_
 
 #include "laser_analysis.hpp"
 #include "laser_characteristics.hpp"
@@ -34,4 +34,4 @@ private:
   constexpr static double DIST_TOO_NEAR = 1.5;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_ANALYZER_HPP
+#endif  // LOITERBOT__LASER__LASER_ANALYZER_HPP_

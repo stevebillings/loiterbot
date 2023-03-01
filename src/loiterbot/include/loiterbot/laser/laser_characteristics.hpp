@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP
-#define OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP
+#ifndef LOITERBOT__LASER__LASER_CHARACTERISTICS_HPP_
+#define LOITERBOT__LASER__LASER_CHARACTERISTICS_HPP_
 
 class LaserCharacteristics
 {
@@ -47,4 +47,4 @@ private:
   unsigned long straight_index_;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_CHARACTERISTICS_HPP
+#endif  // LOITERBOT__LASER__LASER_CHARACTERISTICS_HPP_

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_VECTORBYMAGNITUDEDIRECTION_H
-#define LOITERBOT_VECTORBYMAGNITUDEDIRECTION_H
+#ifndef LOITERBOT__VECTOR__VECTOR_BY_MAGNITUDE_ANGLE_HPP_
+#define LOITERBOT__VECTOR__VECTOR_BY_MAGNITUDE_ANGLE_HPP_
 
 class VectorByMagnitudeAngle
 {
@@ -30,4 +30,4 @@ private:
   double angle_radians_;
 };
 
-#endif  //LOITERBOT_VECTORBYMAGNITUDEDIRECTION_H
+#endif  // LOITERBOT__VECTOR__VECTOR_BY_MAGNITUDE_ANGLE_HPP_

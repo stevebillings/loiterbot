@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_LASER_ANALYSIS_HPP
-#define OBSTACLE_HUGGER_LASER_ANALYSIS_HPP
+#ifndef LOITERBOT__LASER__LASER_ANALYSIS_HPP_
+#define LOITERBOT__LASER__LASER_ANALYSIS_HPP_
 
 #include <string>
 #include <vector>
@@ -55,4 +55,4 @@ private:
   const double obstacle_distance_;
 };
 
-#endif  // OBSTACLE_HUGGER_LASER_ANALYSIS_HPP
+#endif  // LOITERBOT__LASER__LASER_ANALYSIS_HPP_

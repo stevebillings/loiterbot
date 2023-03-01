@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_FSM_STATE_HPP
-#define OBSTACLE_HUGGER_FSM_STATE_HPP
+#ifndef LOITERBOT__FSM__STATE_HPP_
+#define LOITERBOT__FSM__STATE_HPP_
 
 enum class State { JUST_GO, OBSTACLE_TOO_NEAR, CHANGE_DIRECTION, SEARCH, OBSTACLE_NEAR, ERROR };
 
-#endif  // OBSTACLE_HUGGER_FSM_STATE_HPP
+#endif  // LOITERBOT__FSM__STATE_HPP_

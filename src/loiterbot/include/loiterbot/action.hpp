@@ -16,8 +16,8 @@
 // Created by stevebillings on 12/17/22.
 //
 
-#ifndef LOITERBOT_ACTION_HPP
-#define LOITERBOT_ACTION_HPP
+#ifndef LOITERBOT__ACTION_HPP_
+#define LOITERBOT__ACTION_HPP_
 
 #include <optional>
 
@@ -29,7 +29,7 @@ class Action
 public:
   Action(const Velocity & velocity, const State state)
   : velocity_(velocity), state_(state) {}
-  Action(const State state)
+  explicit Action(const State state)
   : velocity_(std::nullopt), state_(state) {}
   std::optional<Velocity> get_velocity() const;
   State get_state() const;
@@ -39,4 +39,4 @@ private:
   State state_;
 };
 
-#endif  // LOITERBOT_ACTION_HPP
+#endif  // LOITERBOT__ACTION_HPP_

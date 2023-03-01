@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_TEST_CONSTANTS_HPP
-#define LOITERBOT_TEST_CONSTANTS_HPP
+#ifndef LOITERBOT__TESTS__TEST_CONSTANTS_HPP_
+#define LOITERBOT__TESTS__TEST_CONSTANTS_HPP_
 
 const double LASER_ANGLE_MINIMUM = -1.396263;
 const double LASER_ANGLE_INCREMENT = 0.004370;
 
-#endif  //LOITERBOT_TEST_CONSTANTS_HPP
+#endif  // LOITERBOT__TESTS__TEST_CONSTANTS_HPP_

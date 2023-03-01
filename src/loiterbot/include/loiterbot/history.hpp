@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_HISTORY_HPP
-#define LOITERBOT_HISTORY_HPP
+#ifndef LOITERBOT__HISTORY_HPP_
+#define LOITERBOT__HISTORY_HPP_
 
 #include <optional>
 
@@ -42,4 +42,4 @@ private:
   bool seen_to_right_ = false;
 };
 
-#endif  // LOITERBOT_HISTORY_HPP
+#endif  // LOITERBOT__HISTORY_HPP_

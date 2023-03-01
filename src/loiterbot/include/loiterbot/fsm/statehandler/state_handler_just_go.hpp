@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_JUST_GO_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_JUST_GO_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_
 
 #include "loiterbot/vector/vector_by_standard_position.hpp"
 #include "loiterbot/vector/vector_converter.hpp"
@@ -35,4 +35,4 @@ private:
   const VectorConverter vector_converter = VectorConverter();
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_JUST_GO_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_

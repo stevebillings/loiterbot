@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_ERROR_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_ERROR_HPP_
 
 #include "state_handler.hpp"
 
@@ -26,4 +26,4 @@ class StateHandlerError : public StateHandler
   const char * name() const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_ERROR_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_ERROR_HPP_

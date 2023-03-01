@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_HPP_
 
 #include "loiterbot/action.hpp"
 #include "loiterbot/fsm/state.hpp"
@@ -22,7 +22,8 @@
 #include "loiterbot/laser/laser_characteristics.hpp"
 #include "loiterbot/velocity/velocity_calculator.hpp"
 
-// the virtual class for State; each concrete state object implement the act() method for a specific state
+// the virtual class for State
+// Each concrete state object implement the act() method for a specific state
 class StateHandler
 {
 public:
@@ -37,9 +38,10 @@ protected:
   const VelocityCalculator & getVelocityCalculator() const {return velocity_calculator_;}
 
 private:
-  // TODO: inject this dependency (require subclass to provide the dep via a virtual getter; inject dep into each subclass)
+  // TODO: inject this dependency (require subclass to provide the dep via a virtual getter;
+  //  inject dep into each subclass)
   // TODO: check for this same error elsewhere
   VelocityCalculator velocity_calculator_ = VelocityCalculator();
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_HPP_

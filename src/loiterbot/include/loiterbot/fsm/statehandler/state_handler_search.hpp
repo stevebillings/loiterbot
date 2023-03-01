@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_SEARCH_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_SEARCH_HPP_
 
 #include "state_handler.hpp"
 
@@ -34,4 +34,4 @@ private:
   Action handleRecentlyLost() const;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_SEARCH_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_SEARCH_HPP_

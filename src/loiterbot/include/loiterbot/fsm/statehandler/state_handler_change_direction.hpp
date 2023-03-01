@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_CHANGE_DIRECTION_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_CHANGE_DIRECTION_HPP_
 
 #include "state_handler.hpp"
 
@@ -27,4 +27,4 @@ public:
   const char * name() const override;
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLER_CHANGE_DIRECTION_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_CHANGE_DIRECTION_HPP_

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_VELOCITY_HPP
-#define LOITERBOT_VELOCITY_HPP
+#ifndef LOITERBOT__VELOCITY__VELOCITY_HPP_
+#define LOITERBOT__VELOCITY__VELOCITY_HPP_
 
 class Velocity
 {
@@ -34,4 +34,4 @@ private:
   double yaw_;
 };
 
-#endif  // LOITERBOT_VELOCITY_HPP
+#endif  // LOITERBOT__VELOCITY__VELOCITY_HPP_

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OBSTACLE_HUGGER_STATE_HANDLERS_HPP
-#define OBSTACLE_HUGGER_STATE_HANDLERS_HPP
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLERS_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLERS_HPP_
 
 #include "state_handler.hpp"
 #include "state_handler_change_direction.hpp"
@@ -23,7 +23,8 @@
 #include "state_handler_search.hpp"
 #include "state_handler_too_near.hpp"
 
-// this class constructs and holds all state objects, and has a method that returns the state object for a given
+// this class constructs and holds all state objects,
+// and has a method that returns the state object for a given
 // fsm_state enum value (state objects must be stateless)
 class StateHandlers
 {
@@ -39,4 +40,4 @@ private:
   StateHandler * state_handler_error_ = new StateHandlerError();
 };
 
-#endif  // OBSTACLE_HUGGER_STATE_HANDLERS_HPP
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLERS_HPP_

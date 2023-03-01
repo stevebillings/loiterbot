@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT_VFFVELOCITY_H
-#define LOITERBOT_VFFVELOCITY_H
+#ifndef LOITERBOT__VECTOR__VECTOR_CONVERTER_HPP_
+#define LOITERBOT__VECTOR__VECTOR_CONVERTER_HPP_
 
 #include <cmath>
 #include <vector>
@@ -28,4 +28,4 @@ public:
     const VectorByStandardPosition & vectorByStandardPosition) const;
 };
 
-#endif  //LOITERBOT_VFFVELOCITY_H
+#endif  // LOITERBOT__VECTOR__VECTOR_CONVERTER_HPP_
