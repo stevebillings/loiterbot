@@ -21,7 +21,7 @@ StateHandler * StateHandlers::get_state_handler(State state) const
       return state_handler_just_go_;
     case State::CHANGE_DIRECTION:
       return state_handler_change_direction_;
-    case State::OBSTACLE_TOO_NEAR:
+    case State::BLOCKED:
       return state_handler_too_near_;
     default:
       return state_handler_error_;

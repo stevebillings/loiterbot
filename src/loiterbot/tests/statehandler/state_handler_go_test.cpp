@@ -17,7 +17,7 @@
 #include "../test_constants.hpp"
 #include "loiterbot/fsm/statehandler/state_handler_go.hpp"
 
-TEST(StateHandlerJustGoTest, StraightAhead)
+TEST(StateHandlerGoTest, StraightAhead)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
@@ -36,7 +36,7 @@ TEST(StateHandlerJustGoTest, StraightAhead)
   EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.0, 0.01l);
 }
 
-TEST(StateHandlerJustGoTest, AheadRight)
+TEST(StateHandlerGoTest, AheadRight)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);

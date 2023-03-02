@@ -22,7 +22,7 @@ add_executable(loiterbot
         include/loiterbot/fsm/state.hpp
         src/fsm/statehandler/state_handler_go.cpp include/loiterbot/fsm/statehandler/state_handler_go.hpp
         src/fsm/statehandler/state_handler_change_direction.cpp include/loiterbot/fsm/statehandler/state_handler_change_direction.hpp
-        src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
+        src/fsm/statehandler/state_handler_blocked.cpp include/loiterbot/fsm/statehandler/state_handler_blocked.hpp
         src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.hpp
         src/velocity/vff/vector_force_field_calculator.cpp include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
         src/velocity/velocity.cpp include/loiterbot/velocity/velocity.hpp

@@ -12,19 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
-#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
+#include "loiterbot/fsm/statehandler/state_handler_blocked.hpp"
 
-#include "state_handler.hpp"
-
-class StateHandlerTooNear : public StateHandler
+Action StateHandlerBlocked::act(
+  const History & history, const double current_time,
+  const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-public:
-  Action act(
-    const History & history, const double current_time,
-    const LaserCharacteristics & laser_characteristics,
-    const LaserAnalysis & laser_analysis) const override;
-  const char * name() const;
-};
+  if ((current_time - history.get_time_entered_state()) > 1.0) {
+    return Action(Velocity::create_spin_left(), State::CHANGE_DIRECTION);
+  }
+  return Action(State::BLOCKED);
+}
 
-#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
+const char * StateHandlerBlocked::name() const {return "obstacle too near";}

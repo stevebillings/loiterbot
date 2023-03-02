@@ -12,46 +12,45 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handler_too_near.hpp"
-
 #include <gtest/gtest.h>
 
 #include "../test_constants.hpp"
+#include "loiterbot/fsm/statehandler/state_handler_blocked.hpp"
 
-TEST(StateHandlerTooNearTest, Name)
+TEST(StateHandlerBlockedTest, Name)
 {
-  StateHandlerTooNear state_handler = StateHandlerTooNear();
+  StateHandlerBlocked state_handler = StateHandlerBlocked();
   EXPECT_STREQ("obstacle too near", state_handler.name());
 }
 
-TEST(StateHandlerTooNearTest, RecentlyTooNear)
+TEST(StateHandlerBlockedTest, RecentlyTooNear)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
-  StateHandlerTooNear state_handler = StateHandlerTooNear();
+  StateHandlerBlocked state_handler = StateHandlerBlocked();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
   history.set_time_lost(0.1l);
-  history.set_time_entered_state(State::OBSTACLE_TOO_NEAR, 1.0l);
+  history.set_time_entered_state(State::BLOCKED, 1.0l);
 
   Action action = state_handler.act(history, 1.1l, laser_characteristics, laser_analysis);
 
-  EXPECT_EQ(action.get_state(), State::OBSTACLE_TOO_NEAR);
+  EXPECT_EQ(action.get_state(), State::BLOCKED);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_FALSE(action.get_velocity().has_value());
 }
 
-TEST(StateHandlerTooNearTest, TooNearForAWhile)
+TEST(StateHandlerBlockedTest, TooNearForAWhile)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
-  StateHandlerTooNear state_handler = StateHandlerTooNear();
+  StateHandlerBlocked state_handler = StateHandlerBlocked();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
   history.set_time_lost(0.1l);
-  history.set_time_entered_state(State::OBSTACLE_TOO_NEAR, 1.0l);
+  history.set_time_entered_state(State::BLOCKED, 1.0l);
 
   Action action = state_handler.act(history, 5.0l, laser_characteristics, laser_analysis);
 
