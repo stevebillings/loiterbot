@@ -22,6 +22,6 @@ double LaserCharacteristics::getAngleMin() const {return angle_min_;}
 
 double LaserCharacteristics::getAngleIncrement() const {return angle_increment_;}
 
-uint64_t LaserCharacteristics::getLeftmostIndex() const {return leftmost_index_;}
+uint32_t LaserCharacteristics::getLeftmostIndex() const {return leftmost_index_;}
 
-uint64_t LaserCharacteristics::getStraightIndex() const {return straight_index_;}
+uint32_t LaserCharacteristics::getStraightIndex() const {return straight_index_;}

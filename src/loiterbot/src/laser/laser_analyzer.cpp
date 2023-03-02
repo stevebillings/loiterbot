@@ -18,8 +18,8 @@ LaserCharacteristics LaserAnalyzer::determineCharacteristics(
   const double laser_angle_min, const double laser_angle_increment,
   const std::vector<float> & laser_ranges) const
 {
-  uint64_t straight_index = laser_ranges.size() / 2;
-  uint64_t leftmost_index = laser_ranges.size() - 1;
+  uint32_t straight_index = laser_ranges.size() / 2;
+  uint32_t leftmost_index = laser_ranges.size() - 1;
   return LaserCharacteristics(
     laser_angle_min, laser_angle_increment, leftmost_index, straight_index);
 }
@@ -29,7 +29,7 @@ LaserAnalysis LaserAnalyzer::analyze(
 {
   int cur_range_index = 0;
   double min_range = 1000.0;
-  uint64_t min_range_index = laserCharacteristics.getStraightIndex();
+  uint32_t min_range_index = laserCharacteristics.getStraightIndex();
   for (float this_range : laser_ranges) {
     if (this_range < min_range) {
       min_range = this_range;
@@ -41,7 +41,7 @@ LaserAnalysis LaserAnalyzer::analyze(
   bool near = min_range < DIST_NEAR;
   bool too_near = min_range < DIST_TOO_NEAR;
 
-  uint64_t index_rel_to_straight =
+  uint32_t index_rel_to_straight =
     min_range_index - (laserCharacteristics.getLeftmostIndex() / 2 - 1);
   double obstacle_angle = laserCharacteristics.getAngleIncrement() * index_rel_to_straight;
   return LaserAnalysis(in_sight, near, too_near, obstacle_angle, min_range);

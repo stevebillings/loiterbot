@@ -22,8 +22,8 @@ class LaserCharacteristics
 public:
   // TODO this needs laser_angle_min + laser_angle_increment
   LaserCharacteristics(
-    const double angle_min, const double angle_increment, const uint64_t leftmost_index,
-    const uint64_t straight_index)
+    const double angle_min, const double angle_increment, const uint32_t leftmost_index,
+    const uint32_t straight_index)
   : angle_min_(angle_min),
     angle_increment_(angle_increment),
     leftmost_index_(leftmost_index),
@@ -39,14 +39,14 @@ public:
   }
   double getAngleMin() const;
   double getAngleIncrement() const;
-  uint64_t getLeftmostIndex() const;
-  uint64_t getStraightIndex() const;
+  uint32_t getLeftmostIndex() const;
+  uint32_t getStraightIndex() const;
 
 private:
   double angle_min_;
   double angle_increment_;
-  uint64_t leftmost_index_;
-  uint64_t straight_index_;
+  uint32_t leftmost_index_;
+  uint32_t straight_index_;
 };
 
 #endif  // LOITERBOT__LASER__LASER_CHARACTERISTICS_HPP_
