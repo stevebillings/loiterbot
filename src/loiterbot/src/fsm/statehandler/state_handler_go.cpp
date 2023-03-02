@@ -15,7 +15,7 @@
 #include "loiterbot/fsm/statehandler/state_handler_go.hpp"
 
 Action StateHandlerGo::act(
-  const History & history, const double current_time,
+  const double seconds_in_this_state,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   if (laser_analysis.isTooNear()) {
@@ -37,4 +37,12 @@ Action StateHandlerGo::act(
   return Action(new_velocity, State::GO);
 }
 
-const char * StateHandlerGo::name() const {return "Go";}
+const char * StateHandlerGo::name() const
+{
+  return "Go";
+}
+
+const State StateHandlerGo::getState() const
+{
+  return State::GO;
+}

@@ -21,10 +21,11 @@ class StateHandlerChangeDirection : public StateHandler
 {
 public:
   [[nodiscard]] Action act(
-    const History & history, double current_time,
+    const double seconds_in_this_state,
     const LaserCharacteristics & laser_characteristics,
     const LaserAnalysis & laser_analysis) const override;
   const char * name() const override;
+  const State getState() const override;
 };
 
 #endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_CHANGE_DIRECTION_HPP_

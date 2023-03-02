@@ -15,13 +15,21 @@
 #include "loiterbot/fsm/statehandler/state_handler_change_direction.hpp"
 
 Action StateHandlerChangeDirection::act(
-  const History & history, const double current_time,
+  const double seconds_in_this_state,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-  if ((current_time - history.get_time_entered_state()) > 1.0) {
+  if (seconds_in_this_state > 0.75) {
     return Action(Velocity::create_stopped(), State::GO);
   }
   return Action(State::CHANGE_DIRECTION);
 }
 
-const char * StateHandlerChangeDirection::name() const {return "Change direction";}
+const char * StateHandlerChangeDirection::name() const
+{
+  return "Change direction";
+}
+
+const State StateHandlerChangeDirection::getState() const
+{
+  return State::CHANGE_DIRECTION;
+}

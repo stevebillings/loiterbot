@@ -15,13 +15,21 @@
 #include "loiterbot/fsm/statehandler/state_handler_blocked.hpp"
 
 Action StateHandlerBlocked::act(
-  const History & history, const double current_time,
+  const double seconds_in_this_state,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
-  if ((current_time - history.get_time_entered_state()) > 1.0) {
+  if (seconds_in_this_state > 1.0) {
     return Action(Velocity::create_spin_left(), State::CHANGE_DIRECTION);
   }
   return Action(State::BLOCKED);
 }
 
-const char * StateHandlerBlocked::name() const {return "Blocked";}
+const char * StateHandlerBlocked::name() const \
+{
+  return "Blocked";
+}
+
+const State StateHandlerBlocked::getState() const
+{
+  return State::BLOCKED;
+}

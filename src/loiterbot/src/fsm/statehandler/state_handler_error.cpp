@@ -15,10 +15,18 @@
 #include "loiterbot/fsm/statehandler/state_handler_error.hpp"
 
 Action StateHandlerError::act(
-  const History & history, const double current_time,
+  const double seconds_in_this_state,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
   return Action(Velocity::create_stopped(), State::ERROR);
 }
 
-const char * StateHandlerError::name() const {return "Error";}
+const char * StateHandlerError::name() const
+{
+  return "Error";
+}
+
+const State StateHandlerError::getState() const
+{
+  return State::BLOCKED;
+}

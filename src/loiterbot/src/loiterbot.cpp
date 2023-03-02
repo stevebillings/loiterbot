@@ -21,15 +21,15 @@
 using std::placeholders::_1;
 using namespace std::chrono_literals;
 
-class GofObstacleHuggingNode : public rclcpp::Node
+class WanderBotNode : public rclcpp::Node
 {
 public:
-  GofObstacleHuggingNode()
-  : Node("loiterbot_node")
+  WanderBotNode()
+  : Node("wanderbot_node")
   {
     laser_scan_subscriber_ = create_subscription<sensor_msgs::msg::LaserScan>(
-      "laser_scan", 10, std::bind(&GofObstacleHuggingNode::laserScanCallback, this, _1));
-    timer_ = create_wall_timer(50ms, std::bind(&GofObstacleHuggingNode::controlCallback, this));
+      "laser_scan", 10, std::bind(&WanderBotNode::laserScanCallback, this, _1));
+    timer_ = create_wall_timer(50ms, std::bind(&WanderBotNode::controlCallback, this));
     drive_publisher_ = create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
   }
 
@@ -51,27 +51,19 @@ private:
     init_laser_characteristics();
     LaserAnalysis laser_analysis =
       laser_analyzer_.analyze(*laser_characteristics_, last_laser_scan_msg_->ranges);
-    update_history(laser_analysis);
 
-    Action action =
-      cur_state_handler_->act(history_, current_time, *laser_characteristics_, laser_analysis);
+    Action action = cur_state_handler_->act(
+      current_time - time_entered_state_seconds_, *laser_characteristics_, laser_analysis);
 
-    history_.set_time_entered_state(action.get_state(), current_time);
+    if (action.get_state() != cur_state_handler_->getState()) {
+      time_entered_state_seconds_ = current_time;
+    }
     cur_state_handler_ = state_handlers_.get_state_handler(action.get_state());
+
     std::optional<Velocity> new_velocity = action.get_velocity();
     if (new_velocity.has_value()) {
       set_velocity(new_velocity.value());
     }
-  }
-
-  void update_history(const LaserAnalysis & laser_analysis)
-  {
-    if (laser_analysis.isInSight()) {
-      bool seenToRight = laser_analysis.isToRight();
-      history_.set_obstacle_last_seen_time(now().seconds(), seenToRight);
-    }
-    double time_lost = calculate_time_lost(laser_analysis);
-    history_.set_time_lost(time_lost);
   }
 
   void init_laser_characteristics()
@@ -105,15 +97,6 @@ private:
     drive_publisher_->publish(drive_message);
   }
 
-  double calculate_time_lost(const LaserAnalysis & laser_analysis) const
-  {
-    double time_lost = 0.0;
-    if (history_.has_obstacle_ever_been_seen() && !laser_analysis.isInSight()) {
-      time_lost = now().seconds() - history_.get_obstacle_last_seen_time();
-    }
-    return time_lost;
-  }
-
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr laser_scan_subscriber_;
   sensor_msgs::msg::LaserScan::SharedPtr last_laser_scan_msg_;
@@ -122,14 +105,14 @@ private:
   StateHandler * cur_state_handler_ = state_handlers_.get_state_handler(State::GO);
   LaserCharacteristics * laser_characteristics_ = nullptr;
   LaserAnalyzer laser_analyzer_;
-  History history_;
+  double time_entered_state_seconds_ = 0.0l;
   rclcpp::Logger logger_ = get_logger();
 };
 
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<GofObstacleHuggingNode>();
+  auto node = std::make_shared<WanderBotNode>();
   rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;

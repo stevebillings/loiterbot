@@ -21,41 +21,33 @@
 TEST(StateHandlerBlockedTest, Name)
 {
   StateHandlerBlocked state_handler = StateHandlerBlocked();
-  EXPECT_STREQ("obstacle too near", state_handler.name());
+  EXPECT_STREQ("Blocked", state_handler.name());
 }
 
-TEST(StateHandlerBlockedTest, RecentlyTooNear)
+TEST(StateHandlerBlockedTest, RecentlyBlocked)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   auto vector_to_obstacle = VectorByMagnitudeAngle(4.0l, 0.0l);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerBlocked state_handler = StateHandlerBlocked();
-  History history = History();
-  history.set_obstacle_last_seen_time(1.0l, true);
-  history.set_time_lost(0.1l);
-  history.set_time_entered_state(State::BLOCKED, 1.0l);
 
-  Action action = state_handler.act(history, 1.1l, laser_characteristics, laser_analysis);
+  Action action = state_handler.act(0.01l, laser_characteristics, laser_analysis);
 
   EXPECT_EQ(action.get_state(), State::BLOCKED);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_FALSE(action.get_velocity().has_value());
 }
 
-TEST(StateHandlerBlockedTest, TooNearForAWhile)
+TEST(StateHandlerBlockedTest, BlockedForAWhile)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
   auto vector_to_obstacle = VectorByMagnitudeAngle(4.0l, 0.0l);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerBlocked state_handler = StateHandlerBlocked();
-  History history = History();
-  history.set_obstacle_last_seen_time(1.0l, true);
-  history.set_time_lost(0.1l);
-  history.set_time_entered_state(State::BLOCKED, 1.0l);
 
-  Action action = state_handler.act(history, 5.0l, laser_characteristics, laser_analysis);
+  Action action = state_handler.act(5.0l, laser_characteristics, laser_analysis);
 
   EXPECT_EQ(action.get_state(), State::CHANGE_DIRECTION);
   // Ensure the values are reasonable without being overly sensitive to magnitude

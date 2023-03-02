@@ -17,7 +17,6 @@
 
 #include "loiterbot/action.hpp"
 #include "loiterbot/fsm/state.hpp"
-#include "loiterbot/history.hpp"
 #include "loiterbot/laser/laser_analysis.hpp"
 #include "loiterbot/laser/laser_characteristics.hpp"
 #include "loiterbot/velocity/velocity_calculator.hpp"
@@ -27,14 +26,17 @@
 class StateHandler
 {
 public:
+  // TODO: rename to getName
   virtual const char * name() const = 0;
+  virtual const State getState() const = 0;
   virtual Action act(
-    const History & history, const double current_time,
+    const double seconds_in_this_state,
     const LaserCharacteristics & laser_characteristics,
     const LaserAnalysis & laser_analysis) const = 0;
   virtual ~StateHandler() = default;
 
 protected:
+  // TODO rethink this:
   const VelocityCalculator & getVelocityCalculator() const {return velocity_calculator_;}
 
 private:

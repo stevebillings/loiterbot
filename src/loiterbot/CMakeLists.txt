@@ -35,7 +35,6 @@ add_executable(loiterbot
         src/laser/laser_analysis.cpp include/loiterbot/laser/laser_analysis.hpp
         include/loiterbot/fsm/statehandler/state_handler.hpp
         src/fsm/statehandler/state_handlers.cpp include/loiterbot/fsm/statehandler/state_handlers.hpp
-        src/history.cpp include/loiterbot/history.hpp
         src/action.cpp include/loiterbot/action.hpp
 )
 

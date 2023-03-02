@@ -24,10 +24,11 @@ class StateHandlerGo : public StateHandler
 {
 public:
   [[nodiscard]] Action act(
-    const History & history, double current_time,
+    const double seconds_in_this_state,
     const LaserCharacteristics & laser_characteristics,
     const LaserAnalysis & laser_analysis) const override;
   const char * name() const override;
+  const State getState() const override;
 
 private:
   // TODO inject

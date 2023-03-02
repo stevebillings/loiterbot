@@ -25,11 +25,8 @@ TEST(StateHandlerGoTest, StraightAhead)
   VectorByMagnitudeAngle vector_to_obstacle = VectorByMagnitudeAngle(5.0l, 0.0l);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerGo state_handler = StateHandlerGo();
-  History history = History();
-  history.set_obstacle_last_seen_time(1000.0l, true);
-  history.set_time_lost(0.1l);
 
-  Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
+  Action action = state_handler.act(10.0l, laser_characteristics, laser_analysis);
 
   EXPECT_EQ(action.get_state(), State::GO);
   // Ensure the values are reasonable without being overly sensitive to magnitude
@@ -45,11 +42,8 @@ TEST(StateHandlerGoTest, Blocked)
   VectorByMagnitudeAngle vector_to_obstacle = VectorByMagnitudeAngle(0.5l, 0.0l);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerGo state_handler = StateHandlerGo();
-  History history = History();
-  history.set_obstacle_last_seen_time(1000.0l, true);
-  history.set_time_lost(0.1l);
 
-  Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
+  Action action = state_handler.act(10.0l, laser_characteristics, laser_analysis);
 
   EXPECT_EQ(action.get_state(), State::BLOCKED);
   // Ensure the values are reasonable without being overly sensitive to magnitude
@@ -65,11 +59,8 @@ TEST(StateHandlerGoTest, AheadRight)
   VectorByMagnitudeAngle vector_to_obstacle = VectorByMagnitudeAngle(2.0l, -1 * M_PI / 4.0);
   LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerGo state_handler = StateHandlerGo();
-  History history = History();
-  history.set_obstacle_last_seen_time(1000.0l, true);
-  history.set_time_lost(0.1l);
 
-  Action action = state_handler.act(history, 0.0l, laser_characteristics, laser_analysis);
+  Action action = state_handler.act(10.0l, laser_characteristics, laser_analysis);
 
   EXPECT_EQ(action.get_state(), State::GO);
   // Ensure the values are reasonable without being overly sensitive to magnitude
