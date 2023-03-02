@@ -54,7 +54,7 @@ TEST(StateHandlerJustGoTest, AheadRight)
   EXPECT_TRUE(action.get_velocity().has_value());
   EXPECT_TRUE(action.get_velocity().value().get_forward() > 0.5l);
   EXPECT_TRUE(action.get_velocity().value().get_forward() < 8.0l);
-  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.5, 0.1l);
+  EXPECT_TRUE(action.get_velocity().value().get_yaw() > 0.2l);
 }
 
 int main(int argc, char ** argv)

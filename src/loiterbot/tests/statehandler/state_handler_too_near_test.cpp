@@ -55,10 +55,10 @@ TEST(StateHandlerTooNearTest, TooNearForAWhile)
 
   Action action = state_handler.act(history, 5.0l, laser_characteristics, laser_analysis);
 
-  EXPECT_EQ(action.get_state(), State::SEARCH);
+  EXPECT_EQ(action.get_state(), State::CHANGE_DIRECTION);
   // Ensure the values are reasonable without being overly sensitive to magnitude
   EXPECT_TRUE(action.get_velocity().has_value());
-  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 0.0l, 0.001L);
+  EXPECT_NEAR(action.get_velocity().value().get_yaw(), 3.0l, 0.001L);
   EXPECT_NEAR(action.get_velocity().value().get_forward(), 0.0l, 0.001L);
 }
 
