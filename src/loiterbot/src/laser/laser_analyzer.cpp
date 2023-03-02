@@ -41,7 +41,8 @@ LaserAnalysis LaserAnalyzer::analyze(
   bool near = min_range < DIST_NEAR;
   bool too_near = min_range < DIST_TOO_NEAR;
 
-  long index_rel_to_straight = min_range_index - (laserCharacteristics.getLeftmostIndex() / 2 - 1);
+  uint64_t index_rel_to_straight =
+    min_range_index - (laserCharacteristics.getLeftmostIndex() / 2 - 1);
   double obstacle_angle = laserCharacteristics.getAngleIncrement() * index_rel_to_straight;
   return LaserAnalysis(in_sight, near, too_near, obstacle_angle, min_range);
 }

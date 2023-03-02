@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "loiterbot/fsm/statehandler/state_handler_go.hpp"
+
 #include <gtest/gtest.h>
 
 #include "../test_constants.hpp"
-#include "loiterbot/fsm/statehandler/state_handler_go.hpp"
 
 TEST(StateHandlerGoTest, StraightAhead)
 {

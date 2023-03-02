@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
-#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_BLOCKED_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_BLOCKED_HPP_
 
 #include "state_handler.hpp"
 
@@ -27,4 +27,4 @@ public:
   const char * name() const;
 };
 
-#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_TOO_NEAR_HPP_
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_BLOCKED_HPP_
