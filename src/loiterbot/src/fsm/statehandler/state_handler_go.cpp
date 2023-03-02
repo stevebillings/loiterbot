@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "loiterbot/fsm/statehandler/state_handler_just_go.hpp"
+#include "loiterbot/fsm/statehandler/state_handler_go.hpp"
 
-Action StateHandlerJustGo::act(
+Action StateHandlerGo::act(
   const History & history, const double current_time,
   const LaserCharacteristics & laser_characteristics, const LaserAnalysis & laser_analysis) const
 {
@@ -33,7 +33,7 @@ Action StateHandlerJustGo::act(
   auto new_velocity = Velocity(
     new_motion_vector_by_magnitude_angle.getMagnitude() / SLOWDOWN_FACTOR,
     new_motion_vector_by_magnitude_angle.getAngleRadians());
-  return Action(new_velocity, State::JUST_GO);
+  return Action(new_velocity, State::GO);
 }
 
-const char * StateHandlerJustGo::name() const {return "just-go";}
+const char * StateHandlerGo::name() const {return "go";}

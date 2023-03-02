@@ -127,7 +127,7 @@ private:
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr drive_publisher_;
   StateHandlers state_handlers_ = StateHandlers();
   // for loiterbot: was: State::SEARCH
-  StateHandler * cur_state_handler_ = state_handlers_.get_state_handler(State::JUST_GO);
+  StateHandler * cur_state_handler_ = state_handlers_.get_state_handler(State::GO);
   LaserCharacteristics * laser_characteristics_ = nullptr;
   LaserAnalyzer laser_analyzer_;
   History history_;

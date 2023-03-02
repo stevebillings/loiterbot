@@ -20,7 +20,7 @@ include_directories(include)
 add_executable(loiterbot
         src/loiterbot.cpp
         include/loiterbot/fsm/state.hpp
-        src/fsm/statehandler/state_handler_just_go.cpp include/loiterbot/fsm/statehandler/state_handler_just_go.hpp
+        src/fsm/statehandler/state_handler_go.cpp include/loiterbot/fsm/statehandler/state_handler_go.hpp
         src/fsm/statehandler/state_handler_change_direction.cpp include/loiterbot/fsm/statehandler/state_handler_change_direction.hpp
         src/fsm/statehandler/state_handler_too_near.cpp include/loiterbot/fsm/statehandler/state_handler_too_near.hpp
         src/fsm/statehandler/state_handler_error.cpp include/loiterbot/fsm/statehandler/state_handler_error.hpp

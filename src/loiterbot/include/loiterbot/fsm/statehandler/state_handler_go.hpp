@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_
-#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_
+#ifndef LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_GO_HPP_
+#define LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_GO_HPP_
 
 #include "loiterbot/vector/vector_by_standard_position.hpp"
 #include "loiterbot/vector/vector_converter.hpp"
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 #include "state_handler.hpp"
 
-class StateHandlerJustGo : public StateHandler
+class StateHandlerGo : public StateHandler
 {
 public:
   [[nodiscard]] Action act(
@@ -35,4 +35,4 @@ private:
   const VectorConverter vector_converter = VectorConverter();
 };
 
-#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_JUST_GO_HPP_
+#endif  // LOITERBOT__FSM__STATEHANDLER__STATE_HANDLER_GO_HPP_

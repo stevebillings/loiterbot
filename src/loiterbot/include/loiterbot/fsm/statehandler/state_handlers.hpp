@@ -18,7 +18,7 @@
 #include "state_handler.hpp"
 #include "state_handler_change_direction.hpp"
 #include "state_handler_error.hpp"
-#include "state_handler_just_go.hpp"
+#include "state_handler_go.hpp"
 #include "state_handler_too_near.hpp"
 
 // this class constructs and holds all state objects,
@@ -30,7 +30,7 @@ public:
   StateHandler * get_state_handler(State state) const;
 
 private:
-  StateHandler * state_handler_just_go_ = new StateHandlerJustGo();
+  StateHandler * state_handler_just_go_ = new StateHandlerGo();
   StateHandler * state_handler_change_direction_ = new StateHandlerChangeDirection();
   StateHandler * state_handler_too_near_ = new StateHandlerTooNear();
   StateHandler * state_handler_error_ = new StateHandlerError();
