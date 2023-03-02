@@ -14,20 +14,19 @@
 
 #include "loiterbot/velocity/vff/vector_force_field_calculator.hpp"
 
-[[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(
-  const double obstacle_angle_radians, const double obstacle_distance) const
+[[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(const VectorByMagnitudeAngle vector_to_obstacle) const
 {
   // TODO centralize tuning parameters like these:
-  const float MINIMUM_IGNORABLE_DISTANCE = 6.0;
-  const float GOAL_VECTOR_MAGNITUDE = 3.0;
+  const float VFF_MINIMUM_IGNORABLE_DISTANCE = 6.0;
+  const float VFF_GOAL_VECTOR_MAGNITUDE = 3.0;
   // TODO min dist and goal should not be hard coded:
-  VectorByStandardPosition goal_vector(GOAL_VECTOR_MAGNITUDE, 0.0);  // Goal: go forward
+  VectorByStandardPosition goal_vector(VFF_GOAL_VECTOR_MAGNITUDE, 0.0);  // Goal: go forward
   double repulsive_vector_endpoint_x = 0.0L;
   double repulsive_vector_endpoint_y = 0.0L;
 
-  if (obstacle_distance < MINIMUM_IGNORABLE_DISTANCE) {
-    float obstacle_opposite_angle = obstacle_angle_radians + M_PI;
-    float repulsive_vector_magnitude = MINIMUM_IGNORABLE_DISTANCE - obstacle_distance;
+  if (vector_to_obstacle.getMagnitude() < VFF_MINIMUM_IGNORABLE_DISTANCE) {
+    float obstacle_opposite_angle = vector_to_obstacle.getAngleRadians() + M_PI;
+    float repulsive_vector_magnitude = VFF_MINIMUM_IGNORABLE_DISTANCE - vector_to_obstacle.getMagnitude();
     // Calculate cartesian (x, y) components from polar (angle, distance)
     repulsive_vector_endpoint_x = cos(obstacle_opposite_angle) * repulsive_vector_magnitude;
     repulsive_vector_endpoint_y = sin(obstacle_opposite_angle) * repulsive_vector_magnitude;

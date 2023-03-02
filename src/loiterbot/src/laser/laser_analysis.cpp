@@ -24,33 +24,26 @@ bool LaserAnalysis::isNear() const {return near_;}
 
 bool LaserAnalysis::isTooNear() const {return too_near_;}
 
-double LaserAnalysis::getObstacleAngleRelToStraightRadians() const
+VectorByMagnitudeAngle LaserAnalysis::getVectorToObstacle() const
 {
-  return obstacle_angle_rel_to_straight_radians_;
+  return vector_to_obstacle_;
 }
 
-double LaserAnalysis::getObstacleDistance() const {return obstacle_distance_;}
 
-bool LaserAnalysis::isToRight() const {return getObstacleAngleRelToStraightRadians() < 0.0l;}
+bool LaserAnalysis::isToRight() const {return getVectorToObstacle().getAngleRadians() < 0.0l;}
 
 std::string LaserAnalysis::toString() const
 {
   std::string description = "";
 
-  description.append("; in sight?: ");
+  description.append("in sight?: ");
   description.append(std::to_string(in_sight_));
-
-  description.append("; near?: ");
-  description.append(std::to_string(near_));
 
   description.append("; too near?: ");
   description.append(std::to_string(too_near_));
 
-  description.append("; obstacle angle: ");
-  description.append(std::to_string(obstacle_angle_rel_to_straight_radians_));
-
-  description.append("; obstacle distance: ");
-  description.append(std::to_string(obstacle_distance_));
+  description.append("; vector to obstacle: ");
+  description.append(getVectorToObstacle().toString());
 
   description.append("; to right?: ");
   description.append(std::to_string(isToRight()));

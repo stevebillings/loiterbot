@@ -15,6 +15,8 @@
 #ifndef LOITERBOT__VECTOR__VECTOR_BY_MAGNITUDE_ANGLE_HPP_
 #define LOITERBOT__VECTOR__VECTOR_BY_MAGNITUDE_ANGLE_HPP_
 
+#include <string>
+
 class VectorByMagnitudeAngle
 {
 public:
@@ -24,6 +26,7 @@ public:
   }
   double getMagnitude() const;
   double getAngleRadians() const;
+  std::string toString() const;
 
 private:
   double magnitude_;

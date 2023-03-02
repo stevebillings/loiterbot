@@ -15,6 +15,7 @@
 #ifndef LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_
 #define LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_
 
+#include "loiterbot/vector/vector_by_magnitude_angle.hpp"
 #include <algorithm>
 #include <cmath>
 #include <vector>
@@ -24,8 +25,7 @@
 class VectorForceFieldCalculator
 {
 public:
-  [[nodiscard]] VectorByStandardPosition getVffResult(
-    const double obstacle_angle_radians, const double obstacle_distance) const;
+  [[nodiscard]] VectorByStandardPosition getVffResult(const VectorByMagnitudeAngle vector_to_obstacle) const;
 };
 
 #endif  // LOITERBOT__VELOCITY__VFF__VECTOR_FORCE_FIELD_CALCULATOR_HPP_

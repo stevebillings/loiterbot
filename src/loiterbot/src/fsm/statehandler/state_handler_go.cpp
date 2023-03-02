@@ -22,7 +22,7 @@ Action StateHandlerGo::act(
     return Action(Velocity::create_reverse(), State::BLOCKED);
   }
   auto new_motion_vector_by_standard_position = vff_calculator.getVffResult(
-    laser_analysis.getObstacleAngleRelToStraightRadians(), laser_analysis.getObstacleDistance());
+    laser_analysis.getVectorToObstacle());
   auto new_motion_vector_by_magnitude_angle =
     vector_converter.standardPositionToMagnitudeAngle(new_motion_vector_by_standard_position);
   // TODO do we need both early returns?

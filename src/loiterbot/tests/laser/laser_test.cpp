@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+// TODO probably not the best way:
 #include "../test_constants.hpp"
 #include "loiterbot/laser/laser_analyzer.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -56,8 +57,8 @@ TEST(LaserTest, AnalysisStraight)
   EXPECT_TRUE(laser_analysis.isInSight());
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
-  EXPECT_NEAR(laser_analysis.getObstacleAngleRelToStraightRadians(), 0.0l, 0.01);
-  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.5, 0.001);
+  EXPECT_NEAR(laser_analysis.getVectorToObstacle().getAngleRadians(), 0.0l, 0.01);
+  EXPECT_NEAR(laser_analysis.getVectorToObstacle().getMagnitude(), 1.5, 0.001);
 }
 
 TEST(LaserTest, AnalysisRight)
@@ -78,8 +79,8 @@ TEST(LaserTest, AnalysisRight)
   EXPECT_TRUE(laser_analysis.isNear());
   EXPECT_FALSE(laser_analysis.isTooNear());
   EXPECT_TRUE(laser_analysis.isToRight());
-  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.6, 0.001);
-  EXPECT_TRUE(laser_analysis.getObstacleAngleRelToStraightRadians() < -1.0l);
+  EXPECT_NEAR(laser_analysis.getVectorToObstacle().getMagnitude(), 1.6, 0.001);
+  EXPECT_TRUE(laser_analysis.getVectorToObstacle().getAngleRadians() < -1.0l);
 }
 
 TEST(LaserTest, AnalysisTooNear)
@@ -96,7 +97,7 @@ TEST(LaserTest, AnalysisTooNear)
     LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, laser_ranges);
   LaserAnalysis laser_analysis = laserAnalyzer.analyze(laser_characteristics, laser_ranges);
   EXPECT_TRUE(laser_analysis.isTooNear());
-  EXPECT_NEAR(laser_analysis.getObstacleDistance(), 1.4, 0.001);
+  EXPECT_NEAR(laser_analysis.getVectorToObstacle().getMagnitude(), 1.4, 0.001);
 }
 
 int main(int argc, char ** argv)

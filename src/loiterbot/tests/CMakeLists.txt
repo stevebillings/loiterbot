@@ -3,7 +3,8 @@ ament_add_gtest(laser_test
         test_constants.hpp
         ../include/loiterbot/laser/laser_analyzer.hpp ../src/laser/laser_analyzer.cpp
         ../include/loiterbot/laser/laser_characteristics.hpp ../src/laser/laser_characteristics.cpp
-        ../include/loiterbot/laser/laser_analysis.hpp ../src/laser/laser_analysis.cpp)
+        ../include/loiterbot/laser/laser_analysis.hpp ../src/laser/laser_analysis.cpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp)
 ament_add_gtest(velocity_calculator_test
         velocity/velocity_calculator_test.cpp
         test_constants.hpp

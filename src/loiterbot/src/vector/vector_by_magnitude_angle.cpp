@@ -17,3 +17,16 @@
 double VectorByMagnitudeAngle::getMagnitude() const {return magnitude_;}
 
 double VectorByMagnitudeAngle::getAngleRadians() const {return angle_radians_;}
+
+std::string VectorByMagnitudeAngle::toString() const
+{
+  std::string description = "";
+
+  description.append("distance: ");
+  description.append(std::to_string(getMagnitude()));
+
+  description.append("; angle (radians): ");
+  description.append(std::to_string(getAngleRadians()));
+
+  return description;
+}
