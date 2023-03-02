@@ -376,10 +376,11 @@
             </plugin>
         </model>
 
-        <!--wall-->
-        <model name='wall'>
+        <!-- far wall -->
+        <model name='wallback'>
             <static>true</static>
-            <pose>2 0 0 0 0 0</pose><!--pose relative to the world-->
+            <!-- pose: X -->
+            <pose>9 0 0 0 0 0</pose><!--pose relative to the world-->
             <link name='box'>
                 <pose/>
                 <inertial> <!--inertial properties of the link mass, inertia matix-->
@@ -396,7 +397,7 @@
                 <visual name='visual'>
                     <geometry>
                         <box>
-                            <size>0.5 5.0 2.0</size>
+                            <size>0.5 20.0 2.0</size>
                         </box>
                     </geometry>
                     <!--let's add color to our link-->
@@ -409,7 +410,7 @@
                 <collision name='collision'> <!--todo: describe why we need the collision-->
                     <geometry>
                         <box>
-                            <size>0.5 5.0 2.0</size>
+                            <size>0.5 20.0 2.0</size>
                         </box>
                     </geometry>
                 </collision>
@@ -427,9 +428,13 @@
                 <enabled>true</enabled>
             </plugin>
         </model>
-        <model name='wall2'>
+        <!-- end far wall -->
+
+        <!-- near wall -->
+        <model name='wallnear'>
             <static>true</static>
-            <pose>5 0 0 0 0 0</pose><!--pose relative to the world-->
+            <!-- pose: X -->
+            <pose>-9 0 0 0 0 0</pose><!--pose relative to the world-->
             <link name='box'>
                 <pose/>
                 <inertial> <!--inertial properties of the link mass, inertia matix-->
@@ -446,20 +451,20 @@
                 <visual name='visual'>
                     <geometry>
                         <box>
-                            <size>3.0 0.5 2.0</size>
+                            <size>0.5 20.0 2.0</size>
                         </box>
                     </geometry>
                     <!--let's add color to our link-->
                     <material>
-                        <ambient>1.0 0.0 0.0 1</ambient>
-                        <diffuse>1.0 0.0 0.0 1</diffuse>
-                        <specular>1.0 0.0 0.0 1</specular>
+                        <ambient>0.0 0.0 1.0 1</ambient>
+                        <diffuse>0.0 0.0 1.0 1</diffuse>
+                        <specular>0.0 0.0 1.0 1</specular>
                     </material>
                 </visual>
                 <collision name='collision'> <!--todo: describe why we need the collision-->
                     <geometry>
                         <box>
-                            <size>3.0 0.5 2.0</size>
+                            <size>0.5 20.0 2.0</size>
                         </box>
                     </geometry>
                 </collision>
@@ -477,6 +482,235 @@
                 <enabled>true</enabled>
             </plugin>
         </model>
+        <!-- end near wall -->
+
+        <!-- right wall -->
+        <model name='wallright'>
+            <static>true</static>
+            <!-- pose: X -->
+            <pose>0 -10 0 0 0 0</pose><!--pose relative to the world-->
+            <link name='box'>
+                <pose/>
+                <inertial> <!--inertial properties of the link mass, inertia matix-->
+                    <mass>1.14395</mass>
+                    <inertia>
+                        <ixx>9.532917</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.023832</iyy>
+                        <iyz>0</iyz>
+                        <izz>9.556749</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <box>
+                            <size>18.0 0.5 2.0</size>
+                        </box>
+                    </geometry>
+                    <!--let's add color to our link-->
+                    <material>
+                        <ambient>0.0 0.0 1.0 1</ambient>
+                        <diffuse>0.0 0.0 1.0 1</diffuse>
+                        <specular>0.0 0.0 1.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'> <!--todo: describe why we need the collision-->
+                    <geometry>
+                        <box>
+                            <size>18.0 0.5 2.0</size>
+                        </box>
+                    </geometry>
+                </collision>
+                <sensor name='sensor_contact' type='contact'>
+                    <contact>
+                        <collision>collision</collision>
+                    </contact>
+                </sensor>
+            </link>
+            <plugin filename="ignition-gazebo-touchplugin-system"
+                    name="ignition::gazebo::systems::TouchPlugin">
+                <target>vehicle_blue</target>
+                <namespace>wall</namespace>
+                <time>0.001</time>
+                <enabled>true</enabled>
+            </plugin>
+        </model>
+        <!-- end right wall -->
+
+        <!-- left wall -->
+        <model name='wallleft'>
+            <static>true</static>
+            <!-- pose: X -->
+            <pose>0 10 0 0 0 0</pose><!--pose relative to the world-->
+            <link name='box'>
+                <pose/>
+                <inertial> <!--inertial properties of the link mass, inertia matix-->
+                    <mass>1.14395</mass>
+                    <inertia>
+                        <ixx>9.532917</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.023832</iyy>
+                        <iyz>0</iyz>
+                        <izz>9.556749</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <box>
+                            <size>18.0 0.5 2.0</size>
+                        </box>
+                    </geometry>
+                    <!--let's add color to our link-->
+                    <material>
+                        <ambient>0.0 0.0 1.0 1</ambient>
+                        <diffuse>0.0 0.0 1.0 1</diffuse>
+                        <specular>0.0 0.0 1.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'> <!--todo: describe why we need the collision-->
+                    <geometry>
+                        <box>
+                            <size>18.0 0.5 2.0</size>
+                        </box>
+                    </geometry>
+                </collision>
+                <sensor name='sensor_contact' type='contact'>
+                    <contact>
+                        <collision>collision</collision>
+                    </contact>
+                </sensor>
+            </link>
+            <plugin filename="ignition-gazebo-touchplugin-system"
+                    name="ignition::gazebo::systems::TouchPlugin">
+                <target>vehicle_blue</target>
+                <namespace>wall</namespace>
+                <time>0.001</time>
+                <enabled>true</enabled>
+            </plugin>
+        </model>
+        <!-- end right wall -->
+
+    <!-- obstacle cylinder1 -->
+    <model name="cylinder1">
+      <pose>0 2 0.5 0 0 0</pose>
+      <link name="cylinder_link">
+        <inertial>
+          <inertia>
+            <ixx>0.1458</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1458</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <mass>1.0</mass>
+        </inertial>
+        <collision name="cylinder_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <visual name="cylinder_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <specular>0 1 0 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- obstacle cylinder2 -->
+    <model name="cylinder2">
+      <pose>0 -6 0.5 0 0 0</pose>
+      <link name="cylinder_link">
+        <inertial>
+          <inertia>
+            <ixx>0.1458</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1458</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <mass>1.0</mass>
+        </inertial>
+        <collision name="cylinder_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <visual name="cylinder_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <specular>0 1 0 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- obstacle cylinder3 -->
+    <model name="cylinder3">
+      <pose>0 -8 0.5 0 0 0</pose>
+      <link name="cylinder_link">
+        <inertial>
+          <inertia>
+            <ixx>0.1458</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1458</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <mass>1.0</mass>
+        </inertial>
+        <collision name="cylinder_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+
+        <visual name="cylinder_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <specular>0 1 0 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
 
         <!-- Moving Forward-->
         <plugin filename="ignition-gazebo-triggered-publisher-system"
