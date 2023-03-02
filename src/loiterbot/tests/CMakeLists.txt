@@ -11,7 +11,8 @@ ament_add_gtest(velocity_calculator_test
         ../include/loiterbot/laser/laser_characteristics.hpp ../src/laser/laser_characteristics.cpp
         ../include/loiterbot/laser/laser_analysis.hpp ../src/laser/laser_analysis.cpp
         ../include/loiterbot/velocity/velocity.hpp ../src/velocity/velocity.cpp
-        ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp)
+        ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp)
 
 ament_add_gtest(state_handler_go_test
         statehandler/state_handler_go_test.cpp
@@ -26,7 +27,8 @@ ament_add_gtest(state_handler_go_test
         ../include/loiterbot/vector/vector_converter.hpp ../src/vector/vector_converter.cpp
         ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp
         ../include/loiterbot/vector/vector_by_standard_position.hpp ../src/vector/vector_by_standard_position.cpp
-        ../src/action.cpp ../include/loiterbot/action.hpp)
+        ../src/action.cpp ../include/loiterbot/action.hpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp)
 ament_add_gtest(state_handler_blocked_test
         statehandler/state_handler_blocked_test.cpp
         test_constants.hpp
@@ -36,7 +38,8 @@ ament_add_gtest(state_handler_blocked_test
         ../include/loiterbot/laser/laser_analysis.hpp ../src/laser/laser_analysis.cpp
         ../include/loiterbot/velocity/velocity.hpp ../src/velocity/velocity.cpp
         ../include/loiterbot/velocity/velocity_calculator.hpp ../src/velocity/velocity_calculator.cpp
-        ../src/action.cpp ../include/loiterbot/action.hpp)
+        ../src/action.cpp ../include/loiterbot/action.hpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp)
 
 ament_add_gtest(vector_force_field_calculator_test
         velocity/vff/vector_force_field_calculator_test.cpp
@@ -44,7 +47,8 @@ ament_add_gtest(vector_force_field_calculator_test
         ../include/loiterbot/velocity/vff/vector_force_field_calculator.hpp
         ../src/velocity/vff/vector_force_field_calculator.cpp
         ../include/loiterbot/vector/vector_by_standard_position.hpp
-        ../src/vector/vector_by_standard_position.cpp)
+        ../src/vector/vector_by_standard_position.cpp
+        ../include/loiterbot/vector/vector_by_magnitude_angle.hpp ../src/vector/vector_by_magnitude_angle.cpp)
 
 ament_add_gtest(vector_converter_test
         velocity/vff/vector_converter_test.cpp

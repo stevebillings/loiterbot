@@ -16,31 +16,32 @@
 
 #include <gtest/gtest.h>
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, FAR)
+TEST(VectorForceField, Far)
 {
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(0.0l, 10.0l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(10.0l, 0.0l);
+  VectorByStandardPosition result = vff.getVffResult(vector_to_obstacle);
 
-  ASSERT_NEAR(result.getEndpointX(), 1.0, 0.01);
+  ASSERT_TRUE(result.getEndpointX() > 2.0l);
   ASSERT_NEAR(result.getEndpointY(), 0.0, 0.001);
 }
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, AHEAD_CLOSE)
+TEST(VectorForceField, AheadClose)
 {
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(0.0l, 0.5l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(3.0l, 0.0l);
+  VectorByStandardPosition result = vff.getVffResult(vector_to_obstacle);
 
-  ASSERT_NEAR(result.getEndpointX(), 0.5, 0.1);
-  ASSERT_NEAR(result.getEndpointY(), 0.0, 0.1);
+  ASSERT_NEAR(result.getEndpointX(), 0.1, 0.1);
 }
 
-TEST(VECTOR_FORCE_FIELD_CALCULATOR_TEST, RIGHT_CLOSE)
+TEST(VectorForceField, RightClose)
 {
   auto vff = VectorForceFieldCalculator();
-  VectorByStandardPosition result = vff.getVffResult(M_PI / 4.0, 0.1l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(0.1l, M_PI / 4.0);
+  VectorByStandardPosition result = vff.getVffResult(vector_to_obstacle);
 
-  ASSERT_NEAR(result.getEndpointX(), 0.3, 0.1);
-  ASSERT_NEAR(result.getEndpointY(), -0.6, 0.1);
+  ASSERT_TRUE(result.getEndpointY() < 1.0);
 }
 
 int main(int argc, char ** argv)

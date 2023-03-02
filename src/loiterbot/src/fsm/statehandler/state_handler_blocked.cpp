@@ -24,4 +24,4 @@ Action StateHandlerBlocked::act(
   return Action(State::BLOCKED);
 }
 
-const char * StateHandlerBlocked::name() const {return "obstacle too near";}
+const char * StateHandlerBlocked::name() const {return "Blocked";}

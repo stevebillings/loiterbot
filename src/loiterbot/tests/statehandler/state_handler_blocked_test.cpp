@@ -28,7 +28,8 @@ TEST(StateHandlerBlockedTest, RecentlyTooNear)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(4.0l, 0.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerBlocked state_handler = StateHandlerBlocked();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);
@@ -46,7 +47,8 @@ TEST(StateHandlerBlockedTest, TooNearForAWhile)
 {
   LaserCharacteristics laser_characteristics =
     LaserCharacteristics(LASER_ANGLE_MINIMUM, LASER_ANGLE_INCREMENT, 4ul, 2ul);
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, 0.0l, 4.0l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(4.0l, 0.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   StateHandlerBlocked state_handler = StateHandlerBlocked();
   History history = History();
   history.set_obstacle_last_seen_time(1.0l, true);

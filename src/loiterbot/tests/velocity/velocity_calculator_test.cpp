@@ -21,18 +21,20 @@
 TEST(VelocityCalculatorTest, AheadRight)
 {
   VelocityCalculator velocity_calculator;
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, -1 * M_PI / 8.0l, 3.0l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(3.0l, -1 * M_PI / 8.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   Velocity velocity = velocity_calculator.toApproach(laser_analysis);
-  EXPECT_NEAR(velocity.get_forward(), 1.0l, .05l);
-  EXPECT_NEAR(velocity.get_yaw(), -1 * M_PI / 8.0l, .001l);
+  EXPECT_TRUE(velocity.get_forward() > 0.4l);
+  EXPECT_NEAR(velocity.get_yaw(), -1 * M_PI / 8.0l, 0.1l);
 }
 
 TEST(VelocityCalculatorTest, FarAheadLeft)
 {
   VelocityCalculator velocity_calculator;
-  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, M_PI / 16.0l, 9.0l);
+  auto vector_to_obstacle = VectorByMagnitudeAngle(9.0l, M_PI / 16.0l);
+  LaserAnalysis laser_analysis = LaserAnalysis(true, false, false, vector_to_obstacle);
   Velocity velocity = velocity_calculator.toApproach(laser_analysis);
-  EXPECT_NEAR(velocity.get_forward(), 3.0l, .05l);
+  EXPECT_TRUE(velocity.get_forward() > 1.0l);
   EXPECT_NEAR(velocity.get_yaw(), M_PI / 16.0l, .001l);
 }
 

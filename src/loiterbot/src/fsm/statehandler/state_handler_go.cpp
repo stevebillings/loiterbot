@@ -25,7 +25,7 @@ Action StateHandlerGo::act(
     laser_analysis.getVectorToObstacle());
   auto new_motion_vector_by_magnitude_angle =
     vector_converter.standardPositionToMagnitudeAngle(new_motion_vector_by_standard_position);
-  // TODO do we need both early returns?
+  // TODO do we need both early returns? I think can get read of laser_analysis.isTooNear() altogether
   if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI / 2.0l)) {
     return Action(Velocity::create_reverse(), State::BLOCKED);
   }
@@ -37,4 +37,4 @@ Action StateHandlerGo::act(
   return Action(new_velocity, State::GO);
 }
 
-const char * StateHandlerGo::name() const {return "go";}
+const char * StateHandlerGo::name() const {return "Go";}

@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(VECTOR_UNITTEST, AHEAD)
+TEST(VectorConverter, Ahead)
 {
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(1.0, 0.0);
@@ -26,7 +26,7 @@ TEST(VECTOR_UNITTEST, AHEAD)
   ASSERT_NEAR(vma.getMagnitude(), 1.0, 0.001);
 }
 
-TEST(VECTOR_UNITTEST, LEFT)
+TEST(VectorConverter, Left)
 {
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(0.0, 1.0);
@@ -36,7 +36,7 @@ TEST(VECTOR_UNITTEST, LEFT)
   ASSERT_NEAR(vma.getMagnitude(), 1.0, 0.001);
 }
 
-TEST(VECTOR_UNITTEST, RIGHT_45)
+TEST(VectorConverter, Right45)
 {
   auto vc = VectorConverter();
   auto vsp = VectorByStandardPosition(1.0, -1.0);

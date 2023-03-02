@@ -21,4 +21,4 @@ Action StateHandlerError::act(
   return Action(Velocity::create_stopped(), State::ERROR);
 }
 
-const char * StateHandlerError::name() const {return "error";}
+const char * StateHandlerError::name() const {return "Error";}

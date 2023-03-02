@@ -19,7 +19,7 @@
   // TODO centralize tuning parameters like these:
   const float VFF_MINIMUM_IGNORABLE_DISTANCE = 6.0;
   const float VFF_GOAL_VECTOR_MAGNITUDE = 3.0;
-  // TODO min dist and goal should not be hard coded:
+  // TODO min dist and goal should not be hard coded: But maybe should be overridable default; cpp has mechanism for that
   VectorByStandardPosition goal_vector(VFF_GOAL_VECTOR_MAGNITUDE, 0.0);  // Goal: go forward
   double repulsive_vector_endpoint_x = 0.0L;
   double repulsive_vector_endpoint_y = 0.0L;
