@@ -17,9 +17,11 @@
 [[nodiscard]] VectorByStandardPosition VectorForceFieldCalculator::getVffResult(
   const double obstacle_angle_radians, const double obstacle_distance) const
 {
-  const float MINIMUM_IGNORABLE_DISTANCE = 5.0;
+  // TODO centralize tuning parameters like these:
+  const float MINIMUM_IGNORABLE_DISTANCE = 6.0;
+  const float GOAL_VECTOR_MAGNITUDE = 3.0;
   // TODO min dist and goal should not be hard coded:
-  VectorByStandardPosition goal_vector(MINIMUM_IGNORABLE_DISTANCE, 0.0);  // Goal: go forward
+  VectorByStandardPosition goal_vector(GOAL_VECTOR_MAGNITUDE, 0.0);  // Goal: go forward
   double repulsive_vector_endpoint_x = 0.0L;
   double repulsive_vector_endpoint_y = 0.0L;
 

@@ -31,6 +31,7 @@ public:
     const std::vector<float> & laser_ranges) const;
 
 private:
+  // TODO: consolidate tuning parameters like these:
   constexpr static double DIST_WITHIN_SIGHT = 9.5;
   constexpr static double DIST_NEAR = 4.0;
   constexpr static double DIST_TOO_NEAR = 1.5;

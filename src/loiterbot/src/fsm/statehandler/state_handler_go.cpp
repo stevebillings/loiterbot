@@ -29,9 +29,10 @@ Action StateHandlerGo::act(
   if (abs(new_motion_vector_by_magnitude_angle.getAngleRadians()) >= (M_PI / 2.0l)) {
     return Action(Velocity::create_reverse(), State::BLOCKED);
   }
-  const double SLOWDOWN_FACTOR = 2.0l;
+  // TODO centralize tuning parameters like these:
+  const double SPEED_FACTOR = 0.5l;
   auto new_velocity = Velocity(
-    new_motion_vector_by_magnitude_angle.getMagnitude() / SLOWDOWN_FACTOR,
+    new_motion_vector_by_magnitude_angle.getMagnitude() * SPEED_FACTOR,
     new_motion_vector_by_magnitude_angle.getAngleRadians());
   return Action(new_velocity, State::GO);
 }

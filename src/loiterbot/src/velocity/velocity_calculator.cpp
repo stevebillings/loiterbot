@@ -16,10 +16,12 @@
 
 Velocity VelocityCalculator::toApproach(const LaserAnalysis & laser_analysis) const
 {
+  // TODO centralize tuning parameters like these:
+  const double VELOCITY_FACTOR = 0.2L;
   if (laser_analysis.isNear() || laser_analysis.isTooNear()) {
     return Velocity(0.0, 0.0);
   }
-  double x = laser_analysis.getObstacleDistance() / 3.0;
+  double x = laser_analysis.getObstacleDistance() * VELOCITY_FACTOR;
   double yaw = laser_analysis.getObstacleAngleRelToStraightRadians();
   return Velocity(x, yaw);
 }
